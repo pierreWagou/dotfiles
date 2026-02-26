@@ -1,0 +1,82 @@
+format = "[](yellow)$os$username[](yellow bg:peach)$directory[](peach bg:red)$git_branch$git_status[](red)$fill$status$python[](pink bg:mauve)$time[](mauve)\n$character"
+palette = "catppuccin_mocha"
+
+[character]
+format = "[❯ ](bold mauve)\n"
+
+[directory]
+before_repo_root_style = "bg:peach crust"
+format = "[ $path]($style)"
+read_only_style = "bg:peach crust"
+repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)"
+repo_root_style = "bg:peach bold crust"
+style = "bg:peach crust"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+Documents = " 󰈙 "
+Downloads = "  "
+Music = "  "
+Pictures = "  "
+"Repositories/sap" = "  "
+"Repositories/wagou" = "  "
+Videos = "  "
+
+[git_branch]
+format = "[ $symbol $branch]($style)"
+style = "bg:red bold crust"
+symbol = ""
+
+[git_status]
+format = "[ $all_status$ahead_behind]($style)"
+style = "bg:red bold crust"
+
+[os]
+disabled = false
+format = "[🦖]($style)"
+style = "bg:yellow"
+
+[palettes.catppuccin_mocha]
+base = "#1e1e2e"
+blue = "#89b4fa"
+crust = "#11111b"
+flamingo = "#f2cdcd"
+green = "#a6e3a1"
+lavender = "#b4befe"
+mantle = "#181825"
+maroon = "#eba0ac"
+mauve = "#cba6f7"
+overlay0 = "#6c7086"
+overlay1 = "#7f849c"
+overlay2 = "#9399b2"
+peach = "#fab387"
+pink = "#f5c2e7"
+red = "#f38ba8"
+rosewater = "#f5e0dc"
+sapphire = "#74c7ec"
+sky = "#89dceb"
+subtext0 = "#a6adc8"
+subtext1 = "#bac2de"
+surface0 = "#313244"
+surface1 = "#45475a"
+surface2 = "#585b70"
+teal = "#94e2d5"
+text = "#cdd6f4"
+yellow = "#f9e2af"
+
+[python]
+format = "[  $virtualenv]($style)"
+style = "bg:pink bold crust"
+
+[status]
+disabled = false
+format = "[$symbol]($style) "
+success_symbol = "👌"
+symbol = "💩"
+
+[time]
+disabled = false
+format = "[  $time]($style)"
+style = "bg:mauve bold crust"
+time_format = "%R"
