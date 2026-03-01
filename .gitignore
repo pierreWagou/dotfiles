@@ -1,0 +1,16 @@
+# Chezmoi repo gitignore
+
+# macOS
+.DS_Store
+
+# Editor backups
+*~
+*.swp
+*.swo
+
+# Chezmoi working files
+*.orig
+
+# Don't commit the key (it's in ~/.config/chezmoi, not here)
+key.txt
+*.age.key
