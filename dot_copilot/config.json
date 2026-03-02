@@ -1,0 +1,17 @@
+{
+  "theme": "auto",
+  "banner": "never",
+  "trusted_folders": [
+    "/Users/I544489"
+  ],
+  "last_logged_in_user": {
+    "host": "https://github.com",
+    "login": "pierre-romon_sap"
+  },
+  "logged_in_users": [
+    {
+      "host": "https://github.com",
+      "login": "pierre-romon_sap"
+    }
+  ]
+}

@@ -61,14 +61,12 @@ _source_nix_plugin() {
 _source_nix_plugin '/nix/store/*-zsh-fzf-tab-*/share/fzf-tab/fzf-tab.plugin.zsh'
 
 # Zsh Autosuggestions
-[[ -f "$NIX_ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
-  source "$NIX_ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
+_source_nix_plugin '/nix/store/*-zsh-autosuggestions-*/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # You Should Use
-[[ -f "$NIX_ZSH_PLUGINS/you-should-use/you-should-use.plugin.zsh" ]] && \
-  source "$NIX_ZSH_PLUGINS/you-should-use/you-should-use.plugin.zsh"
+_source_nix_plugin '/nix/store/*-zsh-you-should-use-*/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh'
 
 # Preview command for fzf-tab
 preview_ls_cmd="eza -a --level=1 --tree --icons --group-directories-first --git-ignore -I '.DS_Store|.localized' --color=always"
