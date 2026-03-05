@@ -1,0 +1,108 @@
+# =============================================================================
+# Neomutt Configuration - Gmail Setup
+# =============================================================================
+
+# Account settings
+set realname = "Pierre Romon"
+set from = "pierre.romon@gmail.com"
+set smtp_url = "smtps://pierre.romon@gmail.com@smtp.gmail.com:465/"
+set imap_user = "pierre.romon@gmail.com"
+
+# Authentication with App Password (via chezmoi/dashlane)
+set imap_authenticators = "login"
+set smtp_authenticators = "login"
+set imap_pass = "{{ (index (dashlanePassword "Neomutt Gmail App Password") 0).password }}"
+set smtp_pass = "{{ (index (dashlanePassword "Neomutt Gmail App Password") 0).password }}"
+
+# Main mailbox (Gmail IMAP)
+set mail_check = 60
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+[Gmail]/All Mail"
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+set trash = "+[Gmail]/Trash"
+
+# IMAP settings
+set imap_idle
+set imap_keepalive = 300
+
+# SMTP settings
+set ssl_force_tls = yes
+set ssl_starttls = yes
+
+# =============================================================================
+# Display & UI
+# =============================================================================
+
+# Pager
+set pager_index_lines = 10
+set pager_context = 3
+
+# Status bar
+set status_chars = " *%A"
+set status_format = "───[ Folder: %f ]───[ %r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─ (%P) ───"
+
+# Index format
+set date_format = "%y/%m/%d %I:%M%p"
+set index_format = "%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
+
+# Message display
+set markers = no
+set smart_wrap = yes
+set wrap = 78
+
+# =============================================================================
+# Behavior
+# =============================================================================
+
+# Addressing
+set reverse_name = yes
+set reply_to = yes
+
+# Composing
+set editor = "vim"
+set edit_headers = yes
+set quote_regex = "^( {0,4}[>|:#]| {0,4}[a-z0-9]+[>|]+)+"
+set include = yes
+
+# Sorting
+set sort = threads
+set sort_aux = reverse-last-date-received
+set sort_browser = alpha
+set sort_alias = alias
+
+# Searching
+set thorough_search = yes
+
+# =============================================================================
+# Bindings
+# =============================================================================
+
+# Navigate
+bind index j next-entry
+bind index k previous-entry
+bind index J next-page
+bind index K previous-page
+bind pager j next-line
+bind pager k previous-line
+bind pager J next-page
+bind pager K previous-page
+
+# Compose
+bind compose p postpone-message
+
+# Index
+bind index d delete-message
+bind index u undelete-message
+bind index l limit
+bind index h change-folder
+
+# =============================================================================
+# Colors & Theme
+# =============================================================================
+
+color status white default
+color index yellow default "~N"          # New messages
+color index red default "~F"             # Flagged messages
+color index blue default "~T"            # Tagged messages
+color index brightblue default "~U"      # Unread messages

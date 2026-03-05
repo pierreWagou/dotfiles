@@ -1,0 +1,45 @@
+# =============================================================================
+# Sheldon Plugin Manager Configuration
+# =============================================================================
+# Documentation: https://sheldon.cli.rs/
+
+shell = "zsh"
+
+# -----------------------------------------------------------------------------
+# Completion Plugins
+# -----------------------------------------------------------------------------
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+# -----------------------------------------------------------------------------
+# Interactive Plugins (order matters)
+# -----------------------------------------------------------------------------
+
+# FZF-Tab: fuzzy completion with fzf
+# Note: Should be loaded early, before other completion enhancements
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
+
+# Autosuggestions: suggest commands as you type based on history
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+
+# You Should Use: reminds you of your aliases
+[plugins.you-should-use]
+github = "MichaelAquilina/zsh-you-should-use"
+
+# -----------------------------------------------------------------------------
+# Syntax Highlighting (MUST be last)
+# -----------------------------------------------------------------------------
+
+# Syntax Highlighting: highlight commands as you type
+# Must be loaded after all other plugins that modify the command line
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+
+# Catppuccin Mocha theme for syntax highlighting
+# Must be loaded after zsh-syntax-highlighting
+[plugins.catppuccin-zsh-syntax-highlighting]
+github = "catppuccin/zsh-syntax-highlighting"

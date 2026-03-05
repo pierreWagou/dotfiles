@@ -12,10 +12,6 @@ export PYENV_ROOT="$HOME/.local/share/pyenv"
 export GPG_TTY=$TTY
 export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/config"
 
-# Nix profile paths
-NIX_PROFILE="/etc/profiles/per-user/$USER"
-NIX_ZSH_PLUGINS="$NIX_PROFILE/share/zsh/plugins"
-
 # -----------------------------------------------------------------------------
 # History
 # -----------------------------------------------------------------------------
@@ -37,43 +33,26 @@ unsetopt HIST_IGNORE_ALL_DUPS
 unsetopt HIST_SAVE_NO_DUPS
 
 # -----------------------------------------------------------------------------
-# Completions (from Nix)
-# -----------------------------------------------------------------------------
-# Add Nix zsh completions to fpath
-fpath+=("$NIX_PROFILE/share/zsh/site-functions")
-fpath+=("$NIX_PROFILE/share/zsh/5.9/functions")
+# Plugins (via Sheldon)
+# ---------------------------------------------------------------------------
+if command -v sheldon &>/dev/null; then
+  eval "$(sheldon source)"
+fi
 
-autoload -Uz compinit && compinit
-
-# -----------------------------------------------------------------------------
-# Plugins (installed via Nix)
-# -----------------------------------------------------------------------------
-# Helper to source first matching file from glob pattern
-_source_nix_plugin() {
-  emulate -L zsh
-  setopt GLOB_SUBST NULL_GLOB
-  local pattern="$1"
-  local files=($pattern)
-  [[ ${#files[@]} -gt 0 && -f "${files[1]}" ]] && source "${files[1]}"
-}
-
-# FZF-Tab (must be loaded before compinit is called, but after fpath setup)
-_source_nix_plugin '/nix/store/*-zsh-fzf-tab-*/share/fzf-tab/fzf-tab.plugin.zsh'
-
-# Zsh Autosuggestions
-_source_nix_plugin '/nix/store/*-zsh-autosuggestions-*/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
-
+# Plugin configurations
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# You Should Use
-_source_nix_plugin '/nix/store/*-zsh-you-should-use-*/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh'
-
-# Preview command for fzf-tab
+# FZF-Tab preview settings
 preview_ls_cmd="eza -a --level=1 --tree --icons --group-directories-first --git-ignore -I '.DS_Store|.localized' --color=always"
 
 zstyle ':fzf-tab:complete:*' fzf-flags $(echo $FZF_DEFAULT_OPTS)
 zstyle ':fzf-tab:complete:code:*' fzf-preview 'bat $realpath 2>/dev/null ||' $preview_ls_cmd '$realpath'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview $preview_ls_cmd '$realpath'
+
+# -----------------------------------------------------------------------------
+# Completions
+# -----------------------------------------------------------------------------
+autoload -Uz compinit && compinit
 
 # -----------------------------------------------------------------------------
 # Tool Initialization
@@ -125,14 +104,3 @@ alias gl='git pull'
 
 # Python
 alias python='python3'
-
-# -----------------------------------------------------------------------------
-# Syntax Highlighting (MUST be sourced last)
-# -----------------------------------------------------------------------------
-_source_nix_plugin '/nix/store/*-zsh-syntax-highlighting-*/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-
-# Catppuccin Mocha theme (must be after syntax highlighting)
-_source_nix_plugin '/nix/store/*-catppuccin-zsh-syntax-highlighting-*/catppuccin_mocha-zsh-syntax-highlighting.zsh'
-
-# Cleanup
-unfunction _source_nix_plugin
