@@ -1,0 +1,7 @@
+# =============================================================================
+# Zsh Environment - Bootstrap ZDOTDIR
+# =============================================================================
+# This file MUST remain at ~/.zshenv (it's read first, before ZDOTDIR is set)
+
+# Set Zsh configuration directory to follow XDG Base Directory specification
+export ZDOTDIR="$HOME/.config/zsh"

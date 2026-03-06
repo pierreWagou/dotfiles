@@ -1,5 +1,5 @@
 # =============================================================================
-# ZSH Configuration - Managed by chezmoi, Plugins via Nix
+# ZSH Configuration - Managed by chezmoi, Plugins via Sheldon
 # =============================================================================
 
 # -----------------------------------------------------------------------------
@@ -17,7 +17,7 @@ export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/config"
 # -----------------------------------------------------------------------------
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE="$HOME/.zsh_history"
+HISTFILE="$ZDOTDIR/.zsh_history"
 mkdir -p "$(dirname "$HISTFILE")"
 
 setopt HIST_FCNTL_LOCK
