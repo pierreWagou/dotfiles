@@ -3,5 +3,28 @@
 # =============================================================================
 # This file MUST remain at ~/.zshenv (it's read first, before ZDOTDIR is set)
 
-# Set Zsh configuration directory to follow XDG Base Directory specification
+# -----------------------------------------------------------------------------
+# XDG Base Directory Specification
+# -----------------------------------------------------------------------------
+# Set Zsh configuration directory
 export ZDOTDIR="$HOME/.config/zsh"
+
+# Set Docker configuration directory
+export DOCKER_CONFIG="$HOME/.config/docker"
+
+# Set FZF configuration file path
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/config"
+
+# -----------------------------------------------------------------------------
+# Path Configuration
+# -----------------------------------------------------------------------------
+typeset -U path cdpath fpath manpath
+
+# Pyenv
+export PYENV_ROOT="$HOME/.local/share/pyenv"
+[[ -d $PYENV_ROOT/bin ]] && path=("$PYENV_ROOT/bin" $path)
+
+# -----------------------------------------------------------------------------
+# Environment Variables
+# -----------------------------------------------------------------------------
+export GPG_TTY=$TTY
