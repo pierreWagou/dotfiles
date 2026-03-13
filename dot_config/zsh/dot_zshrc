@@ -23,6 +23,19 @@ unsetopt HIST_IGNORE_ALL_DUPS
 unsetopt HIST_SAVE_NO_DUPS
 
 # -----------------------------------------------------------------------------
+# Tmux Package Manager (TPM) Initialization
+# ---------------------------------------------------------------------------
+
+TPM_DIR="$XDG_CONFIG_HOME/tmux/plugins/tpm"
+# TPM_DIR="$HOME/.tmux/plugins/tpm" # --- IGNORE ---
+
+# Download TPM, if it's not there yet
+if [ ! -d "$TPM_DIR" ]; then
+   mkdir -p "$(dirname "$TPM_DIR")"
+   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+fi
+
+# -----------------------------------------------------------------------------
 # Plugins (via Sheldon)
 # ---------------------------------------------------------------------------
 if command -v sheldon &>/dev/null; then
@@ -72,6 +85,11 @@ command -v gpg-connect-agent &>/dev/null && \
 # Ghostty shell integration
 if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
   source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration"
+fi
+
+# Fast Node Manager
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
 # -----------------------------------------------------------------------------

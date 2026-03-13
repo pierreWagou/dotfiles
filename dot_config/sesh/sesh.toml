@@ -1,0 +1,12 @@
+[default_session]
+startup_command = "tmuxinator start dev path={} --append && tmux kill-window -t 1"
+preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "Wagounix"
+path = "~/.config/wagounix"
+
+[[session]]
+name = "Dotfiles"
+path = "~/.local/share/chezmoi"
+

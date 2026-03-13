@@ -14,11 +14,20 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # Set Docker configuration directory
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
-# Set FZF configuration file path
+# Set FZF configuration file
 export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/config"
 
-# Set Eza configuration file path
+# Set Eza configuration directory
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
+
+# Set Claude confiuration directory
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+
+# Set Databricks configuration file
+export DATABRICKS_CONFIG_FILE="$XDG_CONFIG_HOME/databricks/databrickscfg"
+
+# Set GNUPG configuration directory
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 
 # -----------------------------------------------------------------------------
 # Path Configuration

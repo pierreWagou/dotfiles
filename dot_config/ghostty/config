@@ -3,6 +3,7 @@ auto-update-channel = stable
 copy-on-select = clipboard
 cursor-invert-fg-bg = true
 cursor-style = block
+font-thicken = true
 font-family = JetBrainsMono Nerd Font Mono
 link-url = true
 macos-auto-secure-input = true
