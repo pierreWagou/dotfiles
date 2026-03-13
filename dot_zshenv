@@ -29,6 +29,9 @@ export DATABRICKS_CONFIG_FILE="$XDG_CONFIG_HOME/databricks/databrickscfg"
 # Set GNUPG configuration directory
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 
+# Set Starship confiuration file
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+
 # -----------------------------------------------------------------------------
 # Path Configuration
 # -----------------------------------------------------------------------------
