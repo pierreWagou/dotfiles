@@ -37,9 +37,8 @@ export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 # -----------------------------------------------------------------------------
 typeset -U path cdpath fpath manpath
 
-# Pyenv
-export PYENV_ROOT="$HOME/.local/share/pyenv"
-[[ -d $PYENV_ROOT/bin ]] && path=("$PYENV_ROOT/bin" $path)
+# User binaries
+path=("$HOME/.local/bin" $path)
 
 # -----------------------------------------------------------------------------
 # Environment Variables
