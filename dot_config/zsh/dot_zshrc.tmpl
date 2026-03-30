@@ -71,6 +71,9 @@ command -v starship &>/dev/null && eval "$(starship init zsh)"
 # Zoxide (cd replacement)
 command -v zoxide &>/dev/null && eval "$(zoxide init zsh --cmd cd)"
 
+# Pay-respects (f*** replacement)
+command -v pay-respects &>/dev/null && eval "$(pay-respects zsh)"
+
 # FZF keybindings and completion
 if [[ $options[zle] = on ]]; then
   command -v fzf &>/dev/null && source <(fzf --zsh)
@@ -94,7 +97,8 @@ fi
 # Aliases
 # -----------------------------------------------------------------------------
 # System
-alias build='sudo darwin-rebuild switch --flake ~/.config/wagounix#sap'
+alias update='nix flake update --flake ~/.config/wagounix'
+alias build='sudo darwin-rebuild switch --flake ~/.config/wagounix#{{ .nixProfile }}'
 alias vpn='sudo openvpn --config ~/.openvpn/home.ovpn'
 
 # Eza (ls replacement)
