@@ -1,0 +1,47 @@
+# Television channel for worktrunk worktree branches
+# Used via tmux prefix+g to open a worktree branch in a new tmux window
+#
+# Two sources (cycle with <C-s>):
+#   1. Existing worktrees (default)
+#   2. All local + remote branches (for branches without a worktree yet)
+#
+# <Enter> works from both: ensures the worktree exists, then opens a tmux window.
+
+[metadata]
+name = "worktrunk"
+description = "Open a worktree branch in a new tmux window"
+requirements = ["wt", "git", "jq"]
+
+[source]
+command = [
+  # Default: existing worktrees with status
+  "wt list --format=json 2>/dev/null | jq -r '.[] | \"\\(.branch)\\t\\(.status // \"-\")\\t\\(.path)\"' || echo 'No worktrees'",
+  # Alt: all local + remote branches (for creating new worktrees)
+  "git branch --all --format='%(refname:short)' | sed 's|^origin/||' | sort -u",
+]
+
+[preview]
+command = "git log --oneline --graph --color=always -20 '{split:\\t:0}' 2>/dev/null || git log --oneline --graph --color=always -20 '{}'"
+
+[ui]
+input_header = " Worktree Branches"
+
+[keybindings]
+enter = "actions:open"
+ctrl-g = "actions:create"
+ctrl-d = "actions:remove"
+
+[actions.open]
+description = "Open worktree in new tmux window"
+command = "sh ~/.config/television/scripts/worktrunk-open.sh '{split:\\t:0}'"
+mode = "execute"
+
+[actions.create]
+description = "Create NEW branch + worktree and open in tmux window"
+command = "sh ~/.config/television/scripts/worktrunk-open.sh '{split:\\t:0}' --create"
+mode = "execute"
+
+[actions.remove]
+description = "Remove worktree"
+command = "wt remove '{split:\\t:0}'"
+mode = "execute"
