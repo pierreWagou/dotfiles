@@ -19,6 +19,9 @@ CHANGELOG*
 .vscode/
 .idea/
 
+# Generated files
+.config/nvim/lazy-lock.json
+
 # Chezmoi's own config (cannot be managed directly, use templates instead)
 .config/chezmoi/**
 
