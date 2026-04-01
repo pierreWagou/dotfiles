@@ -19,6 +19,9 @@ CHANGELOG*
 .vscode/
 .idea/
 
+# Chezmoi's own config (cannot be managed directly, use templates instead)
+.config/chezmoi/**
+
 # macOS system files
 .DS_Store
 .localized

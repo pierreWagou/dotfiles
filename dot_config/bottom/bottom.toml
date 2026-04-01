@@ -1,0 +1,144 @@
+# =============================================================================
+# Bottom configuration - equivalent of btop config
+# =============================================================================
+
+# General settings
+[flags]
+
+# Update rate in milliseconds (btop: update_ms = 500)
+rate = 500
+
+# Temperature scale (btop: temp_scale = "celsius")
+temperature_type = "c"
+
+# Show process as tree
+tree = false
+
+# Show battery (btop: show_battery = true)
+battery = true
+
+# Use braille dot graphs (btop: graph_symbol = "braille")
+dot_marker = false
+
+# Process sorting (btop: proc_sorting = "cpu lazy")
+default_widget_type = "proc"
+
+# Show memory as values not percentages (btop: proc_mem_bytes = true)
+process_memory_as_value = true
+
+# Default time value for graphs
+default_time_value = "60s"
+
+# Hide time automatically (similar to btop's clean look)
+autohide_time = true
+
+# Show cache/buffer memory
+enable_cache_memory = true
+
+# =============================================================================
+# Custom layout
+# =============================================================================
+
+# Row 1: CPU
+[[row]]
+ratio = 3
+[[row.child]]
+type = "cpu"
+
+# Row 2: Memory | Network (compact)
+[[row]]
+ratio = 2
+[[row.child]]
+ratio = 1
+type = "mem"
+[[row.child]]
+ratio = 1
+type = "net"
+
+# Row 3: Processes (large) | Temp + Battery (small sidebar)
+[[row]]
+ratio = 4
+[[row.child]]
+ratio = 4
+type = "proc"
+[[row.child]]
+ratio = 1
+[[row.child.child]]
+type = "temp"
+[[row.child.child]]
+type = "batt"
+
+# Row 4: Disk (thin full-width row)
+[[row]]
+ratio = 1
+[[row.child]]
+type = "disk"
+
+# =============================================================================
+# Catppuccin Mocha theme (matching btop catppuccin_mocha.theme)
+# =============================================================================
+
+[styles.cpu]
+all_entry_color = "#f5e0dc"
+avg_entry_color = "#eba0ac"
+cpu_core_colors = [
+  "#f38ba8",
+  "#fab387",
+  "#f9e2af",
+  "#a6e3a1",
+  "#74c7ec",
+  "#cba6f7",
+]
+
+[styles.memory]
+ram_color = "#a6e3a1"
+cache_color = "#f38ba8"
+swap_color = "#fab387"
+gpu_colors = ["#74c7ec", "#cba6f7", "#f38ba8", "#fab387", "#f9e2af", "#a6e3a1"]
+arc_color = "#89dceb"
+
+[styles.network]
+rx_color = "#a6e3a1"
+tx_color = "#f38ba8"
+rx_total_color = "#89dceb"
+tx_total_color = "#a6e3a1"
+
+[styles.battery]
+high_battery_color = "#a6e3a1"
+medium_battery_color = "#f9e2af"
+low_battery_color = "#f38ba8"
+
+[styles.tables]
+headers = { color = "#f5e0dc", bold = true }
+
+[styles.graphs]
+graph_color = "#a6adc8"
+legend_text = { color = "#a6adc8" }
+
+[styles.widgets]
+border_color = "#585b70"
+selected_border_color = "#f5c2e7"
+widget_title = { color = "#f2cdcd" }
+text = { color = "#cdd6f4" }
+selected_text = { color = "#11111b", bg_color = "#cba6f7" }
+disabled_text = { color = "#1e1e2e" }
+
+# =============================================================================
+# Filters
+# =============================================================================
+
+# Only show NAND and PMU temperature sensors
+[temperature.sensor_filter]
+is_list_ignored = false
+list = ["NAND CH0 temp", "PMU tcal"]
+regex = false
+case_sensitive = true
+whole_word = true
+
+# Only show main disk and nix store
+[disk.mount_filter]
+is_list_ignored = false
+list = ["/"]
+regex = false
+case_sensitive = true
+whole_word = true

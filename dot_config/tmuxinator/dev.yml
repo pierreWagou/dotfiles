@@ -1,60 +1,19 @@
-# /Users/I584830/.config/tmuxinator/dev.yml
-
+# Layout:
+#   ┌──────────┬─────────────┐
+#   │          │             │
+#   │   nvim   │  opencode   │
+#   │ (zoomed) │             │
+#   ├──────────┤             │
+#   │ terminal │             │
+#   └──────────┴─────────────┘
 name: <%= @args[0] %>
 root: <%= @settings["path"] %>
 
-# Optional tmux socket
-# socket_name: foo
-
-# Note that the pre and post options have been deprecated and will be replaced by
-# project hooks.
-
-# Project hooks
-
-# Runs on project start, always
-# on_project_start: tmux resize-pane -Z -t nvim.1
-
-# Run on project start, the first time
-# on_project_first_start: tmux resize-pane -Z -t nvim.1
-
-# Run on project start, after the first time
-# on_project_restart: tmux resize-pane -Z -t nvim.1
-
-# Run on project exit ( detaching from tmux session )
-# on_project_exit: tmux resize-pane -Z -t nvim.1
-
-# Run on project stop
-# on_project_stop: tmux resize-pane -Z -t nvim.1
-
-# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-# pre_window: rbenv shell 2.0.0-p247
-
-# Pass command line options to tmux. Useful for specifying a different tmux.conf.
-# tmux_options: -f ~/.tmux.mac.conf
-
-# Change the command to call tmux. This can be used by derivatives/wrappers like byobu.
-# tmux_command: byobu
-
-# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: nvim
-
-# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-# startup_pane: 1
-
-# Controls whether the tmux session should be attached to automatically. Defaults to true.
-# attach: false
-
 windows:
-  - nvim:
-      layout: bc52,163x44,0,0[163x32,0,0,1,163x11,0,33,3]
+  - dev:
       panes:
-        - tmux resize-pane -Z -t nvim.1 && nvim
-        -
-      # run: # ← only runs once, after both panes are created
-      #   # focus pane 1
-      #   - tmux select-pane -t nvim.1
-      #   # zoom it to full height
-      #   - tmux resize-pane -Z -t nvim.1
-  - zsh:
-      panes:
-        -
+        - dev:
+          - tmux split-window -h -l 30% -d
+          - tmux split-window -v -t .1 -l 25% -d
+          - tmux send-keys -t .3 'opencode' Enter
+          - nvim
