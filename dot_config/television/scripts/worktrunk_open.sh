@@ -36,15 +36,15 @@ fi
 
 # Build layout:
 #   1. new-window → pane 0 (full width, becomes left column)
-#   2. split-window -h → pane 1 on the right (50% width), pane 0 shrinks to left
+#   2. split-window -h → pane 1 on the right (40% width), pane 0 shrinks to left
 #   3. split-window -v on left (pane 0) → pane 0 top (nvim), pane 2 bottom (terminal)
 #   Right pane (1) spans full height → opencode
 
 W=$(tmux new-window -n "$B" -c "$P" -P -F '#{window_id}')
 tmux set-option -t "$W" -w automatic-rename off
 
-# Split right: pane 1 gets 50% width, spans full height
-tmux split-window -h -t "$W.0" -c "$P" -l 50%
+# Split right: pane 1 gets 40% width, spans full height
+tmux split-window -h -t "$W.0" -c "$P" -l 40%
 
 # Split left column: pane 2 gets bottom 25% of left column (terminal)
 tmux split-window -v -t "$W.0" -c "$P" -l 25%

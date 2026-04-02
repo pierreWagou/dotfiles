@@ -13,7 +13,7 @@ windows:
   - dev:
       panes:
         - dev:
-          - tmux split-window -h -l 30% -d
-          - tmux split-window -v -t .1 -l 25% -d
-          - tmux send-keys -t .3 'opencode' Enter
-          - nvim
+            - tmux split-window -h -l 40% -d
+            - tmux split-window -v -t .1 -l 25% -d
+            - tmux send-keys -t .3 'opencode' Enter
+            - nvim
