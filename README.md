@@ -1,6 +1,6 @@
 <div align="center">
 
-![header](assets/banner.svg)
+![header](https://capsule-render.vercel.app/api?type=waving&height=220&color=0:cba6f7,25:b4befe,50:89dceb,75:f5c2e7,100:f38ba8&text=dotfiles&fontSize=60&fontColor=11111b&desc=chezmoi%20%C2%B7%20nix%20darwin%20%C2%B7%20catppuccin%20mocha&descSize=18&descAlignY=62&descAlign=50&fontAlignY=38&animation=fadeIn&fontAlign=50)
 
 ![Chezmoi](https://img.shields.io/badge/Chezmoi-Managed-ff6ec7?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJMMiA3djEwbDEwIDUgMTAtNVY3TDEyIDJ6IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==&logoColor=white)
 ![Nix](https://img.shields.io/badge/Nix-Darwin-5277C3?logo=nixos&logoColor=white)
