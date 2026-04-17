@@ -1,112 +1,180 @@
-# Dotfiles
+<div align="center">
 
-> Personal macOS configuration managed with [chezmoi](https://chezmoi.io/), themed with **Catppuccin Mocha** across the board.
+![header](assets/banner.svg)
+
+![Chezmoi](https://img.shields.io/badge/Chezmoi-Managed-ff6ec7?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJMMiA3djEwbDEwIDUgMTAtNVY3TDEyIDJ6IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==&logoColor=white)
+![Nix](https://img.shields.io/badge/Nix-Darwin-5277C3?logo=nixos&logoColor=white)
+![Catppuccin](https://img.shields.io/badge/Theme-Catppuccin%20Mocha-e0b0ff?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IndoaXRlIi8+PC9zdmc+&logoColor=white)
+![macOS](https://img.shields.io/badge/macOS-Sequoia-302b63?logo=apple&logoColor=white)
+
+</div>
 
 ---
 
-## Quick Start
+Personal macOS configuration managed with [chezmoi](https://chezmoi.io/), themed with **Catppuccin Mocha**, provisioned with **Nix Darwin**.
 
-**Prerequisite** -- chezmoi installed via the [wagounix flake](https://github.com/pierreWagou/wagounix)
+- Terminal-first workflow -- Ghostty, tmux, Neovim, zsh
+- Two Nix profiles -- `sap` (work) and `wagou` (personal)
+- Secrets injected at apply-time via Dashlane CLI -- zero credentials in the repo
+- 27+ tools configured and version-controlled
+
+## Architecture
+
+```
+ ┌──────────────────────────────────────────────────────┐
+ │                    chezmoi                            │
+ │              (dotfile orchestrator)                   │
+ ├────────────────────────┬─────────────────────────────┤
+ │     Nix Darwin         │       Dashlane CLI          │  provisioning
+ │  (packages + system)   │   (secrets via templates)   │
+ ├──────┬────────┬────────┼──────┬──────────┬───────────┤
+ │Shell │Terminal│ Editor │  Dev │    AI    │   Media   │  tools
+ │ zsh  │ghostty │ nvim   │  git │  claude  │ spicetify │
+ │      │ tmux   │        │  fzf │ opencode │ sp-player │
+ │      │ sesh   │        │  bat │   hai    │           │
+ └──────┴────────┴────────┴──────┴──────────┴───────────┘
+```
+
+## Structure
+
+```
+~/.local/share/chezmoi/
+├── dot_config/
+│   ├── nvim/           neovim (lazyvim)
+│   ├── zsh/            shell config + plugins
+│   ├── tmux/           multiplexer
+│   ├── ghostty/        terminal emulator
+│   ├── git/            version control
+│   ├── starship/       prompt
+│   └── ...             27 tools total
+├── dot_ssh/            known hosts
+├── dot_zshenv          ZDOTDIR bootstrap
+└── .chezmoi.toml.tmpl  profile selector
+```
+
+<details>
+<summary>Full directory tree</summary>
+
+```
+dot_config/
+├── bat/            cat replacement
+├── bottom/         system monitor
+├── claude/         claude code settings
+├── copilot/        github copilot cli
+├── databricks/     workspace tokens
+├── docker/         docker desktop
+├── eza/            ls replacement, file colors
+├── fsh/            fast syntax highlighting
+├── fzf/            fuzzy finder
+├── gh/             github cli (dual host)
+├── ghostty/        terminal emulator
+├── git/            conditional sap profile, delta
+├── hai/            sap hyperspace ai
+├── neomutt/        gmail imap client
+├── nvim/           neovim (lazyvim distro)
+├── opencode/       opencode ai assistant
+├── private_gnupg/  gpg keys + agent
+├── sesh/           session manager
+├── sheldon/        zsh plugin manager
+├── spicetify/      spotify theming
+├── spotify-player/ spotify tui
+├── starship/       cross-shell prompt
+├── television/     fuzzy picker
+├── tmux/           terminal multiplexer
+├── tmuxinator/     session layouts
+├── worktrunk/      git worktree manager
+└── zsh/            shell configuration
+```
+
+</details>
+
+## Getting Started
+
+**Prerequisite** -- chezmoi installed via the [wagounix](https://github.com/pierreWagou/wagounix) Nix flake.
 
 ```bash
 chezmoi init --apply pierreWagou
 ```
 
-You will be prompted to select a nix profile (`sap` or `wagou`).
+You will be prompted to select a Nix profile (`sap` or `wagou`).
 
----
-
-## What's Inside
-
-### Shell
+## Shell
 
 > [`dot_config/zsh/dot_zshrc.tmpl`](dot_config/zsh/dot_zshrc.tmpl) -- Zsh with ZDOTDIR relocated to `~/.config/zsh`
 
-| Category | Tool |
-|---|---|
-| Plugin manager | [Sheldon](https://sheldon.cli.rs/) -- zsh-completions, fzf-tab, zsh-autosuggestions, fast-syntax-highlighting, you-should-use |
-| Prompt | [Starship](https://starship.rs/) |
-| Navigation | [Zoxide](https://github.com/ajeetdsouza/zoxide) (cd replacement), [fzf](https://github.com/junegunn/fzf) |
-| Aliases | [eza](https://eza.rocks/) (ls), git shortcuts, system commands (`update`, `build`, `vpn`) |
-| Node | [fnm](https://github.com/Schniz/fnm) (Fast Node Manager) |
+| Category | Tool | Description |
+|----------|------|-------------|
+| Plugin manager | [Sheldon](https://sheldon.cli.rs/) | zsh-completions, fzf-tab, autosuggestions, fast-syntax-highlighting, you-should-use |
+| Prompt | [Starship](https://starship.rs/) | Cross-shell, minimal, configurable |
+| Navigation | [Zoxide](https://github.com/ajeetdsouza/zoxide) / [fzf](https://github.com/junegunn/fzf) | Smart cd + fuzzy finder |
+| Aliases | [eza](https://eza.rocks/) | ls replacement, plus git/system shortcuts |
+| Node | [fnm](https://github.com/Schniz/fnm) | Fast Node Manager |
 
-### Terminal
+## Terminal
 
 | Tool | Config | Notes |
-|---|---|---|
-| Ghostty | [`ghostty/config`](dot_config/ghostty/config) | JetBrainsMono Nerd Font |
-| Tmux | [`tmux/tmux.conf`](dot_config/tmux/tmux.conf) | Prefix `C-Space`, vim-tmux-navigator, TPM |
-| Tmuxinator | [`tmuxinator/`](dot_config/tmuxinator/) | `dev` layout -- nvim + opencode + terminal |
-| Sesh | [`sesh/`](dot_config/sesh/) | Session manager |
+|------|--------|-------|
+| [Ghostty](https://ghostty.org/) | [`ghostty/config`](dot_config/ghostty/config) | JetBrainsMono Nerd Font |
+| [Tmux](https://github.com/tmux/tmux) | [`tmux/tmux.conf`](dot_config/tmux/tmux.conf) | Prefix `C-Space`, vim-tmux-navigator, TPM |
+| [Tmuxinator](https://github.com/tmuxinator/tmuxinator) | [`tmuxinator/`](dot_config/tmuxinator/) | `dev` layout -- nvim + opencode + terminal |
+| [Sesh](https://github.com/joshmedeski/sesh) | [`sesh/`](dot_config/sesh/) | Session manager |
 
-### Editor
+## Editor
 
-> [`dot_config/nvim/`](dot_config/nvim/) -- Neovim (LazyVim distribution)
+> [`dot_config/nvim/`](dot_config/nvim/) -- Neovim with [LazyVim](https://www.lazyvim.org/)
 
 | Area | Details |
-|---|---|
+|------|---------|
 | Languages | Java, Python, TypeScript, JSON, YAML, TOML, Markdown, SAP CDS |
 | Jupyter | Molten (inline output), jupytext (percent scripts), image.nvim |
 | Navigation | Telescope, Harpoon2, Aerial |
 | Debugging | DAP |
-| Completion | Blink completions, Copilot |
+| Completion | Blink, Copilot |
 | Editing | mini-comment, mini-surround, inc-rename, yanky |
 | Integration | vim-tmux-navigator, venv-selector |
 | UI | Dashboard, indent-blankline, treesitter-context, lualine |
 
-### Dev Tools
+## Dev Tools
 
 | Tool | Config | Notes |
-|---|---|---|
-| Git | [`git/`](dot_config/git/) | Conditional SAP profile, Delta pager |
-| fzf | [`fzf/config`](dot_config/fzf/config) | Fuzzy finder |
-| Bat | [`bat/config`](dot_config/bat/config) | `cat` replacement |
-| Starship | [`starship/starship.toml`](dot_config/starship/starship.toml) | Cross-shell prompt |
-| eza | [`eza/theme.yml`](dot_config/eza/theme.yml) | File type colors |
-| Bottom | [`bottom/`](dot_config/bottom/) | System monitor |
-| GitHub CLI | [`gh/`](dot_config/gh/) | Dual host configuration |
-| Docker | [`docker/`](dot_config/docker/) | Docker Desktop |
-| Copilot CLI | [`copilot/`](dot_config/copilot/) | GitHub Copilot CLI |
-| Television | [`television/`](dot_config/television/) | Fuzzy picker |
-| Worktrunk | [`worktrunk/`](dot_config/worktrunk/) | Git worktree manager |
+|------|--------|-------|
+| [Git](https://git-scm.com/) | [`git/`](dot_config/git/) | Conditional SAP profile, Delta pager |
+| [fzf](https://github.com/junegunn/fzf) | [`fzf/config`](dot_config/fzf/config) | Fuzzy finder |
+| [Bat](https://github.com/sharkdp/bat) | [`bat/config`](dot_config/bat/config) | Syntax-highlighted `cat` |
+| [Starship](https://starship.rs/) | [`starship/starship.toml`](dot_config/starship/starship.toml) | Cross-shell prompt |
+| [eza](https://eza.rocks/) | [`eza/theme.yml`](dot_config/eza/theme.yml) | File type colors |
+| [Bottom](https://github.com/ClementTsang/bottom) | [`bottom/`](dot_config/bottom/) | System monitor |
+| [GitHub CLI](https://cli.github.com/) | [`gh/`](dot_config/gh/) | Dual host config |
+| [Docker](https://www.docker.com/) | [`docker/`](dot_config/docker/) | Docker Desktop |
+| [Television](https://github.com/alexpasmantier/television) | [`television/`](dot_config/television/) | Fuzzy picker |
+| [Worktrunk](https://github.com/nicholasgasior/worktrunk) | [`worktrunk/`](dot_config/worktrunk/) | Git worktree manager |
 
-### AI
-
-| Tool | Config | Notes |
-|---|---|---|
-| Claude Code | [`claude/settings.json.tmpl`](dot_config/claude/settings.json.tmpl) | Claude settings |
-| OpenCode | [`opencode/opencode.json.tmpl`](dot_config/opencode/opencode.json.tmpl) | Claude via local proxy, MCP servers (Context7, gh_grep), skills (chezmoi, nix-darwin) |
-| HAI | [`hai/config.yaml`](dot_config/hai/config.yaml) | SAP Hyperspace AI tools |
-
-### Media
+## AI
 
 | Tool | Config | Notes |
-|---|---|---|
-| Spicetify | [`spicetify/`](dot_config/spicetify/) | Spotify desktop theming |
-| spotify-player | [`spotify-player/`](dot_config/spotify-player/) | Spotify TUI client |
+|------|--------|-------|
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | [`claude/settings.json.tmpl`](dot_config/claude/settings.json.tmpl) | Anthropic CLI |
+| [OpenCode](https://opencode.ai/) | [`opencode/opencode.json.tmpl`](dot_config/opencode/opencode.json.tmpl) | Claude via local proxy, MCP servers, skills |
+| [Copilot CLI](https://docs.github.com/en/copilot) | [`copilot/`](dot_config/copilot/) | GitHub Copilot |
+| [HAI](https://www.sap.com/) | [`hai/config.yaml`](dot_config/hai/config.yaml) | SAP Hyperspace AI |
 
-### Email
-
-| Tool | Config | Notes |
-|---|---|---|
-| Neomutt | [`neomutt/neomuttrc.tmpl`](dot_config/neomutt/neomuttrc.tmpl) | Gmail IMAP |
-
-### Cloud
+## Media & Email
 
 | Tool | Config | Notes |
-|---|---|---|
-| Databricks | [`databricks/databrickscfg.tmpl`](dot_config/databricks/databrickscfg.tmpl) | Test + prod workspaces |
+|------|--------|-------|
+| [Spicetify](https://spicetify.app/) | [`spicetify/`](dot_config/spicetify/) | Spotify desktop theming |
+| [spotify-player](https://github.com/aome510/spotify-player) | [`spotify-player/`](dot_config/spotify-player/) | Spotify TUI |
+| [Neomutt](https://neomutt.org/) | [`neomutt/neomuttrc.tmpl`](dot_config/neomutt/neomuttrc.tmpl) | Gmail IMAP |
 
-### Security
+## Cloud & Security
 
-| Scope | Path | Details |
-|---|---|---|
+| Tool | Config | Notes |
+|------|--------|-------|
+| [Databricks](https://www.databricks.com/) | [`databricks/databrickscfg.tmpl`](dot_config/databricks/databrickscfg.tmpl) | Test + prod workspaces |
 | SSH | [`dot_ssh/`](dot_ssh/) | Known hosts |
-| GPG | [`private_gnupg/`](dot_config/private_gnupg/) | Algorithm prefs, gpg-agent with SSH + pinentry-mac, public keys (personal + SAP) |
+| GPG | [`private_gnupg/`](dot_config/private_gnupg/) | gpg-agent with SSH + pinentry-mac, dual keys |
 
----
-
-## Secrets Management
+## Secrets
 
 Files ending in `.tmpl` use the [Dashlane CLI](https://github.com/Dashlane/dashlane-cli) to inject secrets at apply time via chezmoi's `dashlanePassword` template function. **No credentials are stored in this repository.**
 
@@ -115,3 +183,14 @@ Templated secrets include:
 - Anthropic API token (Claude Code, OpenCode)
 - Databricks tokens (test + prod workspaces)
 - Gmail app password (Neomutt)
+
+## Quick Reference
+
+| Action | Command |
+|--------|---------|
+| Bootstrap | `chezmoi init --apply pierreWagou` |
+| Apply changes | `chezmoi apply` |
+| Edit a dotfile | `chezmoi edit ~/.config/<tool>/<file>` |
+| See pending diff | `chezmoi diff` |
+| Pull + apply | `chezmoi update` |
+| Add a new file | `chezmoi add ~/.config/<tool>/<file>` |
