@@ -1,6 +1,6 @@
 ---
 name: chezmoi
-description: Manage dotfiles with chezmoi - understand source state naming, templates, and workflows
+description: "ALWAYS load this skill when editing, creating, reading, or troubleshooting ANY config/dotfile (nvim, tmux, tmuxinator, zsh, ghostty, git, sesh, starship, mprocs, or anything under ~/.config/ or ~/). All dotfiles are managed by chezmoi -- edits MUST go through the chezmoi source state."
 ---
 
 ## What chezmoi is

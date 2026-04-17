@@ -22,6 +22,9 @@ CHANGELOG*
 # Generated files
 .config/nvim/lazy-lock.json
 
+# Plugin directories (managed by their respective plugin managers)
+.config/tmux/plugins/
+
 # Chezmoi's own config (cannot be managed directly, use templates instead)
 .config/chezmoi/**
 

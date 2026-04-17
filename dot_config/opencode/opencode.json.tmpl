@@ -11,6 +11,27 @@
       }
     }
   },
+  "permission": {
+    "external_directory": {
+      "~/.config/**": "allow",
+      "~/.local/share/chezmoi/**": "allow",
+      "~/.local/share/nvim/**": "allow",
+      "/run/current-system/**": "allow",
+      "/nix/store/**": "allow"
+    },
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "edit": {
+      "*": "allow",
+      "~/.config/**": "deny",
+      "~/.config/wagounix/**": "allow",
+      "~/.local/share/chezmoi/**": "allow"
+    }
+  },
   "compaction": {
     "auto": true,
     "prune": true

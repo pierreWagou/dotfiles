@@ -6,6 +6,11 @@
 vim.g.loaded_python3_provider = nil
 vim.g.python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python")
 
+-- Use ty (Astral) for Python type checking instead of pyright/basedpyright.
+-- Setting this to a non-LazyVim LSP name disables the built-in pyright setup.
+-- ty is configured manually in plugins/python-lsp.lua.
+vim.g.lazyvim_python_lsp = "ty"
+
 -- Add neovim venv bin to PATH so jupytext CLI is available
 vim.env.PATH = vim.fn.expand("~/.virtualenvs/neovim/bin") .. ":" .. vim.env.PATH
 

@@ -88,6 +88,9 @@ if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
   source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration"
 fi
 
+# Mise (polyglot tool manager)
+command -v mise &>/dev/null && eval "$(mise activate zsh)"
+
 # Fast Node Manager
 if command -v fnm >/dev/null 2>&1; then
   eval "$(fnm env --use-on-cd --shell zsh)"
@@ -118,3 +121,6 @@ alias gl='git pull'
 
 # Python
 alias python='python3'
+
+# Grep
+alias grep='rg'
