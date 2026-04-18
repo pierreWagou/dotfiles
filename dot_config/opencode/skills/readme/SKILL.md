@@ -31,57 +31,58 @@ A good README follows this order. Not every section is required — use what fit
 
 ## Banner
 
-Prefer a self-hosted SVG at `assets/banner.svg` over external services:
+Use the [capsule-render](https://github.com/kyechan99/capsule-render) service for banners. It generates dynamic SVG headers via URL params — no assets to commit, no maintenance.
 
-- **No external dependencies** — no capsule-render, no shields.io for the banner itself
-- **Dark/light mode** — SVG can use `prefers-color-scheme` media queries
-- **Version controlled** — changes are tracked in git
-- GitHub sanitizes SVGs — avoid `<script>`, `<foreignObject>`, and complex CSS. Simple `filter` effects (blur, merge) may be stripped.
+### Capsule-render template
 
-### Design priorities
-
-1. **Project identity first** — the banner should visually communicate what the repo does. Pick a hero element that represents the project's domain (a car for a vehicle project, a network graph for infra, a chart for analytics, etc.). This element should be **prominent**, not a subtle decoration.
-2. **Synthwave / outrun as aesthetic** — apply the style as a visual language (color palette, glow effects, retro mood), not as a mandatory scene to reproduce. Not every banner needs a grid, sun, and horizon — use the elements that serve the composition.
-
-### Color palette
-
-Deep purples (`#0f0c29`, `#302b63`), hot pinks (`#ff6ec7`), neon blues (`#7eb5e6`, `#5277C3`), lavender (`#e0b0ff`), sunset gold (`#f9a825`). Dark gradient backgrounds (purple-to-indigo or navy-to-neon-blue).
-
-### Style toolkit
-
-Pick from these to complement the hero element — not all are required:
-
-- **Neon outlines** — stroke project-specific shapes with palette colors
-- **Glow effects** — gaussian blur filter on key elements for a neon sign look
-- **Gradient backgrounds** — dark, moody, using the palette above
-- **Retro scan lines** — horizontal bands with increasing thickness (clip to parent shape)
-- **Perspective grid** — converging lines on a ground plane
-- **Setting sun** — half-circle at the horizon, pink-to-gold gradient
-- **Scattered stars** — small white circles with varying opacity
-- **Title** — large, bold, white, with optional glow filter
-- **Subtitle** — uppercase, letter-spaced, in lavender or soft pink
-
-### SVG banner template
-
-```xml
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#COLOR1" />
-      <stop offset="100%" style="stop-color:#COLOR2" />
-    </linearGradient>
-  </defs>
-  <rect width="800" height="200" fill="url(#bg)" />
-  <text x="400" y="90" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="700" fill="#ffffff">
-    Project Name
-  </text>
-  <text x="400" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#cccccc">
-    Short description
-  </text>
-</svg>
+```markdown
+![header](https://capsule-render.vercel.app/api?type=waving&height=220&color=0:cba6f7,25:b4befe,50:89dceb,75:f5c2e7,100:f38ba8&text=PROJECT_NAME&fontSize=60&fontColor=11111b&desc=CATCHY_ONE_LINER&descSize=18&descAlignY=62&descAlign=50&fontAlignY=38&animation=fadeIn&fontAlign=50)
 ```
 
-Reference in README: `![header](assets/banner.svg)`
+### Default parameters
+
+| Param | Value | Notes |
+|---|---|---|
+| `type` | `waving` | Animated wave shape |
+| `height` | `220` | |
+| `color` | `0:cba6f7,25:b4befe,50:89dceb,75:f5c2e7,100:f38ba8` | Catppuccin Mocha gradient: Mauve → Lavender → Sky → Pink → Red |
+| `fontSize` | `60` | |
+| `fontColor` | `11111b` | Catppuccin Mocha Crust (dark on vivid background) |
+| `descSize` | `18` | |
+| `animation` | `fadeIn` | |
+
+### Color palette — Catppuccin Mocha accents
+
+Use these vivid accents for the gradient `color` param. Pick 3–5 stops for a rich look.
+
+| Name | Hex | Usage |
+|---|---|---|
+| Mauve | `cba6f7` | Primary accent, gradient start |
+| Lavender | `b4befe` | Secondary accent |
+| Sky | `89dceb` | Cyan touch |
+| Pink | `f5c2e7` | Warm accent |
+| Red | `f38ba8` | Gradient end, energetic pop |
+| Peach | `fab387` | Warm alternative to Red |
+| Yellow | `f9e2af` | Bright highlight |
+| Green | `a6e3a1` | Nature / success accent |
+| Teal | `94e2d5` | Cool alternative to Sky |
+| Blue | `89b4fa` | Calm, technical accent |
+
+For `fontColor`, use Crust `11111b` (dark text on vivid background) or Text `cdd6f4` (light text on dark background).
+
+### Customization per repo
+
+Replace these in the template URL:
+1. **`text=`** — project/repo name
+2. **`desc=`** — catchy one-liner (use `%20` for spaces, avoid `#`, `&`, `/`)
+3. **`color=`** — adjust gradient stops if needed (pick colors that suit the project)
+
+### Subtitle guidelines
+
+The `desc` should be a **catchy one-liner** — personality over description. Don't repeat what the badges already say. Examples:
+- `there's no place like ~/` (dotfiles)
+- `declare everything, regret nothing` (nix config)
+- `your stack, automated` (infra)
 
 ## Badges
 

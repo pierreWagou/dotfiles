@@ -39,3 +39,27 @@ assets/
 *.swp
 *.swo
 *~
+
+# -----------------------------------------------------------------------------
+# Host-Conditional Ignores
+# -----------------------------------------------------------------------------
+
+# NixOS server: no GUI, no Dashlane, no macOS tools
+{{ if eq .nixProfile "homeserver" }}
+.config/ghostty/**
+.config/spicetify/**
+.config/spotify-player/**
+.config/claude/**
+.config/copilot/**
+.config/docker/**
+.config/neomutt/**
+.config/opencode/**
+{{ end }}
+
+# SAP-only tools (not needed on personal or server hosts)
+{{ if ne .nixProfile "sap" }}
+.config/gh/hosts.yml
+.config/git/config-sap
+.config/hai/**
+.config/databricks/**
+{{ end }}

@@ -101,7 +101,11 @@ fi
 # -----------------------------------------------------------------------------
 # System
 alias update='nix flake update --flake ~/.config/wagounix'
+{{ if eq .nixProfile "homeserver" -}}
+alias build='sudo nixos-rebuild switch --flake ~/.config/wagounix#homeserver'
+{{ else -}}
 alias build='sudo darwin-rebuild switch --flake ~/.config/wagounix#{{ .nixProfile }}'
+{{ end -}}
 alias vpn='sudo openvpn --config ~/.openvpn/home.ovpn'
 
 # Eza (ls replacement)
