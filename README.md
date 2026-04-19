@@ -116,7 +116,7 @@ You will be prompted to select a Nix profile (`sap` or `wagou`).
 |------|--------|-------|
 | [Ghostty](https://ghostty.org/) | [`ghostty/config`](dot_config/ghostty/config) | JetBrainsMono Nerd Font |
 | [Tmux](https://github.com/tmux/tmux) | [`tmux/tmux.conf`](dot_config/tmux/tmux.conf) | Prefix `C-Space`, vim-tmux-navigator, TPM |
-| [Tmuxinator](https://github.com/tmuxinator/tmuxinator) | [`tmuxinator/`](dot_config/tmuxinator/) | `dev` layout -- nvim + opencode + terminal |
+| [Tmuxinator](https://github.com/tmuxinator/tmuxinator) | [`tmuxinator/`](dot_config/tmuxinator/) | `workspace` layout -- nvim + opencode + terminal |
 | [Sesh](https://github.com/joshmedeski/sesh) | [`sesh/`](dot_config/sesh/) | Session manager |
 
 ## Editor

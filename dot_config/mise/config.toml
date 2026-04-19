@@ -1,0 +1,8 @@
+[settings]
+experimental = true
+
+[settings.status]
+show_tools = true
+
+[settings.python]
+uv_venv_auto = "source"

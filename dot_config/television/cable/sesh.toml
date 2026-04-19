@@ -8,7 +8,8 @@ description = "Session manager integrating tmux sessions, zoxide directories, an
 requirements = ["sesh"]
 
 [source]
-command = "sesh list --icons"
+command = '{ sesh list -i -c; sesh list -i -t; sesh list -i -z; } | awk "{line=\$0; gsub(/\033\[[0-9;]*m/,\"\"); n=\$NF; if(!seen[n]++) print line}"'
+no_sort = true
 ansi = true
 output = "{strip_ansi|split: :1..|join: }"
 
