@@ -1,41 +1,186 @@
-format = "[](yellow)$os$username[](yellow bg:peach)$directory[](peach bg:red)$git_branch$git_status[](red)$fill$status$python[](pink bg:mauve)$time[](mauve)\n$character"
+# Rounded Powerline Bubbles | Catppuccin Mocha
+# Each segment gets rounded caps  …content… 
+# Adjacent left-side segments chain with powerline transitions
+# Line 1: (os)(dir)(git)──────(duration)(jobs)(status)
+# Line 2: prompt character
+
+scan_timeout = 30
+command_timeout = 500
+add_newline = true
+
+# Left segments chain: os → dir → git_branch → git_status/metrics then close
+# Isolated right-of-fill segments are standalone bubbles
+format = """\
+[](yellow)\
+$os\
+[](bg:mauve fg:yellow)\
+$directory\
+[](bg:surface1 fg:mauve)\
+$git_branch\
+$git_state\
+[](bg:surface0 fg:surface1)\
+$git_status\
+$git_metrics\
+[](surface0)\
+$fill\
+$nix_shell\
+$docker_context\
+$python\
+$nodejs\
+$rust\
+$golang\
+$package\
+$jobs\
+$status\
+$cmd_duration\
+$time\
+$line_break\
+$character"""
+
+
+
+continuation_prompt = '[  ](overlay0)'
+
 palette = "catppuccin_mocha"
 
-[character]
-format = "[❯ ](bold mauve)\n"
-
-[directory]
-before_repo_root_style = "bg:peach crust"
-format = "[ $path]($style)"
-read_only_style = "bg:peach crust"
-repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)"
-repo_root_style = "bg:peach bold crust"
-style = "bg:peach crust"
-truncation_length = 3
-truncation_symbol = "…/"
-
-[directory.substitutions]
-Documents = " 󰈙 "
-Downloads = "  "
-Music = "  "
-Pictures = "  "
-"Repositories/sap" = "  "
-"Repositories/wagou" = "  "
-Videos = "  "
-
-[git_branch]
-format = "[ $symbol $branch]($style)"
-style = "bg:red bold crust"
-symbol = ""
-
-[git_status]
-format = "[ $all_status$ahead_behind]($style)"
-style = "bg:red bold crust"
+# ─── Left prompt (chained segments) ──────────────────────────
 
 [os]
 disabled = false
-format = "[🦖]($style)"
-style = "bg:yellow"
+format = "[ 🦖 ](bg:yellow fg:base)"
+
+[os.symbols]
+Macos = ""
+Linux = ""
+
+[directory]
+format = "[ $read_only$path ](bg:mauve fg:base)"
+style = "bg:mauve fg:base"
+read_only = "󰍁 "
+read_only_style = "bg:mauve fg:red"
+truncation_length = 3
+truncation_symbol = "…/"
+repo_root_format = "[ $read_only$before_root_path$repo_root$path ](bg:mauve fg:base)"
+before_repo_root_style = "bg:mauve fg:crust"
+repo_root_style = "bold bg:mauve fg:base"
+
+[directory.substitutions]
+Documents = "󰈙"
+Downloads = "󰇚"
+Music = "󰝚"
+Pictures = "󰈟"
+"Repositories/sap" = ""
+"Repositories/wagou" = ""
+Videos = "󰎁"
+
+[git_branch]
+format = "[ $symbol $branch ](bg:surface1 fg:mauve)"
+style = "bg:surface1 fg:mauve"
+symbol = ""
+
+[git_state]
+format = "[ $state( $progress_current/$progress_total) ](bg:yellow fg:base)"
+style = "bg:yellow fg:base"
+
+[git_status]
+format = "([ $all_status$ahead_behind ](bg:surface0 fg:peach))"
+style = "bg:surface0 fg:peach"
+ahead = "↑${count}"
+behind = "↓${count}"
+diverged = "↑${ahead_count}↓${behind_count}"
+conflicted = "≠${count}"
+modified = "!${count}"
+staged = "+${count}"
+untracked = "?${count}"
+deleted = "✗${count}"
+renamed = "»${count}"
+stashed = "≡${count}"
+
+[git_metrics]
+disabled = false
+format = "([ +$added](bg:surface0 fg:green))([ -$deleted](bg:surface0 fg:red))"
+added_style = "bg:surface0 fg:green"
+deleted_style = "bg:surface0 fg:red"
+only_nonzero_diffs = true
+
+[fill]
+symbol = " "
+
+# ─── Standalone bubbles (right of fill) ──────────────────────
+
+[cmd_duration]
+min_time = 0
+format = "[](pink)[ 󱎫 $duration ](bg:pink fg:base)[](pink)"
+style = "bg:pink fg:base"
+show_milliseconds = false
+
+[jobs]
+disabled = false
+format = " [](blue)[ 󰲎 $number ](bg:blue fg:base)[](blue)"
+style = "bg:blue fg:base"
+number_threshold = 1
+
+[status]
+disabled = false
+format = " [](red)[ $symbol $status ](bg:red fg:base)[](red)"
+symbol = "✗"
+success_symbol = ""
+not_executable_symbol = "🚫"
+not_found_symbol = "🔍"
+style = "red"
+map_symbol = true
+
+[character]
+format = "$symbol "
+success_symbol = "[❯](bold mauve)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+vimcmd_replace_one_symbol = "[❮](bold flamingo)"
+vimcmd_replace_symbol = "[❮](bold flamingo)"
+vimcmd_visual_symbol = "[❮](bold yellow)"
+
+# ─── Right prompt (standalone bubbles) ────────────────────────
+
+[nix_shell]
+format = "[](blue)[ 󱄅 $state( $name) ](bg:blue fg:base)[](blue) "
+style = "bg:blue fg:base"
+impure_msg = ""
+pure_msg = "❄"
+
+[docker_context]
+format = "[](sapphire)[  $context ](bg:sapphire fg:base)[](sapphire) "
+style = "bg:sapphire fg:base"
+only_with_files = true
+
+[python]
+format = "[](green)[  $version ($virtualenv) ](bg:green fg:base)[](green) "
+style = "bg:green fg:base"
+
+[nodejs]
+format = "[](sky)[  $version ](bg:sky fg:base)[](sky) "
+style = "bg:green fg:base"
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+
+[rust]
+format = "[](peach)[  $version ](bg:peach fg:base)[](peach) "
+style = "bg:peach fg:base"
+
+[golang]
+format = "[](teal)[  $version ](bg:teal fg:base)[](teal) "
+style = "bg:sapphire fg:base"
+
+[package]
+format = "[](flamingo)[  $version ](bg:flamingo fg:base)[](flamingo) "
+style = "bg:flamingo fg:base"
+display_private = false
+
+[time]
+disabled = false
+format = " [](lavender)[  $time ](bg:lavender fg:base)[](lavender)"
+style = "bg:lavender fg:base"
+time_format = "%R"
+
+# ─── Palette ──────────────────────────────────────────────────
 
 [palettes.catppuccin_mocha]
 base = "#1e1e2e"
@@ -64,19 +209,3 @@ surface2 = "#585b70"
 teal = "#94e2d5"
 text = "#cdd6f4"
 yellow = "#f9e2af"
-
-[python]
-format = "[  $virtualenv]($style)"
-style = "bg:pink bold crust"
-
-[status]
-disabled = false
-format = "[$symbol]($style) "
-success_symbol = "👌"
-symbol = "💩"
-
-[time]
-disabled = false
-format = "[  $time]($style)"
-style = "bg:mauve bold crust"
-time_format = "%R"
