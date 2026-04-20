@@ -96,7 +96,7 @@ dot_config/
 chezmoi init --apply pierreWagou
 ```
 
-You will be prompted to select a Nix profile (`sap` or `wagou`).
+You will be prompted to select a Nix profile (`sap`, `wagou`, `wagou-old`, or `homeserver`).
 
 ## Shell
 

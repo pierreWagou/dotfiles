@@ -1,7 +1,7 @@
 # Rounded Powerline Bubbles | Catppuccin Mocha
 # Each segment gets rounded caps  …content… 
 # Adjacent left-side segments chain with powerline transitions
-# Line 1: (os)(dir)(git)──────(duration)(jobs)(status)
+# Line 1: (os)(dir)(git)───(nix)(docker)(py)(node)(rust)(go)(pkg)(jobs)(status)(dur)(time)
 # Line 2: prompt character
 
 scan_timeout = 30
@@ -37,9 +37,7 @@ $time\
 $line_break\
 $character"""
 
-
-
-continuation_prompt = '[  ](overlay0)'
+continuation_prompt = '[▸▹ ](overlay0)'
 
 palette = "catppuccin_mocha"
 
@@ -48,10 +46,6 @@ palette = "catppuccin_mocha"
 [os]
 disabled = false
 format = "[ 🦖 ](bg:yellow fg:base)"
-
-[os.symbols]
-Macos = ""
-Linux = ""
 
 [directory]
 format = "[ $read_only$path ](bg:mauve fg:base)"
@@ -69,8 +63,8 @@ Documents = "󰈙"
 Downloads = "󰇚"
 Music = "󰝚"
 Pictures = "󰈟"
-"Repositories/sap" = ""
-"Repositories/wagou" = ""
+"Repositories/sap" = "9"
+"Repositories/wagou" = "9"
 Videos = "󰎁"
 
 [git_branch]
@@ -79,8 +73,8 @@ style = "bg:surface1 fg:mauve"
 symbol = ""
 
 [git_state]
-format = "[ $state( $progress_current/$progress_total) ](bg:yellow fg:base)"
-style = "bg:yellow fg:base"
+format = "[ $state( $progress_current/$progress_total) ](bg:peach fg:base)"
+style = "bg:peach fg:base"
 
 [git_status]
 format = "([ $all_status$ahead_behind ](bg:surface0 fg:peach))"
@@ -139,7 +133,7 @@ vimcmd_replace_one_symbol = "[❮](bold flamingo)"
 vimcmd_replace_symbol = "[❮](bold flamingo)"
 vimcmd_visual_symbol = "[❮](bold yellow)"
 
-# ─── Right prompt (standalone bubbles) ────────────────────────
+# ─── Language & tool pills (right of fill) ───────────────────
 
 [nix_shell]
 format = "[](blue)[ 󱄅 $state( $name) ](bg:blue fg:base)[](blue) "
@@ -158,7 +152,7 @@ style = "bg:green fg:base"
 
 [nodejs]
 format = "[](sky)[  $version ](bg:sky fg:base)[](sky) "
-style = "bg:green fg:base"
+style = "bg:sky fg:base"
 detect_files = ["package.json", ".node-version", ".nvmrc"]
 
 [rust]
@@ -167,7 +161,7 @@ style = "bg:peach fg:base"
 
 [golang]
 format = "[](teal)[  $version ](bg:teal fg:base)[](teal) "
-style = "bg:sapphire fg:base"
+style = "bg:teal fg:base"
 
 [package]
 format = "[](flamingo)[  $version ](bg:flamingo fg:base)[](flamingo) "

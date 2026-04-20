@@ -32,7 +32,7 @@ Perform a thorough review of the entire codebase. Work methodically through each
 Review and fix these documentation artifacts to ensure they accurately reflect the current codebase:
 
 - **AGENTS.md**: Verify the project structure, tech stack, and instructions all match reality. Update any stale references.
-- **Skills** (`.opencode/skills/`): For each skill, verify that the instructions, file paths, run commands, and conventions described still match the actual code. Update or remove anything outdated.
+- **Skills** (`dot_config/opencode/skills/` in source, `~/.config/opencode/skills/` on target): For each skill, verify that the instructions, file paths, run commands, and conventions described still match the actual code. Update or remove anything outdated.
 - **Other docs**: Cross-check documentation pages against the implementation. Flag any sections that describe features differently from how they are actually built.
 
 ## Output

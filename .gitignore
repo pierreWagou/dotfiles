@@ -11,6 +11,9 @@
 # Chezmoi working files
 *.orig
 
+# Stale logs
+mprocs.log
+
 # Don't commit the key (it's in ~/.config/chezmoi, not here)
 key.txt
 *.age.key
