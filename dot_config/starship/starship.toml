@@ -1,14 +1,14 @@
 # Rounded Powerline Bubbles | Catppuccin Mocha
 # Each segment gets rounded caps  …content… 
 # Adjacent left-side segments chain with powerline transitions
-# Line 1: (os)(dir)(git)───(nix)(docker)(py)(node)(rust)(go)(pkg)(jobs)(status)(dur)(time)
+# Line 1: (os)(dir)(git)───(chezmoi)(nix)(nix-shell)(docker)(py)(node)(rust)(go)(pkg)(jobs)(status)(dur)(time)
 # Line 2: prompt character
 
 scan_timeout = 30
 command_timeout = 500
 add_newline = true
 
-# Left segments chain: os → dir → git_branch → git_status/metrics then close
+# Left segments chain: os → dir → git_branch → git_state → git_status/metrics then close
 # Isolated right-of-fill segments are standalone bubbles
 format = """\
 [](yellow)\
@@ -57,7 +57,6 @@ read_only_style = "bg:mauve fg:red"
 truncation_length = 3
 truncation_symbol = "…/"
 repo_root_format = "[ $read_only $repo_root$path ](bg:mauve fg:base)"
-before_repo_root_style = "bg:mauve fg:crust"
 repo_root_style = "bold bg:mauve fg:base"
 
 [directory.substitutions]
@@ -109,10 +108,10 @@ only_nonzero_diffs = true
 [fill]
 symbol = " "
 
-# ─── Standalone bubbles (right of fill) ──────────────────────
+# ─── Right of fill (standalone pills) ────────────────────────
 
 [cmd_duration]
-min_time = 0
+min_time = 2_000
 format = " [](pink)[ 󱎫 $duration ](bg:pink fg:base)[](pink)"
 style = "bg:pink fg:base"
 show_milliseconds = false
@@ -142,7 +141,7 @@ vimcmd_replace_one_symbol = "[❮](bold flamingo)"
 vimcmd_replace_symbol = "[❮](bold flamingo)"
 vimcmd_visual_symbol = "[❮](bold yellow)"
 
-# ─── Language & tool pills (right of fill) ───────────────────
+
 
 [custom.chezmoi]
 description = "Chezmoi source directory indicator"

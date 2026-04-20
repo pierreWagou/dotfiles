@@ -12,10 +12,10 @@
 
 ---
 
-Personal macOS configuration managed with [chezmoi](https://chezmoi.io/), themed with **Catppuccin Mocha**, provisioned with **Nix Darwin**.
+Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io/), themed with **Catppuccin Mocha**, provisioned with **Nix Darwin** and **NixOS**.
 
 - Terminal-first workflow -- Ghostty, tmux, Neovim, zsh
-- Two Nix profiles -- `sap` (work) and `wagou` (personal)
+- Four Nix profiles -- `sap` (work), `wagou` (personal), `wagou-old` (legacy Intel Mac), `homeserver` (NixOS)
 - Secrets injected at apply-time via Dashlane CLI -- zero credentials in the repo
 - 27+ tools configured and version-controlled
 
@@ -33,6 +33,7 @@ Personal macOS configuration managed with [chezmoi](https://chezmoi.io/), themed
  │ zsh  │ghostty │ nvim   │  git │  claude  │ spicetify │
  │      │ tmux   │        │  fzf │ opencode │ sp-player │
  │      │ sesh   │        │  bat │   hai    │           │
+ │      │        │        │ mise │          │           │
  └──────┴────────┴────────┴──────┴──────────┴───────────┘
 ```
 
@@ -148,6 +149,7 @@ You will be prompted to select a Nix profile (`sap`, `wagou`, `wagou-old`, or `h
 | [GitHub CLI](https://cli.github.com/) | [`gh/`](dot_config/gh/) | Dual host config |
 | [Docker](https://www.docker.com/) | [`docker/`](dot_config/docker/) | Docker Desktop |
 | [Television](https://github.com/alexpasmantier/television) | [`television/`](dot_config/television/) | Fuzzy picker |
+| [Mise](https://mise.jdx.dev/) | [`mise/config.toml`](dot_config/mise/config.toml) | Polyglot tool manager |
 | [Worktrunk](https://github.com/nicholasgasior/worktrunk) | [`worktrunk/`](dot_config/worktrunk/) | Git worktree manager |
 
 ## AI
