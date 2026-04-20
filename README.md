@@ -23,8 +23,8 @@ Personal macOS configuration managed with [chezmoi](https://chezmoi.io/), themed
 
 ```
  ┌──────────────────────────────────────────────────────┐
- │                    chezmoi                            │
- │              (dotfile orchestrator)                   │
+ │                    chezmoi                           │
+ │              (dotfile orchestrator)                  │
  ├────────────────────────┬─────────────────────────────┤
  │     Nix Darwin         │       Dashlane CLI          │  provisioning
  │  (packages + system)   │   (secrets via templates)   │
