@@ -23,6 +23,8 @@ $git_status\
 $git_metrics\
 [](surface0)\
 $fill\
+${custom.chezmoi}\
+${custom.nix_project}\
 $nix_shell\
 $docker_context\
 $python\
@@ -54,7 +56,7 @@ read_only = "󰍁 "
 read_only_style = "bg:mauve fg:red"
 truncation_length = 3
 truncation_symbol = "…/"
-repo_root_format = "[ $read_only$before_root_path$repo_root$path ](bg:mauve fg:base)"
+repo_root_format = "[ $read_only $repo_root$path ](bg:mauve fg:base)"
 before_repo_root_style = "bg:mauve fg:crust"
 repo_root_style = "bold bg:mauve fg:base"
 
@@ -63,9 +65,16 @@ Documents = "󰈙"
 Downloads = "󰇚"
 Music = "󰝚"
 Pictures = "󰈟"
-"Repositories/sap" = "9"
-"Repositories/wagou" = "9"
+"Repositories/sap" = "󰃖"
+"Repositories/wagou" = "󰑣"
 Videos = "󰎁"
+".config" = "󰒓"
+Desktop = "󰧨"
+"Google Drive" = "󰊶"
+"OneDrive - SAP SE" = "󰅟"
+OneDrive = "󰅟"
+SynologyDrive = "󰒋"
+Repositories = "󰳐"
 
 [git_branch]
 format = "[ $symbol $branch ](bg:surface1 fg:mauve)"
@@ -104,7 +113,7 @@ symbol = " "
 
 [cmd_duration]
 min_time = 0
-format = "[](pink)[ 󱎫 $duration ](bg:pink fg:base)[](pink)"
+format = " [](pink)[ 󱎫 $duration ](bg:pink fg:base)[](pink)"
 style = "bg:pink fg:base"
 show_milliseconds = false
 
@@ -135,36 +144,50 @@ vimcmd_visual_symbol = "[❮](bold yellow)"
 
 # ─── Language & tool pills (right of fill) ───────────────────
 
+[custom.chezmoi]
+description = "Chezmoi source directory indicator"
+command = ""
+when = "test -f .chezmoiignore"
+format = " [](maroon)[ 󰠦 ](bg:maroon fg:base)[](maroon)"
+shell = ["sh"]
+
+[custom.nix_project]
+description = "Nix flake project indicator"
+command = ""
+when = "test -f flake.nix || test -f shell.nix || test -f default.nix"
+format = " [](blue)[ 󱄅 ](bg:blue fg:base)[](blue)"
+shell = ["sh"]
+
 [nix_shell]
-format = "[](blue)[ 󱄅 $state( $name) ](bg:blue fg:base)[](blue) "
+format = " [](blue)[ 󱄅 $state( $name) ](bg:blue fg:base)[](blue)"
 style = "bg:blue fg:base"
 impure_msg = ""
 pure_msg = "❄"
 
 [docker_context]
-format = "[](sapphire)[  $context ](bg:sapphire fg:base)[](sapphire) "
+format = " [](sapphire)[  $context ](bg:sapphire fg:base)[](sapphire)"
 style = "bg:sapphire fg:base"
 only_with_files = true
 
 [python]
-format = "[](green)[  $version ($virtualenv) ](bg:green fg:base)[](green) "
+format = " [](green)[  $version ($virtualenv) ](bg:green fg:base)[](green)"
 style = "bg:green fg:base"
 
 [nodejs]
-format = "[](sky)[  $version ](bg:sky fg:base)[](sky) "
+format = " [](sky)[  $version ](bg:sky fg:base)[](sky)"
 style = "bg:sky fg:base"
 detect_files = ["package.json", ".node-version", ".nvmrc"]
 
 [rust]
-format = "[](peach)[  $version ](bg:peach fg:base)[](peach) "
+format = " [](peach)[  $version ](bg:peach fg:base)[](peach)"
 style = "bg:peach fg:base"
 
 [golang]
-format = "[](teal)[  $version ](bg:teal fg:base)[](teal) "
+format = " [](teal)[  $version ](bg:teal fg:base)[](teal)"
 style = "bg:teal fg:base"
 
 [package]
-format = "[](flamingo)[  $version ](bg:flamingo fg:base)[](flamingo) "
+format = " [](flamingo)[  $version ](bg:flamingo fg:base)[](flamingo)"
 style = "bg:flamingo fg:base"
 display_private = false
 

@@ -89,6 +89,7 @@ if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
 fi
 
 # Mise (polyglot tool manager)
+export MISE_IGNORED_CONFIG_PATHS="$HOME/.local/share/chezmoi"
 command -v mise &>/dev/null && eval "$(mise activate zsh)"
 
 # Fast Node Manager
