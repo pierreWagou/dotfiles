@@ -5,7 +5,7 @@
 ![Chezmoi](https://img.shields.io/badge/Chezmoi-Managed-ff6ec7?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJMMiA3djEwbDEwIDUgMTAtNVY3TDEyIDJ6IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==&logoColor=white)
 ![Nix](https://img.shields.io/badge/Nix-Darwin-5277C3?logo=nixos&logoColor=white)
 ![Catppuccin](https://img.shields.io/badge/Theme-Catppuccin%20Mocha-e0b0ff?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IndoaXRlIi8+PC9zdmc+&logoColor=white)
-![macOS](https://img.shields.io/badge/macOS-aarch64-302b63?logo=apple&logoColor=white)
+![macOS](https://img.shields.io/badge/macOS-aarch64%20%7C%20x86__64-302b63?logo=apple&logoColor=white)
 ![NixOS](https://img.shields.io/badge/NixOS-x86__64-5277C3?logo=nixos&logoColor=white)
 
 </div>
