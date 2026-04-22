@@ -2,3 +2,5 @@ Host homeserver
     HostName 192.168.68.65
     User wagou
     IdentityFile ~/.ssh/id_ed25519_homeserver
+    AddKeysToAgent yes
+    UseKeychain yes
