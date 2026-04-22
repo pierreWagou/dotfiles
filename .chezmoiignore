@@ -22,6 +22,7 @@ assets/
 
 # Generated files
 .config/nvim/lazy-lock.json
+.config/sops/age/keys.txt
 
 # Plugin directories (managed by their respective plugin managers)
 .config/tmux/plugins/
