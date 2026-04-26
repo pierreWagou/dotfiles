@@ -1,4 +1,4 @@
-Host homeserver
+Host wagoulab
     HostName 192.168.68.65
     User wagou
     IdentityFile ~/.ssh/id_ed25519_homeserver
