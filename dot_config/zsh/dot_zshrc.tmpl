@@ -104,7 +104,7 @@ fi
 alias update='nix flake update --flake ~/.config/wagounix'
 build() {
   local ref="${1:-main}"
-  sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake "github:pierreWagou/wagounix?ref=$ref#{{ .nixProfile }}"
+  sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --refresh --flake "github:pierreWagou/wagounix?ref=$ref#{{ .nixProfile }}"
 }
 alias build-local='sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake ~/.config/wagounix#{{ .nixProfile }}'
 alias vpn='sudo openvpn --config ~/.openvpn/home.ovpn'
