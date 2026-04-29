@@ -46,6 +46,7 @@ assets/
 
 # NixOS server: no GUI, no Dashlane, no macOS tools
 {{ if eq .nixProfile "homeserver" }}
+.ssh/config
 .config/ghostty/**
 .config/spicetify/**
 .config/spotify-player/**

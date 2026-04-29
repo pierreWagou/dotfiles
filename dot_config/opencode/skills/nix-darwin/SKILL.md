@@ -30,7 +30,7 @@ Use this decision tree:
    - **All work Macs** → `hosts/darwin/work/homebrew.nix`
    - **One specific Mac** → `hosts/darwin/<layer>/<host>/homebrew.nix`
 2. Add the cask name as a string to the `casks` list
-3. If the app needs a custom install path: `{ name = "app"; args = { appdir = host.restricted_app_dir; }; }`
+3. If the app needs a custom install path: `{ name = "app"; args = { appdir = host.restrictedAppDir; }; }`
 
 ### Homebrew CLI formula (brew)
 
@@ -61,9 +61,8 @@ The `build` alias: `sudo darwin-rebuild switch --flake ~/.config/wagounix#<profi
 | Profile | System | Description |
 |---|---|---|
 | `sap` | aarch64-darwin | SAP work Mac (legacy) |
-| `wagou-old` | x86_64-darwin | Old Intel Mac |
 | `wagou` | aarch64-darwin | New personal Mac |
-| `pro` | aarch64-darwin | New work Mac |
+| `alan` | aarch64-darwin | New work Mac (disabled, not in flake) |
 
 ## Important rules
 
