@@ -15,7 +15,7 @@
 Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io/), themed with **Catppuccin Mocha**, provisioned with **Nix Darwin** and **NixOS**.
 
 - Terminal-first workflow -- Ghostty, tmux, Neovim, zsh
-- Four Nix profiles -- `sap` (work), `wagou` (personal), `wagou-old` (legacy Intel Mac), `homeserver` (NixOS)
+- Four Nix profiles -- `sap` (work), `wagou` (personal), `wagou-old` (legacy Intel Mac), `wagoulab` (NixOS)
 - Secrets injected at apply-time via Dashlane CLI -- zero credentials in the repo
 - 27+ tools configured and version-controlled
 
@@ -98,7 +98,7 @@ dot_config/
 chezmoi init --apply pierreWagou
 ```
 
-You will be prompted to select a Nix profile (`sap`, `wagou`, `wagou-old`, or `homeserver`).
+You will be prompted to select a Nix profile (`sap`, `wagou`, `wagou-old`, or `wagoulab`).
 
 ## Shell
 

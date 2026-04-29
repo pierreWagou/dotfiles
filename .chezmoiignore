@@ -45,7 +45,7 @@ assets/
 # -----------------------------------------------------------------------------
 
 # NixOS server: no GUI, no Dashlane, no macOS tools
-{{ if eq .nixProfile "homeserver" }}
+{{ if eq .nixProfile "wagoulab" }}
 .ssh/config
 .config/ghostty/**
 .config/spicetify/**

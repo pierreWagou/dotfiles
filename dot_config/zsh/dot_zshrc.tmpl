@@ -102,8 +102,8 @@ fi
 # -----------------------------------------------------------------------------
 # System
 alias update='nix flake update --flake ~/.config/wagounix'
-{{ if eq .nixProfile "homeserver" -}}
-alias build='sudo nixos-rebuild switch --flake ~/.config/wagounix#homeserver'
+{{ if eq .nixProfile "wagoulab" -}}
+alias build='sudo nixos-rebuild switch --flake ~/.config/wagounix#wagoulab'
 {{ else -}}
 alias build='sudo darwin-rebuild switch --flake ~/.config/wagounix#{{ .nixProfile }}'
 {{ end -}}

@@ -15,7 +15,7 @@
 # -----------------------------------------------------------------------------
 [core]
     excludesFile = ~/.config/git/ignore
-{{- if eq .nixProfile "homeserver" }}
+{{- if eq .nixProfile "wagoulab" }}
     editor = nvim
 {{- else }}
     editor = code --wait
@@ -55,7 +55,7 @@
 # -----------------------------------------------------------------------------
 # Credentials
 # -----------------------------------------------------------------------------
-{{- if ne .nixProfile "homeserver" }}
+{{- if ne .nixProfile "wagoulab" }}
 [credential]
     helper = manager
     credentialStore = keychain

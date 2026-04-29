@@ -13,20 +13,53 @@ NixOS is a Linux distribution built on the Nix package manager. The entire syste
 
 1. Check if it exists: `nix search nixpkgs <name>`
 2. Determine scope:
-   - **All machines (macOS + NixOS)** → `hosts/common/packages.nix`
-   - **All NixOS machines** → `hosts/nixos/configuration.nix`
-   - **One specific NixOS host** → `hosts/nixos/<host>/services.nix` or `hosts/nixos/<host>/packages.nix`
+   - **All machines (macOS + NixOS)** -> `hosts/common/packages.nix`
+   - **All NixOS machines** -> `hosts/nixos/configuration.nix`
+   - **One specific NixOS host** -> add to the host's `services/default.nix` or create a new file in `services/`
 3. Add the package to `environment.systemPackages`
 
-### System service (Docker, Nginx, etc.)
+### Podman container (self-hosted service)
 
-1. Add to the host's `services.nix` or `configuration.nix`
-2. NixOS services use `services.<name>.enable = true` pattern
-3. Example: `services.nginx.enable = true;`
+Services run as Podman containers managed by quadlet-nix. Each service gets its own file in `hosts/nixos/<host>/services/`:
 
-### Docker container
+```nix
+{ config, host, ... }:
 
-Docker is enabled in `hosts/nixos/configuration.nix` (`virtualisation.docker.enable = true`). Add docker-compose configs or container declarations in the host's `services.nix`.
+let
+  inherit (config.virtualisation.quadlet) networks;
+in
+{
+  virtualisation.quadlet.containers.myservice = {
+    containerConfig = {
+      image = "org/myservice:latest";
+      networks = [ networks.proxy.ref ];
+      labels = {
+        "traefik.enable" = "true";
+        "traefik.http.routers.myservice.rule" = "Host(`myservice.${host.domain}`)";
+        "traefik.http.routers.myservice.entrypoints" = "websecure";
+        "traefik.http.routers.myservice.tls" = "true";
+        "traefik.http.routers.myservice.middlewares" = "secure-headers@file";
+        "traefik.http.services.myservice.loadbalancer.server.port" = "<port>";
+      };
+    };
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/myservice 0755 root root -"
+  ];
+}
+```
+
+Import the new file in `services/default.nix` and add the subdomain to `tunnelSubdomains` in `variables.nix`.
+
+### System service (NixOS native)
+
+For non-containerized services, add to the host's `services/` directory:
+```nix
+_: {
+  services.<name>.enable = true;
+}
+```
 
 ## Key commands
 
@@ -41,7 +74,7 @@ Docker is enabled in `hosts/nixos/configuration.nix` (`virtualisation.docker.ena
 
 | Profile | System | Description |
 |---|---|---|
-| `homeserver` | x86_64-linux | Home server (Docker, services) |
+| `wagoulab` | x86_64-linux | Home server (Podman containers via quadlet-nix, Traefik reverse proxy) |
 
 ## Important rules
 
@@ -51,3 +84,4 @@ Docker is enabled in `hosts/nixos/configuration.nix` (`virtualisation.docker.ena
 - No home-manager — user dotfiles are managed by chezmoi separately
 - Always `nixos-rebuild build` first to test, then `switch` to activate
 - Load the `nix-config` repo skill when working inside `~/.config/wagounix` for full structural details
+- Load the `homeserver` skill when working on wagoulab services, secrets, or troubleshooting
