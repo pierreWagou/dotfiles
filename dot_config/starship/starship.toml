@@ -47,7 +47,12 @@ palette = "catppuccin_mocha"
 
 [os]
 disabled = false
-format = "[ 🦖 ](bg:yellow fg:base)"
+format = "[ $symbol ](bg:yellow fg:base)"
+
+[os.symbols]
+Macos = " "
+NixOS = " "
+Linux = " "
 
 [directory]
 format = "[ $read_only$path ](bg:mauve fg:base)"
