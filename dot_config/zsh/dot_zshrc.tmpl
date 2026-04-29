@@ -102,11 +102,11 @@ fi
 # -----------------------------------------------------------------------------
 # System
 alias update='nix flake update --flake ~/.config/wagounix'
-{{ if eq .nixProfile "wagoulab" -}}
-alias build='sudo nixos-rebuild switch --flake ~/.config/wagounix#wagoulab'
-{{ else -}}
-alias build='sudo darwin-rebuild switch --flake ~/.config/wagounix#{{ .nixProfile }}'
-{{ end -}}
+build() {
+  local ref="${1:-main}"
+  sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake "github:pierreWagou/wagounix?ref=$ref#{{ .nixProfile }}"
+}
+alias build-local='sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake ~/.config/wagounix#{{ .nixProfile }}'
 alias vpn='sudo openvpn --config ~/.openvpn/home.ovpn'
 
 # Eza (ls replacement)
