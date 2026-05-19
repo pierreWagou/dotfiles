@@ -60,9 +60,9 @@ The `build` alias: `sudo darwin-rebuild switch --flake ~/.config/wagounix#<profi
 
 | Profile | System | Description |
 |---|---|---|
-| `sap` | aarch64-darwin | SAP work Mac (legacy) |
-| `wagoumac` | aarch64-darwin | New personal Mac |
-| `alan` | aarch64-darwin | New work Mac (disabled, not in flake) |
+| `sap` | aarch64-darwin | SAP work Mac |
+| `wagoumac` | aarch64-darwin | Personal Mac |
+| `wagou-old` | x86_64-darwin | Legacy Intel Mac |
 
 ## Important rules
 

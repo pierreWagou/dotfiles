@@ -16,7 +16,7 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
 
 - Terminal-first workflow -- Ghostty, tmux, Neovim, zsh
 - Four Nix profiles -- `sap` (work), `wagoumac` (personal), `wagou-old` (legacy Intel Mac), `wagoulab` (NixOS)
-- Secrets injected at apply-time via Dashlane CLI -- zero credentials in the repo
+- Secrets injected at apply-time via rbw (Bitwarden/Vaultwarden CLI) -- zero credentials in the repo
 - 27+ tools configured and version-controlled
 
 ## Architecture
@@ -26,7 +26,7 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
  │                    chezmoi                           │
  │              (dotfile orchestrator)                  │
  ├────────────────────────┬─────────────────────────────┤
- │     Nix Darwin         │       Dashlane CLI          │  provisioning
+ │     Nix Darwin         │        rbw CLI          │  provisioning
  │  (packages + system)   │   (secrets via templates)   │
  ├──────┬────────┬────────┼──────┬──────────┬───────────┤
  │Shell │Terminal│ Editor │  Dev │    AI    │   Media   │  tools
@@ -49,7 +49,7 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
 │   ├── git/            version control
 │   ├── starship/       prompt
 │   └── ...             27 tools total
-├── dot_ssh/            known hosts
+├── private_dot_ssh/            known hosts
 ├── dot_zshenv          ZDOTDIR bootstrap
 └── .chezmoi.toml.tmpl  profile selector
 ```
@@ -174,12 +174,12 @@ You will be prompted to select a Nix profile (`sap`, `wagoumac`, `wagou-old`, or
 | Tool | Config | Notes |
 |------|--------|-------|
 | [Databricks](https://www.databricks.com/) | [`databricks/databrickscfg.tmpl`](dot_config/databricks/databrickscfg.tmpl) | Test + prod workspaces |
-| SSH | [`dot_ssh/`](dot_ssh/) | Known hosts |
+| SSH | [`private_dot_ssh/`](private_dot_ssh/) | Known hosts |
 | GPG | [`private_gnupg/`](dot_config/private_gnupg/) | gpg-agent with SSH + pinentry-mac, dual keys |
 
 ## Secrets
 
-Files ending in `.tmpl` use the [Dashlane CLI](https://github.com/Dashlane/dashlane-cli) to inject secrets at apply time via chezmoi's `dashlanePassword` template function. **No credentials are stored in this repository.**
+Files ending in `.tmpl` use [rbw](https://github.com/doy/rbw) (unofficial Bitwarden CLI) to inject secrets at apply time via chezmoi's `rbw` template function. **No credentials are stored in this repository.**
 
 Templated secrets include:
 

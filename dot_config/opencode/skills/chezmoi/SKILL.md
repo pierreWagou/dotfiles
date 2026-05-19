@@ -103,11 +103,11 @@ Chezmoi integrates with password managers. Common patterns:
 # 1Password
 {{ onepasswordRead "op://vault/item/field" }}
 
-# Bitwarden
-{{ (bitwarden "item" "my-item").login.password }}
+# rbw (unofficial Bitwarden CLI) -- used in this repo
+{{ (rbw "Item Name").data.password }}
 
-# Dashlane
-{{ (index (dashlanePassword "Entry Name") 0).password }}
+# Bitwarden (official CLI)
+{{ (bitwarden "item" "my-item").login.password }}
 
 # Age encryption (for encrypted_ files)
 # Requires age key configured in chezmoi.toml

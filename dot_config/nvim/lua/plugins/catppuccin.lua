@@ -14,10 +14,6 @@ return {
         TelescopePromptTitle = { fg = colors.crust, bg = colors.peach },
         TelescopeResultsTitle = { fg = colors.crust, bg = colors.crust },
         TelescopeSelection = { bg = colors.surface0 },
-        CopilotChatHeader = { fg = colors.mauve, bold = true },
-        CopilotChatSeparator = { fg = colors.mauve, bold = true },
-        CopilotChatResource = { fg = colors.teal, italic = true },
-        CopilotChatStatus = { fg = colors.teal, bold = true },
       }
     end
   end,
