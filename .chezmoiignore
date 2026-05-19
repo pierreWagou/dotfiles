@@ -54,7 +54,7 @@ assets/
 .config/copilot/**
 .config/docker/**
 .config/neomutt/**
-.config/opencode/**
+Library/Application Support/rbw
 {{ end }}
 
 # SAP-only tools (not needed on personal or server hosts)

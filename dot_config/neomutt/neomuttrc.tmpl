@@ -8,11 +8,11 @@ set from = "pierre.romon@gmail.com"
 set smtp_url = "smtps://pierre.romon@gmail.com@smtp.gmail.com:465/"
 set imap_user = "pierre.romon@gmail.com"
 
-# Authentication with App Password (via chezmoi/dashlane)
+# Authentication with App Password (via chezmoi/rbw)
 set imap_authenticators = "login"
 set smtp_authenticators = "login"
-set imap_pass = "{{ (index (dashlanePassword "Neomutt Gmail App Password") 0).password }}"
-set smtp_pass = "{{ (index (dashlanePassword "Neomutt Gmail App Password") 0).password }}"
+set imap_pass = "{{ (rbw "Neomutt Gmail App Password").data.password }}"
+set smtp_pass = "{{ (rbw "Neomutt Gmail App Password").data.password }}"
 
 # Main mailbox (Gmail IMAP)
 set mail_check = 60

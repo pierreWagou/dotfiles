@@ -1,0 +1,7 @@
+{
+  "email": "pierre.romon@gmail.com",
+  "base_url": "https://vault.wagou.fr",
+  "lock_timeout": 86400,
+  "sync_interval": 3600,
+  "pinentry": "{{ if eq .nixProfile "wagoulab" }}/etc/rbw/pinentry-sops{{ else }}pinentry-mac{{ end }}"
+}

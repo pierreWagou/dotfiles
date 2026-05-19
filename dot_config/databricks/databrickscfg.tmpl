@@ -1,7 +1,7 @@
 [test]
 host = https://adb-2486274436240795.15.azuredatabricks.net
-token = {{ (index (dashlanePassword "Databricks Central Dinosaur Test Token") 0).password }}
+token = {{ (rbw "Databricks Central Dinosaur Test Token").data.password }}
 
 [prod]
 host = https://adb-7920774757590015.15.azuredatabricks.net
-token = {{ (index (dashlanePassword "Databricks Central Dinosaur Prod Token") 0).password }}
+token = {{ (rbw "Databricks Central Dinosaur Prod Token").data.password }}

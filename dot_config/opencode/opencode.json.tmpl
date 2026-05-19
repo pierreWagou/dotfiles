@@ -7,7 +7,7 @@
     "anthropic": {
       "options": {
         "baseURL": "http://localhost:6655/anthropic/v1",
-        "apiKey": "{{ (index (dashlanePassword "Anthropic Token") 0).password }}"
+        "apiKey": "{{ (rbw "Anthropic Token").data.password }}"
       }
     }
   },

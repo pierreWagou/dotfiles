@@ -1,7 +1,7 @@
 {
   "alwaysThinkingEnabled": false,
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "{{ (index (dashlanePassword "Anthropic Token") 0).password }}",
+    "ANTHROPIC_AUTH_TOKEN": "{{ (rbw "Anthropic Token").data.password }}",
     "ANTHROPIC_BASE_URL": "http://localhost:6655/anthropic/",
     "ANTHROPIC_MODEL": "anthropic--claude-sonnet-latest",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "anthropic--claude-sonnet-latest",

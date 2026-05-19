@@ -8,9 +8,12 @@ enable-ssh-support
 # Grab keyboard for pinentry
 grab
 
-# Pinentry program (macOS)
+# Pinentry program
+{{ if eq .nixProfile "wagoulab" -}}
+pinentry-program /run/current-system/sw/bin/pinentry-curses
+{{ else -}}
 pinentry-program /run/current-system/sw/bin/pinentry-mac
-
+{{ end }}
 # Cache settings (optional - uncomment to customize)
 # default-cache-ttl 600
 # max-cache-ttl 7200
