@@ -31,9 +31,18 @@ Perform a thorough review of the entire codebase. Work methodically through each
 
 Review and fix these documentation artifacts to ensure they accurately reflect the current codebase:
 
-- **AGENTS.md**: Verify the project structure, tech stack, and instructions all match reality. Update any stale references.
-- **Skills** (`dot_config/opencode/skills/` in source, `~/.config/opencode/skills/` on target): For each skill, verify that the instructions, file paths, run commands, and conventions described still match the actual code. Update or remove anything outdated.
-- **Other docs**: Cross-check documentation pages against the implementation. Flag any sections that describe features differently from how they are actually built.
+- **AGENTS.md** (if present): Verify the project rules, conventions, and architecture description all match reality. Update any stale references.
+- **Skills** (`.opencode/skills/` in the project, or `~/.config/opencode/skills/` globally): For each skill, verify that the instructions, file paths, run commands, and conventions described still match the actual code. Update or remove anything outdated.
+- **README and other docs**: Cross-check documentation pages against the implementation. Flag any sections that describe features differently from how they are actually built.
+
+## 5. Project Artifacts
+
+Review and fix artifacts that revolve around the codebase to ensure they stay in sync:
+
+- **API collections** (Bruno, Postman, etc.): Check all request files match current endpoints — correct URLs, HTTP methods, field names, query params, and body structure. Identify endpoints missing from the collection and create them.
+- **Docker / deployment configs**: Verify Dockerfile, docker-compose.yml, and deployment manifests reference correct files, ports, env vars, and commands.
+- **CI/CD workflows**: Ensure all workflow steps use commands and scripts that still exist.
+- **Database migrations**: Verify the migration journal matches the SQL files on disk, and that the latest migration reflects the current schema.
 
 ## Output
 
