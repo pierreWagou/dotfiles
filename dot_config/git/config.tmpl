@@ -15,11 +15,7 @@
 # -----------------------------------------------------------------------------
 [core]
     excludesFile = ~/.config/git/ignore
-{{- if eq .nixProfile "wagoulab" }}
     editor = nvim
-{{- else }}
-    editor = code --wait
-{{- end }}
     pager = delta
 
 # -----------------------------------------------------------------------------
@@ -29,7 +25,7 @@
     defaultBranch = main
 
 [pull]
-    rebase = false
+    rebase = true
 
 [push]
     autoSetupRemote = true

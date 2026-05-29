@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Opencode-DCP/opencode-dynamic-context-pruning/master/dcp.schema.json",
+  // Enable the plugin
+  "enabled": true,
+  // Auto-update to latest version
+  "autoUpdate": true,
+  // Keep notifications minimal to avoid clutter
+  "pruneNotification": "minimal",
+  "pruneNotificationType": "toast",
+  "compress": {
+    // Range mode: compress contiguous spans into block summaries
+    "mode": "range",
+    // Allow compression without prompting
+    "permission": "allow",
+    // Percentage-based limits (relative to model context window)
+    // Claude opus has 200k context - these are reasonable thresholds
+    "maxContextLimit": "55%",
+    "minContextLimit": "30%",
+    // How often the context-limit nudge fires
+    "nudgeFrequency": 5,
+    // Soft nudge: less aggressive compression prompting
+    "nudgeForce": "soft",
+    // Protect task/skill outputs in compression summaries
+    "protectedTools": ["task", "skill", "todowrite", "todoread"]
+  },
+  "strategies": {
+    // Remove duplicate tool calls (same tool + same args)
+    "deduplication": {
+      "enabled": true
+    },
+    // Prune errored tool inputs after 4 turns
+    "purgeErrors": {
+      "enabled": true,
+      "turns": 4
+    }
+  }
+}
