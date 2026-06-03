@@ -15,7 +15,7 @@
 Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io/), themed with **Catppuccin Mocha**, provisioned with **Nix Darwin** and **NixOS**.
 
 - Terminal-first workflow -- Ghostty, tmux, Neovim, zsh
-- Four Nix profiles -- `sap` (work), `wagoumac` (personal), `wagou-old` (legacy Intel Mac), `wagoulab` (NixOS)
+- Four Nix profiles -- `sap` (work), `alan` (work), `wagoumac` (personal), `wagoulab` (NixOS)
 - Secrets injected at apply-time via rbw (Bitwarden/Vaultwarden CLI) -- zero credentials in the repo
 - 27+ tools configured and version-controlled
 
@@ -72,7 +72,6 @@ dot_config/
 ├── ghostty/        terminal emulator
 ├── git/            conditional sap profile, delta
 ├── hai/            sap hyperspace ai
-├── neomutt/        gmail imap client
 ├── nvim/           neovim (lazyvim distro)
 ├── opencode/       opencode ai assistant
 ├── private_gnupg/  gpg keys + agent
@@ -98,7 +97,7 @@ dot_config/
 chezmoi init --apply pierreWagou
 ```
 
-You will be prompted to select a Nix profile (`sap`, `wagoumac`, `wagou-old`, or `wagoulab`).
+You will be prompted to select a Nix profile (`sap`, `alan`, `wagoumac`, or `wagoulab`).
 
 ## Shell
 
@@ -167,7 +166,6 @@ You will be prompted to select a Nix profile (`sap`, `wagoumac`, `wagou-old`, or
 |------|--------|-------|
 | [Spicetify](https://spicetify.app/) | [`spicetify/`](dot_config/spicetify/) | Spotify desktop theming |
 | [spotify-player](https://github.com/aome510/spotify-player) | [`spotify-player/`](dot_config/spotify-player/) | Spotify TUI |
-| [Neomutt](https://neomutt.org/) | [`neomutt/neomuttrc.tmpl`](dot_config/neomutt/neomuttrc.tmpl) | Gmail IMAP |
 
 ## Cloud & Security
 
@@ -185,7 +183,6 @@ Templated secrets include:
 
 - Anthropic API token (Claude Code, OpenCode)
 - Databricks tokens (test + prod workspaces)
-- Gmail app password (Neomutt)
 
 ## Quick Reference
 

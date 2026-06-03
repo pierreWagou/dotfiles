@@ -7,14 +7,14 @@
   "provider": {
     "anthropic": {
       "options": {
-        "baseURL": "http://localhost:6655/anthropic/v1",
-        "apiKey": "{{ (rbw "Anthropic Token").data.password }}"
+        "baseURL": "http://localhost:6655/anthropic/v1"{{ if eq .nixProfile "sap" }},
+        "apiKey": "{{ (rbw "Anthropic Token").data.password }}"{{ end }}
       }
     },
     "openai": {
       "options": {
-        "baseURL": "http://localhost:6655/openai/v1",
-        "apiKey": "{{ (rbw "Anthropic Token").data.password }}"
+        "baseURL": "http://localhost:6655/openai/v1"{{ if eq .nixProfile "sap" }},
+        "apiKey": "{{ (rbw "Anthropic Token").data.password }}"{{ end }}
       }
     }
   },

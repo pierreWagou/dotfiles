@@ -1,7 +1,9 @@
 {
   "alwaysThinkingEnabled": false,
   "env": {
+    {{- if eq .nixProfile "sap" }}
     "ANTHROPIC_AUTH_TOKEN": "{{ (rbw "Anthropic Token").data.password }}",
+    {{- end }}
     "ANTHROPIC_BASE_URL": "http://localhost:6655/anthropic/",
     "ANTHROPIC_MODEL": "anthropic--claude-sonnet-latest",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "anthropic--claude-sonnet-latest",

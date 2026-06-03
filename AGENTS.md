@@ -14,7 +14,7 @@ This repo is the chezmoi source state. Files here are applied to the home direct
 ## Template Data
 
 Available in `.tmpl` files:
-- `.nixProfile` — one of: `sap`, `wagoumac`, `wagou-old`, `wagoulab`
+- `.nixProfile` — one of: `sap`, `alan`, `wagoumac`, `wagoulab`
 - `.chezmoi.os` — `darwin` or `linux`
 - `.chezmoi.hostname`, `.chezmoi.username`, `.chezmoi.homeDir`
 
