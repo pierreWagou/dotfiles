@@ -17,7 +17,7 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
 - Terminal-first workflow -- Ghostty, tmux, Neovim, zsh
 - Four Nix profiles -- `sap` (work), `alan` (work), `wagoumac` (personal), `wagoulab` (NixOS)
 - Secrets injected at apply-time via rbw (Bitwarden/Vaultwarden CLI) -- zero credentials in the repo
-- 27+ tools configured and version-controlled
+- 28 tools configured and version-controlled
 
 ## Architecture
 
@@ -48,7 +48,7 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
 │   ├── ghostty/        terminal emulator
 │   ├── git/            version control
 │   ├── starship/       prompt
-│   └── ...             27 tools total
+│   └── ...             28 tools total
 ├── private_dot_ssh/            known hosts
 ├── dot_zshenv          ZDOTDIR bootstrap
 └── .chezmoi.toml.tmpl  profile selector
@@ -72,9 +72,12 @@ dot_config/
 ├── ghostty/        terminal emulator
 ├── git/            conditional sap profile, delta
 ├── hai/            sap hyperspace ai
+├── mise/           polyglot tool manager
+├── neomutt/        gmail imap client
 ├── nvim/           neovim (lazyvim distro)
 ├── opencode/       opencode ai assistant
 ├── private_gnupg/  gpg keys + agent
+├── rbw/            bitwarden cli
 ├── sesh/           session manager
 ├── sheldon/        zsh plugin manager
 ├── spicetify/      spotify theming
@@ -83,7 +86,6 @@ dot_config/
 ├── television/     fuzzy picker
 ├── tmux/           terminal multiplexer
 ├── tmuxinator/     session layouts
-├── worktrunk/      git worktree manager
 └── zsh/            shell configuration
 ```
 
@@ -149,7 +151,6 @@ You will be prompted to select a Nix profile (`sap`, `alan`, `wagoumac`, or `wag
 | [Docker](https://www.docker.com/) | [`docker/`](dot_config/docker/) | Docker Desktop |
 | [Television](https://github.com/alexpasmantier/television) | [`television/`](dot_config/television/) | Fuzzy picker |
 | [Mise](https://mise.jdx.dev/) | [`mise/config.toml`](dot_config/mise/config.toml) | Polyglot tool manager |
-| [Worktrunk](https://github.com/nicholasgasior/worktrunk) | [`worktrunk/`](dot_config/worktrunk/) | Git worktree manager |
 
 ## AI
 
