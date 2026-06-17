@@ -44,22 +44,22 @@ assets/
 # Host-Conditional Ignores
 # -----------------------------------------------------------------------------
 
-# NixOS server: no GUI, no Dashlane, no macOS tools
+# NixOS server: no GUI, no macOS tools
 {{ if eq .nixProfile "wagoulab" }}
 .ssh/config
 .config/ghostty/**
 .config/spicetify/**
 .config/spotify-player/**
-.config/claude/**
-.config/copilot/**
 .config/docker/**
+.config/opencode/opencode.wagou.json
 Library/**
+Projects/wagou/.envrc
 {{ end }}
 
-# SAP-only tools (not needed on personal or server hosts)
-{{ if ne .nixProfile "sap" }}
-.config/gh/hosts.yml
-.config/git/config-sap
-.config/hai/**
-.config/databricks/**
+# Alan-only files (not needed on non-alan hosts)
+{{ if ne .nixProfile "alan" }}
+.config/opencode/opencode.alan.json
+.config/opencode/alan/**
+.config/lore/**
+Projects/alan/.envrc
 {{ end }}

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec env PATH="$HOME/.nix-profiles/upstream-nix/bin:$PATH" /usr/local/bin/devbox "$@"

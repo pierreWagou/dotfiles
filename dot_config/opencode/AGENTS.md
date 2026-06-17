@@ -12,12 +12,11 @@
 
 - Never hardcode secrets, tokens, or credentials.
 - Validate and sanitize all external input.
-- Use rbw (Bitwarden CLI) in chezmoi templates for secrets.
 
 ## Environment
 
 - Dotfiles are managed by chezmoi — always edit the source state at ~/.local/share/chezmoi, never target files directly. Load the chezmoi skill when working with any dotfile.
-- System configuration uses Nix (nix-darwin on macOS, NixOS on Linux). For system-level changes, modify the flake at ~/.config/wagounix, don't install manually. Load the nix-darwin or nixos skill as appropriate.
+- System configuration uses Nix (nix-darwin on macOS, NixOS on Linux). For system-level changes, don't install manually. Load the nix-darwin or nixos skill as appropriate.
 
 ## Coding Style
 

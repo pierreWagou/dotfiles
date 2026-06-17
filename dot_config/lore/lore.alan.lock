@@ -1,0 +1,252 @@
+# lore.lock — do not edit manually
+[[entry]]
+  name = "insurance-synthesis"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-synthesis"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:d1993f9f7ad90cba4de8846d3575aff2da2bea0066ccdfd1d2e1ff70c87ea325"
+  resolved_at = "2026-06-17T20:22:06Z"
+
+[[entry]]
+  name = "alan-identity"
+  source = "alan-eu/alan-skills/alan-skills/skills/alan-identity"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:f377f547327681990ca59ae437e05ac6f831a94755ff9f00f04ff514afd39e17"
+  resolved_at = "2026-06-17T20:22:12Z"
+
+[[entry]]
+  name = "discussions-tracker"
+  source = "alan-eu/alan-skills/alan-skills/skills/discussions-tracker"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:8f5115db749b53c42a5e971a5799f72336ffa8381714db661be6211764b6bef5"
+  resolved_at = "2026-06-17T20:22:08Z"
+
+[[entry]]
+  name = "insurance-incumbent-results"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-incumbent-results"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:76341e3344a6f1c8d7d24d0ee751fafe32f62f45a776128778d7b897a99dc17f"
+  resolved_at = "2026-06-17T20:22:09Z"
+
+[[entry]]
+  name = "sfa"
+  source = "alan-eu/alan-skills/alan-skills/skills/sfa"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:b7414b29c9e1e393530432bd58cc34d9b9cb448de21e00b16a42ee5e8ec1b824"
+  resolved_at = "2026-06-17T20:22:16Z"
+
+[[entry]]
+  name = "commitments-notion-to-linear"
+  source = "alan-eu/alan-skills/alan-skills/skills/commitments-notion-to-linear"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:d562a13bc955e7e6b639dcadd90df0a7d74ccad8d65ab76eda96784f96a4b8e1"
+  resolved_at = "2026-06-17T20:22:08Z"
+
+[[entry]]
+  name = "interview-assessment"
+  source = "alan-eu/alan-skills/alan-skills/skills/interview-assessment"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:58851630d19450ade3a6b22e21b6c570149afcd3abba091b38333faeb11eb5ab"
+  resolved_at = "2026-06-17T20:22:18Z"
+
+[[entry]]
+  name = "linkedin-messenger"
+  source = "alan-eu/alan-skills/alan-skills/skills/linkedin-messenger"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:a8b3fc515a8dc1255fcbcaf6c1eab02eae288bc7aa2f7de3f7e85cf635d1b040"
+  resolved_at = "2026-06-17T20:22:12Z"
+
+[[entry]]
+  name = "gp-cms-manager"
+  source = "alan-eu/alan-skills/alan-growth-product/skills/gp-cms-manager"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:502fea4fed0e2d2f5d361ebed582c999fabbecb00f91852a0924d2952783151a"
+  resolved_at = "2026-06-17T20:22:17Z"
+
+[[entry]]
+  name = "ai-watch"
+  source = "alan-eu/alan-skills/alan-skills/skills/ai-watch"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:83ba039144a48cf3cb9ca9ac23110d1507e988494576e7f17753eef876a52bc5"
+  resolved_at = "2026-06-17T20:22:14Z"
+
+[[entry]]
+  name = "anniversary-message"
+  source = "alan-eu/alan-skills/alan-skills/skills/anniversary-message"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:47ff04d9a8eb52999742443fca0114e0191335b578c298a885cb3301204ba5d8"
+  resolved_at = "2026-06-17T20:22:05Z"
+
+[[entry]]
+  name = "insurance-pricing-approach"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-pricing-approach"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:b9a60b249a00d30dbc60c156fd25b5a043081d1278c0837c192b42135b2023ff"
+  resolved_at = "2026-06-17T20:22:13Z"
+
+[[entry]]
+  name = "github-discussion"
+  source = "alan-eu/alan-skills/alan-skills/skills/github-discussion"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:de7e22e23c48a62a033a6089ffda96331672946fda676c8f4ee7d7789807aa6d"
+  resolved_at = "2026-06-17T20:22:05Z"
+
+[[entry]]
+  name = "setup-second-brain"
+  source = "alan-eu/alan-skills/alan-skills/skills/setup-second-brain"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:afbc9003894506579dc7a9fb5f735ccb343f6fcdcaa5f7f3a1f9563c953eecac"
+  resolved_at = "2026-06-17T20:22:11Z"
+
+[[entry]]
+  name = "skill-lint"
+  source = "alan-eu/alan-skills/alan-skills/skills/skill-lint"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:59ef182f0a68ba1ce54a1e29fd96b701659722550af9a9402d7ae4655880042b"
+  resolved_at = "2026-06-17T20:22:04Z"
+
+[[entry]]
+  name = "connector-ashby"
+  source = "alan-eu/alan-skills/alan-skills/skills/connector-ashby"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:7b90fca005988997bdc9b6d62c65e6e9a574fae417d21246c4ae1970073e0692"
+  resolved_at = "2026-06-17T20:22:20Z"
+
+[[entry]]
+  name = "insurance-intake"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-intake"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:c6610e29bed940289b6c739c435a0423996e972dff21e993d58eda5b0dc3d9eb"
+  resolved_at = "2026-06-17T20:22:21Z"
+
+[[entry]]
+  name = "shared-credentials"
+  source = "alan-eu/alan-skills/alan-skills/skills/shared-credentials"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:970781e42dcde9344ea6177e621972be18f57e154a0135483afff2e5b73894cb"
+  resolved_at = "2026-06-17T20:22:07Z"
+
+[[entry]]
+  name = "eng-leaves"
+  source = "alan-eu/alan-skills/alan-skills/skills/eng-leaves"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:09724d5c3ad49c77a74d66824e2ba53e0edd6302cbe8d2a61c6659db67224643"
+  resolved_at = "2026-06-17T20:22:14Z"
+
+[[entry]]
+  name = "alan-image-generator"
+  source = "alan-eu/alan-skills/alan-skills/skills/alan-image-generator"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:0402f453f5a386b1b8cbcbcf871fa74f7669a65296e7adac6d3475b1a35bd343"
+  resolved_at = "2026-06-17T20:22:16Z"
+
+[[entry]]
+  name = "create-alan-skill"
+  source = "alan-eu/alan-skills/alan-skills/skills/create-alan-skill"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:3f63fb0ac85e37383c72660d6ca7681e237d714a9d2fb11705da7f13c211ed46"
+  resolved_at = "2026-06-17T20:22:17Z"
+
+[[entry]]
+  name = "standup"
+  source = "alan-eu/alan-skills/alan-skills/skills/standup"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:d859273df1c5562d46c46885b2230dd0f79ef68a86c250f5abbac5da09080fb2"
+  resolved_at = "2026-06-17T20:22:18Z"
+
+[[entry]]
+  name = "application-review"
+  source = "alan-eu/alan-skills/alan-skills/skills/application-review"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:3900b0385151cec25a31bd17f2716f1468ddb4d7e3740e602e6ca2bbee2b6a7a"
+  resolved_at = "2026-06-17T20:22:03Z"
+
+[[entry]]
+  name = "morning-digest"
+  source = "alan-eu/alan-skills/alan-skills/skills/morning-digest"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:0e7f1097216bb04b55a82fa6cb9647125dde5248d985ba45a6b0e31de24c0ded"
+  resolved_at = "2026-06-17T20:22:03Z"
+
+[[entry]]
+  name = "alan-engineering-blog-draft"
+  source = "alan-eu/alan-skills/alan-skills/skills/alan-engineering-blog-draft"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:948405150f401b328a886b91ee41f4670b79f472bfb93b862d0bbd245266d6c5"
+  resolved_at = "2026-06-17T20:22:06Z"
+
+[[entry]]
+  name = "analyze-eng-onboarding-fresh-eyes-report"
+  source = "alan-eu/alan-skills/alan-skills/skills/analyze-eng-onboarding-fresh-eyes-report"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:b0b60674f9083158d14bad1814326a9c3d3673274d1d59309c59b7329f1017ab"
+  resolved_at = "2026-06-17T20:22:11Z"
+
+[[entry]]
+  name = "find-newcomer-coach"
+  source = "alan-eu/alan-skills/alan-skills/skills/find-newcomer-coach"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:01ad46f5c6910b022d832bcf94d1fd993817abb4f708a1ab5b96f705a20bfebd"
+  resolved_at = "2026-06-17T20:22:15Z"
+
+[[entry]]
+  name = "insurance-coverage-diff"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-coverage-diff"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:77a2b58caab7c875b88ffb48415c569d141ff411f3759f98e8f246bd74ae3925"
+  resolved_at = "2026-06-17T20:22:15Z"
+
+[[entry]]
+  name = "toggl-track"
+  source = "alan-eu/alan-skills/alan-skills/skills/toggl-track"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:40b33e8dd8200fb6aa850cf4dffe11de90971f5477bf4a01841350fec2e6d513"
+  resolved_at = "2026-06-17T20:22:04Z"
+
+[[entry]]
+  name = "exit-interview"
+  source = "alan-eu/alan-skills/alan-skills/skills/exit-interview"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:adabb345fbbe23de14cc1865b9b60a25adb9f3cdfef4dbc009df35e71fdff064"
+  resolved_at = "2026-06-17T20:22:13Z"
+
+[[entry]]
+  name = "insurance-account-review"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-account-review"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:9a9793f9e268e6897b1e3d598ba97d13509daefdeb06ec571c90347da41d78bf"
+  resolved_at = "2026-06-17T20:22:10Z"
+
+[[entry]]
+  name = "insurance-metrics"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-metrics"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:3090df1fb361587042ec36c40ca63ca7f7f1299c2f22dbd75abd9a45d86ef836"
+  resolved_at = "2026-06-17T20:22:19Z"
+
+[[entry]]
+  name = "insurance-actuals"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-actuals"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:854434e56d4007d111cce2e0b4df7b6e3f5f966e48f2adbe82fcd8cdd3de158b"
+  resolved_at = "2026-06-17T20:22:20Z"
+
+[[entry]]
+  name = "insurance-case"
+  source = "alan-eu/alan-skills/alan-skills/skills/insurance-case"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:9236a7efa4b0c6d1ace8d9883caa4470424f798a2bc9512c7857df78123fadcd"
+  resolved_at = "2026-06-17T20:22:09Z"
+
+[[entry]]
+  name = "dx-insights"
+  source = "alan-eu/alan-skills/alan-skills/skills/dx-insights"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:2d76d7c9e19515d9a774e8093b9e06f03be88eb8ea8dd5004e70e31ed813ef14"
+  resolved_at = "2026-06-17T20:22:07Z"
+
+[[entry]]
+  name = "iso27001"
+  source = "alan-eu/alan-skills/alan-skills/skills/iso27001"
+  commit = "804503c57537d825fc358c8399786071b1f99111"
+  content_hash = "sha256:872eb3460c55c8b6d8974d4312652fb271183e3d283b22565fbe4a33b7b5a7c6"
+  resolved_at = "2026-06-17T20:22:19Z"

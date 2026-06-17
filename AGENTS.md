@@ -14,7 +14,7 @@ This repo is the chezmoi source state. Files here are applied to the home direct
 ## Template Data
 
 Available in `.tmpl` files:
-- `.nixProfile` — one of: `sap`, `alan`, `wagoumac`, `wagoulab`
+- `.nixProfile` — one of: `alan`, `wagoumac`, `wagoulab`
 - `.chezmoi.os` — `darwin` or `linux`
 - `.chezmoi.hostname`, `.chezmoi.username`, `.chezmoi.homeDir`
 
@@ -22,7 +22,7 @@ Available in `.tmpl` files:
 
 - Naming: use chezmoi prefixes (`dot_`, `private_`, `executable_`, `exact_`) and `.tmpl` suffix
 - Secrets: use `{{ (rbw "Item Name").data.password }}` — never hardcode
-- Host-specific logic: use `{{ if eq .nixProfile "sap" }}` conditionals in templates
+- Host-specific logic: use `{{ if eq .nixProfile "alan" }}` conditionals in templates
 - Verify templates: run `chezmoi cat <target-path>` before applying
 
 ## Workflow

@@ -70,6 +70,9 @@ command -v starship &>/dev/null && eval "$(starship init zsh)"
 # Zoxide (cd replacement)
 command -v zoxide &>/dev/null && eval "$(zoxide init zsh --cmd cd)"
 
+# Direnv
+command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
+
 # Pay-respects (f*** replacement)
 command -v pay-respects &>/dev/null && eval "$(pay-respects zsh)"
 
@@ -100,12 +103,12 @@ fi
 # Aliases
 # -----------------------------------------------------------------------------
 # System
-alias update='nix flake update --flake ~/.config/wagounix'
+alias update='nix flake update --flake ~/Projects/wagou/wagounix'
 build() {
   local ref="${1:-main}"
   sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --refresh --flake "github:pierreWagou/wagounix?ref=$ref#{{ .nixProfile }}"
 }
-alias build-local='sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake ~/.config/wagounix#{{ .nixProfile }}'
+alias build-local='sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake ~/Projects/wagou/wagounix#{{ .nixProfile }}'
 alias vpn='sudo openvpn --config ~/.openvpn/home.ovpn'
 
 # Eza (ls replacement)
@@ -131,3 +134,7 @@ alias grep='rg'
 
 # Workspace
 alias nexus='tv sesh'
+
+# Cd
+alias cda='cd ~/Projects/alan'
+alias cdw='cd ~/Projects/wagou'

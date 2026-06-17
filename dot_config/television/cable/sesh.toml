@@ -1,16 +1,24 @@
 # Television channel for sesh session management
 # https://github.com/joshmedeski/sesh
-# Simplified from community channel (single source for compatibility)
 
 [metadata]
 name = "sesh"
 description = "Session manager integrating tmux sessions, zoxide directories, and config paths"
-requirements = ["sesh"]
+requirements = ["sesh", "fd"]
 
 [source]
-command = '{ sesh list -i -c; sesh list -i -t; sesh list -i -z; } | awk "{line=\$0; gsub(/\033\[[0-9;]*m/,\"\"); n=\$NF; if(!seen[n]++) print line}"'
-no_sort = true
+# Multiple source commands for cycling through different modes
+# Press Ctrl+S to cycle between sources
+command = [
+  { name = "All",         run = "sesh list --icons" },
+  { name = "Tmux",        run = "sesh list -t --icons" },
+  { name = "Configs",     run = "sesh list -c --icons" },
+  { name = "Zoxide",      run = "sesh list -z --icons" },
+  { name = "Directories", run = "fd -H -d 2 -t d -E .Trash . ~" },
+]
 ansi = true
+frecency = false # handled by sesh
+no_sort = true # handled by sesh
 output = "{strip_ansi|split: :1..|join: }"
 
 [preview]

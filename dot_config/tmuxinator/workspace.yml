@@ -6,8 +6,8 @@
 #   ├──────────┤             │
 #   │ terminal │             │
 #   └──────────┴─────────────┘
-name: <%= @args[0] %>
-root: <%= @settings["path"] %>
+name: <%= File.basename(@args[0] || Dir.pwd) %>
+root: <%= @args[0] %>
 
 windows:
   - workspace:
@@ -17,7 +17,7 @@ windows:
             - tmux split-window -v -t .1 -l 25% -d
             - tmux send-keys -t .3 'opencode' Enter
             - nvim
-<% if File.exist?(File.join(@settings["path"], "mprocs.yaml")) %>
+<% if File.exist?(File.join(@args[0], "mprocs.yaml")) %>
   - services:
       panes:
         - mprocs

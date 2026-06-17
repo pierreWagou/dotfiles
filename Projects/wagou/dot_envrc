@@ -1,0 +1,2 @@
+export OPENCODE_CONFIG="$HOME/.config/opencode/opencode.wagou.json"
+export OPENCODE_CONFIG_DIR="$HOME/.config/opencode/wagou"

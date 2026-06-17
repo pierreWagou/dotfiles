@@ -15,9 +15,9 @@
 Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io/), themed with **Catppuccin Mocha**, provisioned with **Nix Darwin** and **NixOS**.
 
 - Terminal-first workflow -- Ghostty, tmux, Neovim, zsh
-- Four Nix profiles -- `sap` (work), `alan` (work), `wagoumac` (personal), `wagoulab` (NixOS)
-- Secrets injected at apply-time via rbw (Bitwarden/Vaultwarden CLI) -- zero credentials in the repo
-- 28 tools configured and version-controlled
+- Three Nix profiles -- `alan` (work), `wagoumac` (personal Mac), `wagoulab` (NixOS)
+- Secrets injected at apply-time via rbw (Bitwarden/Vaultwarden CLI) and 1Password -- zero credentials in the repo
+- Profile-aware overlays for alan and wagou via direnv + opencode config
 
 ## Architecture
 
@@ -26,13 +26,13 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
  │                    chezmoi                           │
  │              (dotfile orchestrator)                  │
  ├────────────────────────┬─────────────────────────────┤
- │     Nix Darwin         │        rbw CLI          │  provisioning
+ │     Nix Darwin         │        rbw / op         │  provisioning
  │  (packages + system)   │   (secrets via templates)   │
  ├──────┬────────┬────────┼──────┬──────────┬───────────┤
  │Shell │Terminal│ Editor │  Dev │    AI    │   Media   │  tools
  │ zsh  │ghostty │ nvim   │  git │  claude  │ spicetify │
  │      │ tmux   │        │  fzf │ opencode │ sp-player │
- │      │ sesh   │        │  bat │   hai    │           │
+ │      │ sesh   │        │  bat │          │           │
  │      │        │        │ mise │          │           │
  └──────┴────────┴────────┴──────┴──────────┴───────────┘
 ```
@@ -48,7 +48,7 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
 │   ├── ghostty/        terminal emulator
 │   ├── git/            version control
 │   ├── starship/       prompt
-│   └── ...             28 tools total
+│   └── ...             tools
 ├── private_dot_ssh/            known hosts
 ├── dot_zshenv          ZDOTDIR bootstrap
 └── .chezmoi.toml.tmpl  profile selector
@@ -62,16 +62,13 @@ dot_config/
 ├── bat/            cat replacement
 ├── bottom/         system monitor
 ├── claude/         claude code settings
-├── copilot/        github copilot cli
-├── databricks/     workspace tokens
 ├── docker/         docker desktop
 ├── eza/            ls replacement, file colors
 ├── fsh/            fast syntax highlighting
 ├── fzf/            fuzzy finder
-├── gh/             github cli (dual host)
+├── gh/             github cli
 ├── ghostty/        terminal emulator
-├── git/            conditional sap profile, delta
-├── hai/            sap hyperspace ai
+├── git/            delta pager
 ├── mise/           polyglot tool manager
 ├── neomutt/        gmail imap client
 ├── nvim/           neovim (lazyvim distro)
@@ -99,7 +96,7 @@ dot_config/
 chezmoi init --apply pierreWagou
 ```
 
-You will be prompted to select a Nix profile (`sap`, `alan`, `wagoumac`, or `wagoulab`).
+You will be prompted to select a Nix profile (`alan`, `wagoumac`, or `wagoulab`).
 
 ## Shell
 
@@ -128,11 +125,11 @@ You will be prompted to select a Nix profile (`sap`, `alan`, `wagoumac`, or `wag
 
 | Area | Details |
 |------|---------|
-| Languages | Java, Python, TypeScript, JSON, YAML, TOML, Markdown, SAP CDS |
+| Languages | Java, Python, TypeScript, JSON, YAML, TOML, Markdown |
 | Jupyter | Molten (inline output), jupytext (percent scripts), image.nvim |
 | Navigation | Telescope, Harpoon2, Aerial |
 | Debugging | DAP |
-| Completion | Blink, Copilot |
+| Completion | Blink |
 | Editing | mini-comment, mini-surround, inc-rename, yanky |
 | Integration | vim-tmux-navigator, venv-selector |
 | UI | Dashboard, indent-blankline, treesitter-context, lualine |
@@ -141,13 +138,13 @@ You will be prompted to select a Nix profile (`sap`, `alan`, `wagoumac`, or `wag
 
 | Tool | Config | Notes |
 |------|--------|-------|
-| [Git](https://git-scm.com/) | [`git/`](dot_config/git/) | Conditional SAP profile, Delta pager |
+| [Git](https://git-scm.com/) | [`git/`](dot_config/git/) | Delta pager |
 | [fzf](https://github.com/junegunn/fzf) | [`fzf/config`](dot_config/fzf/config) | Fuzzy finder |
 | [Bat](https://github.com/sharkdp/bat) | [`bat/config`](dot_config/bat/config) | Syntax-highlighted `cat` |
 | [Starship](https://starship.rs/) | [`starship/starship.toml`](dot_config/starship/starship.toml) | Cross-shell prompt |
 | [eza](https://eza.rocks/) | [`eza/theme.yml`](dot_config/eza/theme.yml) | File type colors |
 | [Bottom](https://github.com/ClementTsang/bottom) | [`bottom/`](dot_config/bottom/) | System monitor |
-| [GitHub CLI](https://cli.github.com/) | [`gh/`](dot_config/gh/) | Dual host config |
+| [GitHub CLI](https://cli.github.com/) | [`gh/`](dot_config/gh/) | GitHub CLI |
 | [Docker](https://www.docker.com/) | [`docker/`](dot_config/docker/) | Docker Desktop |
 | [Television](https://github.com/alexpasmantier/television) | [`television/`](dot_config/television/) | Fuzzy picker |
 | [Mise](https://mise.jdx.dev/) | [`mise/config.toml`](dot_config/mise/config.toml) | Polyglot tool manager |
@@ -157,9 +154,7 @@ You will be prompted to select a Nix profile (`sap`, `alan`, `wagoumac`, or `wag
 | Tool | Config | Notes |
 |------|--------|-------|
 | [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | [`claude/settings.json.tmpl`](dot_config/claude/settings.json.tmpl) | Anthropic CLI |
-| [OpenCode](https://opencode.ai/) | [`opencode/opencode.json.tmpl`](dot_config/opencode/opencode.json.tmpl) | Claude via local proxy, MCP servers, skills |
-| [Copilot CLI](https://docs.github.com/en/copilot) | [`copilot/`](dot_config/copilot/) | GitHub Copilot |
-| [HAI](https://www.sap.com/) | [`hai/config.yaml`](dot_config/hai/config.yaml) | SAP Hyperspace AI |
+| [OpenCode](https://opencode.ai/) | [`opencode/opencode.json.tmpl`](dot_config/opencode/opencode.json.tmpl) | Claude via local proxy, MCP servers, skills, profile overlays |
 
 ## Media & Email
 
@@ -168,22 +163,9 @@ You will be prompted to select a Nix profile (`sap`, `alan`, `wagoumac`, or `wag
 | [Spicetify](https://spicetify.app/) | [`spicetify/`](dot_config/spicetify/) | Spotify desktop theming |
 | [spotify-player](https://github.com/aome510/spotify-player) | [`spotify-player/`](dot_config/spotify-player/) | Spotify TUI |
 
-## Cloud & Security
-
-| Tool | Config | Notes |
-|------|--------|-------|
-| [Databricks](https://www.databricks.com/) | [`databricks/databrickscfg.tmpl`](dot_config/databricks/databrickscfg.tmpl) | Test + prod workspaces |
-| SSH | [`private_dot_ssh/`](private_dot_ssh/) | Known hosts |
-| GPG | [`private_gnupg/`](dot_config/private_gnupg/) | gpg-agent with SSH + pinentry-mac, dual keys |
-
 ## Secrets
 
-Files ending in `.tmpl` use [rbw](https://github.com/doy/rbw) (unofficial Bitwarden CLI) to inject secrets at apply time via chezmoi's `rbw` template function. **No credentials are stored in this repository.**
-
-Templated secrets include:
-
-- Anthropic API token (Claude Code, OpenCode)
-- Databricks tokens (test + prod workspaces)
+Files ending in `.tmpl` use [rbw](https://github.com/doy/rbw) (Bitwarden CLI) or [op](https://developer.1password.com/docs/cli/) (1Password CLI) to inject secrets at apply time via chezmoi templates. **No credentials are stored in this repository.**
 
 ## Quick Reference
 

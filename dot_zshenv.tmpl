@@ -26,10 +26,10 @@ export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
 {{- end }}
 
-{{- if eq .nixProfile "sap" }}
+{{- if eq .nixProfile "alan" }}
 
-# Set Databricks configuration file
-export DATABRICKS_CONFIG_FILE="$XDG_CONFIG_HOME/databricks/databrickscfg"
+# Bedrock
+export AWS_BEARER_TOKEN_BEDROCK='{{ output "op" "item" "get" "Nao Bedrock API Key" "--reveal" "--fields" "credential" | trim }}'
 {{- end }}
 
 # Set GNUPG configuration directory

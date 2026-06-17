@@ -5,7 +5,7 @@ description: Install packages and configure macOS via nix-darwin. Load this skil
 
 ## What nix-darwin is
 
-nix-darwin manages macOS system configuration declaratively through Nix. The flake lives at `~/.config/wagounix`.
+nix-darwin manages macOS system configuration declaratively through Nix. The flake lives at `~/Projects/wagou/wagounix`.
 
 ## Where to add a macOS package
 
@@ -49,18 +49,17 @@ masApps = {
 
 | Command | What it does |
 |---|---|
-| `darwin-rebuild switch --flake ~/.config/wagounix#<profile>` | Build and activate |
-| `darwin-rebuild build --flake ~/.config/wagounix#<profile>` | Build without activating (test) |
+| `darwin-rebuild switch --flake ~/Projects/wagou/wagounix#<profile>` | Build and activate |
+| `darwin-rebuild build --flake ~/Projects/wagou/wagounix#<profile>` | Build without activating (test) |
 | `nix search nixpkgs <name>` | Search for a nix package |
 | `nix flake update` | Update all inputs to latest |
 
-The `build` alias: `sudo darwin-rebuild switch --flake ~/.config/wagounix#<profile>`
+The `build` alias: `sudo darwin-rebuild switch --flake ~/Projects/wagou/wagounix#<profile>`
 
 ## macOS profiles
 
 | Profile | System | Description |
 |---|---|---|
-| `sap` | aarch64-darwin | SAP work Mac |
 | `alan` | aarch64-darwin | Work Mac |
 | `wagoumac` | aarch64-darwin | Personal Mac |
 
@@ -72,4 +71,4 @@ The `build` alias: `sudo darwin-rebuild switch --flake ~/.config/wagounix#<profi
 - No home-manager — user dotfiles are managed by chezmoi separately
 - Nix daemon is managed by Lix installer, not nix-darwin (`nix.enable = false`)
 - Always `darwin-rebuild build` first to test, then `switch` to activate
-- Load the `nix-config` repo skill when working inside `~/.config/wagounix` for full structural details
+- Load the `nix-config` repo skill when working inside `~/Projects/wagou/wagounix` for full structural details

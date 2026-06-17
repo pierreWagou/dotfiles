@@ -5,7 +5,7 @@ description: Install packages and configure NixOS servers. Load this skill when 
 
 ## What NixOS is
 
-NixOS is a Linux distribution built on the Nix package manager. The entire system is configured declaratively. The flake lives at `~/.config/wagounix`.
+NixOS is a Linux distribution built on the Nix package manager. The entire system is configured declaratively. The flake lives at `~/Projects/wagou/wagounix`.
 
 ## Where to add a NixOS package or service
 
@@ -65,8 +65,8 @@ _: {
 
 | Command | What it does |
 |---|---|
-| `sudo nixos-rebuild switch --flake ~/.config/wagounix#<profile>` | Build and activate |
-| `sudo nixos-rebuild build --flake ~/.config/wagounix#<profile>` | Build without activating (test) |
+| `sudo nixos-rebuild switch --flake ~/Projects/wagou/wagounix#<profile>` | Build and activate |
+| `sudo nixos-rebuild build --flake ~/Projects/wagou/wagounix#<profile>` | Build without activating (test) |
 | `nix search nixpkgs <name>` | Search for a nix package |
 | `nix flake update` | Update all inputs to latest |
 
@@ -83,5 +83,5 @@ _: {
 - NixOS manages the Nix daemon natively (unlike macOS where Lix manages it externally)
 - No home-manager — user dotfiles are managed by chezmoi separately
 - Always `nixos-rebuild build` first to test, then `switch` to activate
-- Load the `nix-config` repo skill when working inside `~/.config/wagounix` for full structural details
+- Load the `nix-config` repo skill when working inside `~/Projects/wagou/wagounix` for full structural details
 - Load the `homeserver` skill when working on wagoulab services, secrets, or troubleshooting
