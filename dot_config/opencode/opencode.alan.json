@@ -30,6 +30,11 @@
     "ashby": {
       "type": "remote",
       "url": "https://hopper-api.alan.com/mcps/ashby/"
+    },
+    "quill": {
+      "type": "local",
+      "command": ["node", "/Users/pierre.romon/Library/Application Support/Quill/mcp-stdio-bridge.js"],
+      "enabled": true
     }
   }
 }
