@@ -61,5 +61,6 @@ Projects/wagou/.envrc
 .config/opencode/opencode.alan.json
 .config/opencode/alan/**
 .config/lore/**
+.config/claude/**
 Projects/alan/.envrc
 {{ end }}

@@ -4,7 +4,7 @@ This repo is the chezmoi source state. Files here are applied to the home direct
 
 ## Structure
 
-- `dot_config/` → `~/.config/` (29 configs: nvim, zsh, tmux, opencode, ghostty, git, etc.)
+- `dot_config/` → `~/.config/` (25 configs: nvim, zsh, tmux, opencode, ghostty, git, etc.)
 - `private_dot_ssh/` → `~/.ssh/` (mode 0700)
 - `dot_zshenv.tmpl` → `~/.zshenv`
 - `Library/` → `~/Library/` (macOS-specific)

@@ -71,4 +71,4 @@ The `build` alias: `sudo darwin-rebuild switch --flake ~/Projects/wagou/wagounix
 - No home-manager — user dotfiles are managed by chezmoi separately
 - Nix daemon is managed by Lix installer, not nix-darwin (`nix.enable = false`)
 - Always `darwin-rebuild build` first to test, then `switch` to activate
-- Load the `nix-config` repo skill when working inside `~/Projects/wagou/wagounix` for full structural details
+- Load the wagounix project's own AGENTS.md when working inside `~/Projects/wagou/wagounix` for full structural details

@@ -1,6 +1,6 @@
 ---
-name: nixos
-description: Install packages and configure NixOS servers. Load this skill when the user wants to add a package, service, or change NixOS configuration.
+name: homeserver
+description: Configure and manage the wagoulab home server running NixOS. Load this skill when working on NixOS configuration, self-hosted services, or wagoulab troubleshooting.
 ---
 
 ## What NixOS is
@@ -83,5 +83,4 @@ _: {
 - NixOS manages the Nix daemon natively (unlike macOS where Lix manages it externally)
 - No home-manager — user dotfiles are managed by chezmoi separately
 - Always `nixos-rebuild build` first to test, then `switch` to activate
-- Load the `nix-config` repo skill when working inside `~/Projects/wagou/wagounix` for full structural details
-- Load the `homeserver` skill when working on wagoulab services, secrets, or troubleshooting
+- Load the wagounix project's own AGENTS.md when working inside `~/Projects/wagou/wagounix` for full structural details

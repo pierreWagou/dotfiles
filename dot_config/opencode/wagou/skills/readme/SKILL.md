@@ -174,4 +174,4 @@ Keep it to 5-8 rows max. Only the commands someone would use daily.
 - **Screenshots that will go stale** — prefer diagrams or text descriptions
 - **"Table of Contents"** section — GitHub auto-generates one; manual TOCs go stale
 - **Emojis in headers** — unless the project's tone explicitly calls for it
-- **External image hosting** — commit assets to the repo (under `assets/`)
+- **External image hosting** — commit assets to the repo (under `assets/`). Exception: parameterised banner generators like capsule-render that produce SVGs from URL params with no assets to maintain.

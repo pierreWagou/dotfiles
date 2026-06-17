@@ -39,7 +39,6 @@
   },
   "plugin": [
     "@tarquinen/opencode-dcp",
-    "cc-safety-net",
     "opencode-mermaid-renderer",
     "opencode-notify"
   ],

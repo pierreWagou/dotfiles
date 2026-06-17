@@ -18,7 +18,6 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
 - Three Nix profiles -- `alan` (work), `wagoumac` (personal Mac), `wagoulab` (NixOS)
 - Secrets injected at apply-time via rbw (Bitwarden/Vaultwarden CLI) and 1Password -- zero credentials in the repo
 - Profile-aware overlays for alan and wagou via direnv + opencode config
-
 ## Architecture
 
 ```
@@ -50,7 +49,7 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
 │   ├── starship/       prompt
 │   └── ...             tools
 ├── private_dot_ssh/            known hosts
-├── dot_zshenv          ZDOTDIR bootstrap
+├── dot_zshenv.tmpl     ZDOTDIR bootstrap
 └── .chezmoi.toml.tmpl  profile selector
 ```
 
@@ -61,7 +60,7 @@ Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io
 dot_config/
 ├── bat/            cat replacement
 ├── bottom/         system monitor
-├── claude/         claude code settings
+├── claude/         claude code settings (alan only)
 ├── docker/         docker desktop
 ├── eza/            ls replacement, file colors
 ├── fsh/            fast syntax highlighting
@@ -69,8 +68,8 @@ dot_config/
 ├── gh/             github cli
 ├── ghostty/        terminal emulator
 ├── git/            delta pager
+├── lore/           skill package manager config (alan only)
 ├── mise/           polyglot tool manager
-├── neomutt/        gmail imap client
 ├── nvim/           neovim (lazyvim distro)
 ├── opencode/       opencode ai assistant
 ├── private_gnupg/  gpg keys + agent
@@ -154,7 +153,7 @@ You will be prompted to select a Nix profile (`alan`, `wagoumac`, or `wagoulab`)
 | Tool | Config | Notes |
 |------|--------|-------|
 | [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | [`claude/settings.json.tmpl`](dot_config/claude/settings.json.tmpl) | Anthropic CLI |
-| [OpenCode](https://opencode.ai/) | [`opencode/opencode.json.tmpl`](dot_config/opencode/opencode.json.tmpl) | Claude via local proxy, MCP servers, skills, profile overlays |
+| [OpenCode](https://opencode.ai/) | [`opencode/opencode.json`](dot_config/opencode/opencode.json) | Claude via Bedrock, MCP servers, skills, profile overlays |
 
 ## Media & Email
 
