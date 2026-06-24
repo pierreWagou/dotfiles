@@ -2,15 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "share": "disabled",
   "default_agent": "plan",
-  "model": "amazon-bedrock/eu.anthropic.claude-sonnet-4-6",
-  "small_model": "amazon-bedrock/eu.anthropic.claude-sonnet-4-6",
-  "provider": {
-    "amazon-bedrock": {
-      "options": {
-        "region": "eu-north-1"
-      }
-    }
-  },
+  "model": "opencode-go/mimo-v2.5",
+  "small_model": "opencode-go/mimo-v2.5",
   "permission": {
     "external_directory": {
       "~/.config/**": "allow",

@@ -32,16 +32,19 @@ ctrl-g = "actions:create"
 ctrl-d = "actions:remove"
 
 [actions.open]
-description = "Open worktree in new tmux window"
-command = "sh ~/.config/television/scripts/worktrunk-open.sh '{split:\\t:0}'"
+description = "Switch to worktree and open tmux session"
+command = "wt switch '{split:\\t:0}'"
 mode = "execute"
+interactive = true
 
 [actions.create]
-description = "Create NEW branch + worktree and open in tmux window"
-command = "sh ~/.config/television/scripts/worktrunk-open.sh '{split:\\t:0}' --create"
+description = "Create new branch + worktree and open tmux session"
+command = "wt switch --create '{split:\\t:0}'"
 mode = "execute"
+interactive = true
 
 [actions.remove]
 description = "Remove worktree"
 command = "wt remove '{split:\\t:0}'"
 mode = "execute"
+interactive = true

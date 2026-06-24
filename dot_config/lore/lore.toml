@@ -2,34 +2,16 @@ default_profile = "wagou"
 
 [profile]
   [profile.alan]
-    harnesses = ["opencode"]
+    harnesses = ["opencode", "claude"]
     [profile.alan.harness]
       [profile.alan.harness.opencode]
         skills_dir = "~/.config/opencode/alan/skills"
-
-    [[profile.alan.dependencies]]
-      name = "application-review"
-      source = "alan-eu/alan-skills/alan-skills/skills/application-review"
-      ref = "HEAD"
+      [profile.alan.harness.claude]
+        skills_dir = "~/.claude/skills"
 
     [[profile.alan.dependencies]]
       name = "morning-digest"
       source = "alan-eu/alan-skills/alan-skills/skills/morning-digest"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "skill-lint"
-      source = "alan-eu/alan-skills/alan-skills/skills/skill-lint"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "toggl-track"
-      source = "alan-eu/alan-skills/alan-skills/skills/toggl-track"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "anniversary-message"
-      source = "alan-eu/alan-skills/alan-skills/skills/anniversary-message"
       ref = "HEAD"
 
     [[profile.alan.dependencies]]
@@ -38,28 +20,8 @@ default_profile = "wagou"
       ref = "HEAD"
 
     [[profile.alan.dependencies]]
-      name = "insurance-synthesis"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-synthesis"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "alan-engineering-blog-draft"
-      source = "alan-eu/alan-skills/alan-skills/skills/alan-engineering-blog-draft"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "dx-insights"
-      source = "alan-eu/alan-skills/alan-skills/skills/dx-insights"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
       name = "shared-credentials"
       source = "alan-eu/alan-skills/alan-skills/skills/shared-credentials"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "commitments-notion-to-linear"
-      source = "alan-eu/alan-skills/alan-skills/skills/commitments-notion-to-linear"
       ref = "HEAD"
 
     [[profile.alan.dependencies]]
@@ -68,68 +30,8 @@ default_profile = "wagou"
       ref = "HEAD"
 
     [[profile.alan.dependencies]]
-      name = "insurance-case"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-case"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "insurance-incumbent-results"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-incumbent-results"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "insurance-account-review"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-account-review"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "setup-second-brain"
-      source = "alan-eu/alan-skills/alan-skills/skills/setup-second-brain"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "analyze-eng-onboarding-fresh-eyes-report"
-      source = "alan-eu/alan-skills/alan-skills/skills/analyze-eng-onboarding-fresh-eyes-report"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "linkedin-messenger"
-      source = "alan-eu/alan-skills/alan-skills/skills/linkedin-messenger"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
       name = "alan-identity"
       source = "alan-eu/alan-skills/alan-skills/skills/alan-identity"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "exit-interview"
-      source = "alan-eu/alan-skills/alan-skills/skills/exit-interview"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "insurance-pricing-approach"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-pricing-approach"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "ai-watch"
-      source = "alan-eu/alan-skills/alan-skills/skills/ai-watch"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "eng-leaves"
-      source = "alan-eu/alan-skills/alan-skills/skills/eng-leaves"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "insurance-coverage-diff"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-coverage-diff"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "find-newcomer-coach"
-      source = "alan-eu/alan-skills/alan-skills/skills/find-newcomer-coach"
       ref = "HEAD"
 
     [[profile.alan.dependencies]]
@@ -138,54 +40,10 @@ default_profile = "wagou"
       ref = "HEAD"
 
     [[profile.alan.dependencies]]
-      name = "alan-image-generator"
-      source = "alan-eu/alan-skills/alan-skills/skills/alan-image-generator"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "gp-cms-manager"
-      source = "alan-eu/alan-skills/alan-growth-product/skills/gp-cms-manager"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "create-alan-skill"
-      source = "alan-eu/alan-skills/alan-skills/skills/create-alan-skill"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "interview-assessment"
-      source = "alan-eu/alan-skills/alan-skills/skills/interview-assessment"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
       name = "standup"
       source = "alan-eu/alan-skills/alan-skills/skills/standup"
       ref = "HEAD"
 
-    [[profile.alan.dependencies]]
-      name = "iso27001"
-      source = "alan-eu/alan-skills/alan-skills/skills/iso27001"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "insurance-metrics"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-metrics"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "connector-ashby"
-      source = "alan-eu/alan-skills/alan-skills/skills/connector-ashby"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "insurance-actuals"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-actuals"
-      ref = "HEAD"
-
-    [[profile.alan.dependencies]]
-      name = "insurance-intake"
-      source = "alan-eu/alan-skills/alan-skills/skills/insurance-intake"
-      ref = "HEAD"
   [profile.wagou]
     harnesses = ["opencode"]
     [profile.wagou.harness]

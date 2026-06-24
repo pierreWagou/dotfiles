@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
+# Remove the ~/.alan/bin/devbox shadow symlink if it exists.
+# init-setup-binary-links.py recreates it on every devbox init, which would
+# bypass this shim (and its upstream-nix PATH injection). Removing it here
+# ensures the shim in ~/.local/bin always wins after the first run.
+rm -f "$HOME/.alan/bin/devbox"
 exec env PATH="$HOME/.nix-profiles/upstream-nix/bin:$PATH" /usr/local/bin/devbox "$@"

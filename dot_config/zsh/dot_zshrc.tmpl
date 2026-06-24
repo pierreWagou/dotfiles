@@ -99,6 +99,11 @@ if command -v fnm >/dev/null 2>&1; then
   eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
+# Worktrunk shell integration
+if command -v wt >/dev/null 2>&1 || [[ -n "${WORKTRUNK_BIN:-}" ]]; then
+  eval "$(wt config shell init -y zsh)"
+fi
+
 # -----------------------------------------------------------------------------
 # Aliases
 # -----------------------------------------------------------------------------
@@ -133,7 +138,7 @@ alias python='python3'
 alias grep='rg'
 
 # Workspace
-alias nexus='tv sesh'
+alias cockpit='tv sesh'
 
 # Cd
 alias cda='cd ~/Projects/alan'

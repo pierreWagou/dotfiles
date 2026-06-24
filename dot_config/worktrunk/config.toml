@@ -1,0 +1,26 @@
+# Worktrunk global configuration
+# Manages git worktrees with tmux session integration
+#
+# Workflow:
+# prefix+g opens worktree branch picker (television)
+# worktrunk creates/switches worktree
+# hooks create tmux session via tmuxinator with workspace layout
+
+# Worktree path: subdirectory of the project root (bare repo layout)
+# .git/ is the bare repo, worktrees are siblings: project/main/, project/feature/, etc.
+worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
+
+# --- Hooks ---
+
+# When a new worktree is created, install tools via mise if configured
+[post-start]
+setup = "[ -f .mise.toml ] && mise install --yes 2>/dev/null || true"
+tmuxinator = "tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}"
+
+# When switching to an existing worktree, attach to or create tmux session
+[post-switch]
+tmuxinator = "tmux has-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null && tmux switch-client -t {{ repo }}-{{ branch | sanitize }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}"
+
+# Auto-cleanup: kill tmux session when worktree is removed or merged
+[pre-remove]
+tmux = "tmux kill-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null || true"

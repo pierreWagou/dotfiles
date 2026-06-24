@@ -6,13 +6,9 @@
 #   ├──────────┤             │
 #   │ terminal │             │
 #   └──────────┴─────────────┘
-name: <%= File.basename(@args[0] || Dir.pwd) %>
-root: <%= @settings["path"] %>
+name: alan-apps
+root: ~/Projects/alan/alan-apps
 
-<% project_override = File.join(@settings["path"], ".tmuxinator.yml") %>
-<% if File.exist?(project_override) %>
-<%= ERB.new(File.read(project_override)).result(binding) %>
-<% else %>
 windows:
   - workspace:
       panes:
@@ -21,9 +17,6 @@ windows:
             - /run/current-system/sw/bin/tmux split-window -v -t .1 -l 25% -d
             - /run/current-system/sw/bin/tmux send-keys -t .3 'opencode' Enter
             - nvim
-<% end %>
-<% if File.exist?(File.join(@settings["path"], "mprocs.yaml")) %>
   - services:
       panes:
-        - mprocs
-<% end %>
+        - devbox services up
