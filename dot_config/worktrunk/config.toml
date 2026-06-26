@@ -15,11 +15,11 @@ worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
 # When a new worktree is created, install tools via mise if configured
 [post-start]
 setup = "[ -f .mise.toml ] && mise install --yes 2>/dev/null || true"
-tmuxinator = "tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}"
+tmuxinator = "(test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }})"
 
 # When switching to an existing worktree, attach to or create tmux session
 [post-switch]
-tmuxinator = "tmux has-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null && tmux switch-client -t {{ repo }}-{{ branch | sanitize }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}"
+tmuxinator = "tmux has-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null && tmux switch-client -t {{ repo }}-{{ branch | sanitize }} || (test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }})"
 
 # Auto-cleanup: kill tmux session when worktree is removed or merged
 [pre-remove]

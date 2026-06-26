@@ -1,0 +1,27 @@
+# Television channel for AOE agent sessions
+# Shows only AOE-managed tmux sessions (aoe_* prefix)
+
+[metadata]
+name = "aoe"
+description = "AOE agent sessions — switch, kill, or preview"
+requirements = ["tmux"]
+
+[source]
+command = "tmux list-sessions -F '#{session_name}' 2>/dev/null | grep '^aoe_'"
+
+[preview]
+command = "tmux capture-pane -t '{line}' -p 2>/dev/null | tail -20"
+
+[keybindings]
+enter = "actions:switch"
+ctrl-d = ["actions:kill", "reload_source"]
+
+[actions.switch]
+description = "Switch to AOE session"
+command = "tmux switch-client -t '{line}'"
+mode = "execute"
+
+[actions.kill]
+description = "Kill AOE session"
+command = "tmux kill-session -t '{line}'"
+mode = "fork"

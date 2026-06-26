@@ -1,0 +1,25 @@
+[app_state]
+has_seen_welcome = true
+has_seen_web_tour = true
+has_seen_custom_instruction_warning = true
+has_acknowledged_agent_hooks = true
+last_seen_version = "999.0.0"
+dismissed_update_version = "1.11.2"
+
+[session]
+default_tool = "opencode"
+default_attach_mode = "live_send"
+new_session_attach_mode = "live_send"
+click_action = "live_send"
+live_send_leader = "C-a"
+mouse_capture = true
+agent_command_override = { opencode = "sh -lc 'direnv exec . opencode'" }
+
+[tmux]
+status_bar = "disabled"
+
+[updates]
+update_check_mode = "off"
+
+[theme]
+name = "catppuccin-mocha"

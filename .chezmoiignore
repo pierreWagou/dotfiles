@@ -29,6 +29,19 @@ assets/
 # Chezmoi's own config (cannot be managed directly, use templates instead)
 .config/chezmoi/**
 
+# AOE runtime data (AOE owns config.toml; we manage profile configs only)
+.config/agent-of-empires/config.toml
+.config/agent-of-empires/debug.log
+.config/agent-of-empires/telemetry.json
+.config/agent-of-empires/update_cache.json
+.config/agent-of-empires/tui-presence
+.config/agent-of-empires/.schema_version
+.config/agent-of-empires/.recovery.lock
+.config/agent-of-empires/.telemetry.lock
+.config/agent-of-empires/profiles/*/sessions.json
+.config/agent-of-empires/profiles/*/.storage.lock
+.config/agent-of-empires/logs/
+
 # macOS system files
 .DS_Store
 .localized

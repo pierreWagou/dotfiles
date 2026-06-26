@@ -1,8 +1,8 @@
 # Layout:
 #   ┌──────────┬─────────────┐
 #   │          │             │
-#   │   nvim   │  opencode   │
-#   │ (zoomed) │             │
+#   │   nvim   │    aoe      │
+#   │ (zoomed) │  (live)     │
 #   ├──────────┤             │
 #   │ terminal │             │
 #   └──────────┴─────────────┘
@@ -17,9 +17,9 @@ windows:
   - workspace:
       panes:
         - workspace:
-            - /run/current-system/sw/bin/tmux split-window -h -l 40% -d
-            - /run/current-system/sw/bin/tmux split-window -v -t .1 -l 25% -d
-            - /run/current-system/sw/bin/tmux send-keys -t .3 'opencode' Enter
+            - tmux split-window -h -l 40% -d
+            - tmux split-window -v -t .1 -l 25% -d
+            - /run/current-system/sw/bin/tmux send-keys -t .3 'aoe add . -c opencode -t $(basename $(pwd)) 2>/dev/null && aoe session start $(basename $(pwd)) 2>/dev/null; aoe' Enter
             - nvim
 <% end %>
 <% if File.exist?(File.join(@settings["path"], "mprocs.yaml")) %>

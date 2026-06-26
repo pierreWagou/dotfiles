@@ -6,13 +6,14 @@
 #   ├──────────┤             │
 #   │ terminal │             │
 #   └──────────┴─────────────┘
-name: alan-apps
-root: ~/Projects/alan/alan-apps
+name: <%= @args[0] || "alan-apps" %>
+root: <%= @settings["path"] || "~/Projects/alan/alan-apps" %>
 
 windows:
   - workspace:
       panes:
         - workspace:
+            - mkdir -p ~/.alan/bin && ln -sf /opt/homebrew/bin/tmux ~/.alan/bin/tmux
             - /run/current-system/sw/bin/tmux split-window -h -l 40% -d
             - /run/current-system/sw/bin/tmux split-window -v -t .1 -l 25% -d
             - /run/current-system/sw/bin/tmux send-keys -t .3 'opencode' Enter
