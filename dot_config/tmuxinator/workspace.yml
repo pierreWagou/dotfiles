@@ -19,7 +19,14 @@ windows:
         - workspace:
             - tmux split-window -h -l 40% -d
             - tmux split-window -v -t .1 -l 25% -d
-            - /run/current-system/sw/bin/tmux send-keys -t .3 'aoe add . -c opencode -t $(basename $(pwd)) 2>/dev/null && aoe session start $(basename $(pwd)) 2>/dev/null; aoe' Enter
+            - >-
+                /run/current-system/sw/bin/tmux send-keys -t .3 'aoe add
+                . -c opencode -t $(basename $(pwd)) 2>/dev/null; aoe
+                session start $(basename $(pwd)) 2>/dev/null; sleep 2;
+                SESSION=$(tmux list-sessions 2>/dev/null | grep
+                "^aoe_$(basename $(pwd))_" | cut -d: -f1);
+                [ -n "$SESSION" ] && tmux join-pane -s "$SESSION" -t .2
+                -l 40% -h && tmux kill-pane -t .3' Enter
             - nvim
 <% end %>
 <% if File.exist?(File.join(@settings["path"], "mprocs.yaml")) %>
