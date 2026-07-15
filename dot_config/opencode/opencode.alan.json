@@ -9,6 +9,11 @@
       }
     }
   },
+  "permission": {
+    "external_directory": {
+      "~/Documents/Alan/**": "allow"
+    }
+  },
   "plugin": ["cc-safety-net"],
   "mcp": {
     "linear": {
@@ -44,6 +49,10 @@
       "type": "local",
       "command": ["node", "/Users/pierre.romon/Library/Application Support/Quill/mcp-stdio-bridge.js"],
       "enabled": true
+    },
+    "customerio": {
+      "type": "remote",
+      "url": "https://mcp-eu.customer.io/mcp"
     }
   }
 }

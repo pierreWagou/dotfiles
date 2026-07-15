@@ -5,9 +5,11 @@ preview_command = "eza --all --git --icons --color=always {}"
 [[session]]
 name = "alan-apps"
 path = "~/Projects/alan/alan-apps"
-startup_command = "tmuxinator start alan-apps"
 
 [[session]]
 name = "dotfiles"
 path = "~/.local/share/chezmoi"
-startup_command = "tmuxinator start dotfiles"
+
+[[session]]
+name = "wagounix"
+path = "~/Projects/wagou/wagounix"
