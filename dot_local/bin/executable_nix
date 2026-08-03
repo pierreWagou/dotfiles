@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Forward nix calls to upstream Nix (not Lix).
+# Devbox requires fetch-closure support which Lix lacks.
+exec "$HOME/.nix-profiles/upstream-nix/bin/nix" "$@"

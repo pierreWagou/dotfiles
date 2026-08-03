@@ -4,4 +4,8 @@
 # bypass this shim (and its upstream-nix PATH injection). Removing it here
 # ensures the shim in ~/.local/bin always wins after the first run.
 rm -f "$HOME/.alan/bin/devbox"
+# Ensure ~/.alan/bin/nix points to upstream nix (not Lix) so devbox uses it.
+# Lix lacks the fetch-closure experimental feature devbox requires.
+# This symlink is recreated by Alan init scripts on direnv reload, so it's safe to override here.
+ln -sf "$HOME/.nix-profiles/upstream-nix/bin/nix" "$HOME/.alan/bin/nix" 2>/dev/null || true
 exec env PATH="$HOME/.nix-profiles/upstream-nix/bin:$PATH" /usr/local/bin/devbox "$@"
