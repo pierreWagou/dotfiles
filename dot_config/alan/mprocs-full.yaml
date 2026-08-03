@@ -1,0 +1,19 @@
+procs:
+  fr-server:
+    shell: "API_PORT=$FR_API_PORT alan run --scope frontend -- yarn workspace fr-server dev"
+    autostart: false
+  metro:
+    shell: "alan run --scope frontend -- yarn workspace alan-mobile dev"
+    autostart: false
+  fr-api-shared:
+    shell: "alan run --scope backend -- env APP=fr_api flask runserver --use-kay=shared_on_aurora"
+    autostart: false
+  fr-api:
+    shell: "alan run --scope backend -- env APP=fr_api flask runserver --use-kay=on_aurora"
+    autostart: false
+  mailpit:
+    shell: "mise run mailpit"
+    autostart: false
+  redis:
+    shell: "mise run redis"
+    autostart: false
