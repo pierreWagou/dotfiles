@@ -12,18 +12,19 @@ worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
 
 # --- Hooks ---
 
-# When a new worktree is created, fix nix symlink first, then open tmux session
-# Sequential: ensures ~/.alan/bin/nix points to upstream Nix before any pane fires direnv
+# When a new worktree is created, fix nix symlink + copy ignored files, then open tmux session
+# Sequential: setup completes before tmuxinator starts
 [[post-start]]
-setup = "ln -sf $HOME/.nix-profiles/upstream-nix/bin/nix $HOME/.alan/bin/nix 2>/dev/null || true"
+setup = "ln -sf $HOME/.nix-profiles/upstream-nix/bin/nix $HOME/.alan/bin/nix 2>/dev/null; wt step copy-ignored 2>/dev/null || true"
 
 [[post-start]]
 tmuxinator = "(test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }})"
 
-# When switching to an existing worktree, attach to or create tmux session.
+# When switching to an existing worktree, copy ignored files + attach to or create tmux session.
 # sleep 3 ensures post-start's tmuxinator has time to start before we check has-session,
 # preventing a duplicate session when both post-start and post-switch fire on creation.
 [post-switch]
+copy = "wt step copy-ignored 2>/dev/null || true"
 tmuxinator = "sleep 3 && (tmux has-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null && tmux switch-client -t {{ repo }}-{{ branch | sanitize }} || (test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}))"
 
 # Auto-cleanup: kill tmux session when worktree is removed or merged
