@@ -12,10 +12,10 @@ worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
 
 # --- Hooks ---
 
-# When a new worktree is created, install tools via mise if configured
-# Steps run sequentially: fix nix symlink + full direnv init first, then tmuxinator
+# When a new worktree is created, fix nix symlink then open tmux session
+# Steps run sequentially: fix nix first, then tmuxinator
 [[post-start]]
-setup = "cd {{ worktree_path }} && ln -sf $HOME/.nix-profiles/upstream-nix/bin/nix $HOME/.alan/bin/nix 2>/dev/null; /usr/local/bin/direnv allow . 2>/dev/null; /usr/local/bin/direnv exec . true 2>/dev/null; [ -f .mise.toml ] && mise install --yes 2>/dev/null || true"
+setup = "ln -sf $HOME/.nix-profiles/upstream-nix/bin/nix $HOME/.alan/bin/nix 2>/dev/null || true"
 
 [[post-start]]
 tmuxinator = "(test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }})"
