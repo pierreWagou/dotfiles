@@ -10,6 +10,11 @@
 # .git/ is the bare repo, worktrees are siblings: project/main/, project/feature/, etc.
 worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
 
+# Auto-rebuilt on every new worktree by the project config's `wt step copy-ignored`.
+# Exclude .devbox/virtenv/ to avoid symlink conflicts (already exists from devbox setup).
+[step.copy-ignored]
+exclude = [".devbox/virtenv/"]
+
 # --- Hooks ---
 
 # Fix nix symlink before project pre-start hooks run (user hooks run before project hooks).
