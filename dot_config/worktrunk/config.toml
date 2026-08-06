@@ -26,11 +26,11 @@ fix_nix = "ln -sf $HOME/.nix-profiles/upstream-nix/bin/nix $HOME/.alan/bin/nix 2
 [post-start]
 tmuxinator = "(test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }})"
 
-# When switching to an existing worktree, attach to or create tmux session.
-# sleep 3 ensures post-start's tmuxinator has time to start before we check has-session,
-# preventing a duplicate session when both post-start and post-switch fire on creation.
+# When switching to an existing worktree, attach to existing tmux session only.
+# Session creation is handled by post-start (new worktrees only).
+# If no session exists (e.g. after reboot), start tmuxinator manually.
 [post-switch]
-tmuxinator = "sleep 3 && (tmux has-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null && tmux switch-client -t {{ repo }}-{{ branch | sanitize }} || (test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}))"
+tmuxinator = "tmux has-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null && tmux switch-client -t {{ repo }}-{{ branch | sanitize }} || true"
 
 # Auto-cleanup: kill tmux session when worktree is removed or merged
 [pre-remove]
