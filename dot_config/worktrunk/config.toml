@@ -26,12 +26,6 @@ tmux = "tmux kill-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null || t
 # Lix lacks fetchClosure which devbox requires. Remove once fix/lix-nix-upstream (PR #107282) merges.
 pre-start.fix-nix = "ln -sf ~/.nix-profiles/upstream-nix/bin/nix ~/.alan/bin/nix"
 
-# Inject direnv env into tmux before panes to avoid concurrent .envrc evaluation race.
-[projects."github.com/alan-eu/alan-apps".post-switch]
-tmuxinator = """
-bash -c 'unset DIRENV_DIR DIRENV_DIFF DIRENV_WATCHES; eval "$(direnv export bash 2>/dev/null)" || true; for key in $(compgen -e); do tmux set-environment -g "$key" "${!key}" 2>/dev/null || true; done' && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}
-"""
-
 [projects."github.com/alan-eu/alan-apps".step.copy-ignored]
 # .devbox/ contains virtenv symlinks that break copy-ignored (symlink vs real file conflict).
 # Devbox recreates everything correctly on first direnv load.
