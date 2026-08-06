@@ -26,7 +26,4 @@ tmux = "tmux kill-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null || t
 # Lix lacks fetchClosure which devbox requires. Remove once fix/lix-nix-upstream (PR #107282) merges.
 pre-start.fix-nix = "ln -sf ~/.nix-profiles/upstream-nix/bin/nix ~/.alan/bin/nix"
 
-# Warm devbox virtenv before tmuxinator spawns panes — prevents concurrent
-# direnv races (setup-corepack.mjs "file exists" errors).
-[projects."github.com/alan-eu/alan-apps".post-switch]
-tmuxinator = "/usr/local/bin/direnv exec '{{ worktree_path }}' true; /run/current-system/sw/bin/tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}"
+
