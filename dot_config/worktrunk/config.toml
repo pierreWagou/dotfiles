@@ -10,28 +10,11 @@
 # .git/ is the bare repo, worktrees are siblings: project/main/, project/feature/, etc.
 worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
 
-# Auto-rebuilt on every new worktree by the project config's `wt step copy-ignored`.
-# Exclude .devbox/virtenv/ to avoid symlink conflicts (already exists from devbox setup).
-[step.copy-ignored]
-exclude = [".devbox/virtenv/"]
-
 # --- Hooks ---
 
-# Fix nix symlink before project pre-start hooks run (user hooks run before project hooks).
-# This ensures ~/.alan/bin/nix points to upstream Nix before the project's `direnv allow` fires.
-[pre-start]
-fix_nix = "ln -sf $HOME/.nix-profiles/upstream-nix/bin/nix $HOME/.alan/bin/nix 2>/dev/null || true"
-
-# After ALL pre-start completes (devbox ready, direnv loaded), create tmux session without attaching.
-# post-switch handles the actual attach for both new and existing worktrees.
-[post-start]
-tmuxinator = "(test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} --no-attach 2>/dev/null || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} --no-attach 2>/dev/null) || true"
-
-# Attach to existing session OR create one if missing (handles both new and existing worktrees).
-# post-start already created the session for new worktrees (--no-attach), so we just switch-client.
-# For existing worktrees without a session (e.g. after reboot), start tmuxinator.
+# Create or attach to tmux session on every switch (new and existing worktrees)
 [post-switch]
-tmuxinator = "tmux has-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null && tmux switch-client -t {{ repo }}-{{ branch | sanitize }} || (test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }})"
+tmuxinator = "tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }}"
 
 # Auto-cleanup: kill tmux session when worktree is removed or merged
 [pre-remove]
