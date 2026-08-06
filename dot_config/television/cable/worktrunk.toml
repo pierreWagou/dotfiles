@@ -33,13 +33,13 @@ ctrl-d = "actions:remove"
 
 [actions.open]
 description = "Switch to worktree and attach to tmux session (create if missing)"
-command = "wt switch '{split:\\t:0}' -x tmux -- attach-session -t 'alan-apps-{{ branch | sanitize }}'"
+command = "wt switch '{split:\\t:0}'"
 mode = "execute"
 interactive = true
 
 [actions.create]
-description = "Create new branch + worktree (tmux session created by post-start after devbox ready)"
-command = "wt switch --create '{split:\\t:0}' -x tmux -- attach-session -t 'alan-apps-{{ branch | sanitize }}'"
+description = "Create new branch + worktree and open tmux session"
+command = "wt switch --create '{split:\\t:0}'"
 mode = "execute"
 interactive = true
 

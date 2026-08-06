@@ -22,10 +22,16 @@ exclude = [".devbox/virtenv/"]
 [pre-start]
 fix_nix = "ln -sf $HOME/.nix-profiles/upstream-nix/bin/nix $HOME/.alan/bin/nix 2>/dev/null || true"
 
-# After ALL pre-start completes (devbox ready, direnv loaded), create tmux session.
-# TV uses `wt switch -x tmux -- attach-session` to attach — no post-switch needed.
+# After ALL pre-start completes (devbox ready, direnv loaded), create tmux session without attaching.
+# post-switch handles the actual attach for both new and existing worktrees.
 [post-start]
 tmuxinator = "(test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} --no-attach 2>/dev/null || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} --no-attach 2>/dev/null) || true"
+
+# Attach to existing session OR create one if missing (handles both new and existing worktrees).
+# post-start already created the session for new worktrees (--no-attach), so we just switch-client.
+# For existing worktrees without a session (e.g. after reboot), start tmuxinator.
+[post-switch]
+tmuxinator = "tmux has-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null && tmux switch-client -t {{ repo }}-{{ branch | sanitize }} || (test -f ~/.config/tmuxinator/{{ repo }}.yml && tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }} || tmuxinator start workspace {{ repo }}-{{ branch | sanitize }} path={{ worktree_path }})"
 
 # Auto-cleanup: kill tmux session when worktree is removed or merged
 [pre-remove]
