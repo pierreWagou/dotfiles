@@ -10,12 +10,12 @@
 [metadata]
 name = "worktrunk"
 description = "Open a worktree branch in a new tmux window"
-requirements = ["wt", "git", "jq"]
+requirements = ["wt", "git"]
 
 [source]
 command = [
-  # Default: existing worktrees with status
-  "wt list --format=json 2>/dev/null | jq -r '.[] | \"\\(.branch)\\t\\(.status // \"-\")\\t\\(.path)\"' || echo 'No worktrees'",
+  # Default: existing worktrees — fast via git porcelain (skips detached HEADs)
+  "git worktree list --porcelain | awk '/^worktree/{wt=$2} /^branch/{print substr($2,12) \"\\t-\\t\" wt}'",
   # Alt: all local + remote branches (for creating new worktrees)
   "git branch --all --format='%(refname:short)' | sed 's|^origin/||' | sort -u",
 ]
