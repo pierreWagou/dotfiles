@@ -14,6 +14,7 @@ windows:
       panes:
         - workspace:
             - mkdir -p ~/.alan/bin && ln -sf /opt/homebrew/bin/tmux ~/.alan/bin/tmux
+            - alan dev session setup
             - /run/current-system/sw/bin/tmux split-window -h -l 40% -d
             - /run/current-system/sw/bin/tmux split-window -v -t .1 -l 25% -d
             - >-
