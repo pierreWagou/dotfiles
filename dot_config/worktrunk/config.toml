@@ -29,4 +29,4 @@ pre-start.fix-nix = "ln -sf ~/.nix-profiles/upstream-nix/bin/nix ~/.alan/bin/nix
 [projects."github.com/alan-eu/alan-apps".step.copy-ignored]
 # .devbox/ contains virtenv symlinks that break copy-ignored (symlink vs real file conflict).
 # Devbox recreates everything correctly on first direnv load.
-exclude = [".devbox/"]
+exclude = [".devbox/virtenv/"]
