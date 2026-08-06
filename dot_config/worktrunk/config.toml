@@ -26,10 +26,6 @@ tmux = "tmux kill-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null || t
 # Lix lacks fetchClosure which devbox requires. Remove once fix/lix-nix-upstream (PR #107282) merges.
 pre-start.fix-nix = "ln -sf ~/.nix-profiles/upstream-nix/bin/nix ~/.alan/bin/nix"
 
-# Warm devbox virtenv before tmuxinator spawns panes — prevents concurrent
-# direnv/devbox shellenv races (setup-corepack.mjs "file exists" errors).
-pre-start.warm-devbox = "cd '{{ worktree_path }}' && direnv exec . true 2>/dev/null || true"
-
 [projects."github.com/alan-eu/alan-apps".step.copy-ignored]
 # .devbox/ contains virtenv symlinks that break copy-ignored (symlink vs real file conflict).
 # Devbox recreates everything correctly on first direnv load.
