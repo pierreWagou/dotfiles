@@ -25,8 +25,3 @@ tmux = "tmux kill-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null || t
 # Interim fix: ensure ~/.alan/bin/nix points to upstream Nix (not Lix) before devbox initializes.
 # Lix lacks fetchClosure which devbox requires. Remove once fix/lix-nix-upstream (PR #107282) merges.
 pre-start.fix-nix = "ln -sf ~/.nix-profiles/upstream-nix/bin/nix ~/.alan/bin/nix"
-
-[projects."github.com/alan-eu/alan-apps".step.copy-ignored]
-# .devbox/ contains virtenv symlinks that break copy-ignored (symlink vs real file conflict).
-# Devbox recreates everything correctly on first direnv load.
-exclude = [".devbox/virtenv/"]
