@@ -20,10 +20,5 @@ tmuxinator = "tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} pat
 [pre-remove]
 tmux = "tmux kill-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null || true"
 
-# Per-repo overrides
-# Pre-warm direnv once before tmuxinator opens windows, preventing devbox virtenv
-# symlink races when multiple windows trigger direnv simultaneously on a fresh worktree.
-[[projects."github.com/alan-eu/alan-apps".pre-start]]
-prewarm = "direnv exec . true"
 
 
