@@ -33,7 +33,7 @@ windows:
             - nvim
   - services:
       panes:
-        - until [ -d .devbox/virtenv/nodejs/bin ]; do sleep 1; done && mise run mprocs
+        - /bin/sh -c 'until [ -d .devbox/virtenv/nodejs/bin ]; do sleep 1; done; exec zsh -c "mise run mprocs"'
   - aoe:
       panes:
-        - until [ -d .devbox/virtenv/nodejs/bin ]; do sleep 1; done && aoe
+        - /bin/sh -c 'until [ -d .devbox/virtenv/nodejs/bin ]; do sleep 1; done; exec zsh -c "aoe"'
