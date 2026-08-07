@@ -20,5 +20,8 @@ tmuxinator = "tmuxinator start {{ repo }} {{ repo }}-{{ branch | sanitize }} pat
 [pre-remove]
 tmux = "tmux kill-session -t {{ repo }}-{{ branch | sanitize }} 2>/dev/null || true"
 
+[[projects."github.com/alan-eu/alan-apps".pre-start]]
+prewarm = "direnv exec . true"
+
 
 
