@@ -1,19 +1,28 @@
 procs:
   fr-server:
-    shell: "API_PORT=$FR_API_PORT alan run --scope frontend -- yarn workspace fr-server dev"
+    shell: |
+      read -p "API port [${FR_API_PORT:-8001}]: " port </dev/tty
+      API_PORT=${port:-${FR_API_PORT:-8001}} alan run --scope frontend -- yarn workspace fr-server dev
     autostart: false
   metro:
     shell: "alan run --scope frontend -- yarn workspace alan-mobile dev"
     autostart: false
   fr-api-shared:
-    shell: "alan run --scope backend -- env APP=fr_api flask runserver --use-kay=shared_on_aurora"
+    shell: |
+      read -p "Frontend port [${FR_SERVER_PORT:-4001}]: " fport </dev/tty
+      FRONTEND_PORT=${fport:-${FR_SERVER_PORT:-4001}} alan run --scope backend -- env APP=fr_api flask runserver --use-kay=shared_on_aurora
     autostart: false
   fr-api:
-    shell: "alan run --scope backend -- env APP=fr_api flask runserver --use-kay=on_aurora"
+    shell: |
+      read -p "Frontend port [${FR_SERVER_PORT:-4001}]: " fport </dev/tty
+      FRONTEND_PORT=${fport:-${FR_SERVER_PORT:-4001}} alan run --scope backend -- env APP=fr_api flask runserver --use-kay=on_aurora
     autostart: false
   mailpit:
     shell: "mise run mailpit"
     autostart: false
   redis:
     shell: "mise run redis"
+    autostart: false
+  oauth-router:
+    shell: "alan run --scope backend -- python -m apps.oauth_router"
     autostart: false
