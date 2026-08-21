@@ -2,7 +2,7 @@ procs:
   fr-server:
     shell: |
       read -p "API port [${FR_API_PORT:-8001}]: " port </dev/tty
-      API_PORT=${port:-${FR_API_PORT:-8001}} alan run --scope frontend -- yarn workspace fr-server dev
+      API_PORT=${port:-${FR_API_PORT:-8001}} frontend/bin/start-dev-server fr-server
     autostart: false
   metro:
     shell: "alan run --scope frontend -- yarn workspace alan-mobile dev"
@@ -10,12 +10,12 @@ procs:
   fr-api-shared:
     shell: |
       read -p "Frontend port [${FR_SERVER_PORT:-4001}]: " fport </dev/tty
-      FRONTEND_PORT=${fport:-${FR_SERVER_PORT:-4001}} alan run --scope backend -- env APP=fr_api flask runserver --use-kay=shared_on_aurora
+      FRONTEND_PORT=${fport:-${FR_SERVER_PORT:-4001}} backend/bin/start-dev-server fr_api --use-kay=shared_on_aurora
     autostart: false
   fr-api:
     shell: |
       read -p "Frontend port [${FR_SERVER_PORT:-4001}]: " fport </dev/tty
-      FRONTEND_PORT=${fport:-${FR_SERVER_PORT:-4001}} alan run --scope backend -- env APP=fr_api flask runserver --use-kay=on_aurora
+      FRONTEND_PORT=${fport:-${FR_SERVER_PORT:-4001}} backend/bin/start-dev-server fr_api --use-kay=on_aurora
     autostart: false
   mailpit:
     shell: "mise run mailpit"
