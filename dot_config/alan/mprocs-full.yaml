@@ -26,3 +26,6 @@ procs:
   oauth-router:
     shell: "alan run --scope backend -- python -m apps.oauth_router"
     autostart: false
+  flask-shell:
+    shell: "alan run --scope backend -- env APP=fr_api flask shell"
+    autostart: false

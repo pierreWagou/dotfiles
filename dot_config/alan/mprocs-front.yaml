@@ -1,6 +1,8 @@
 procs:
   fr-server:
-    shell: "API_PORT=$FR_API_PORT alan run --scope frontend -- yarn workspace fr-server dev"
+    shell: |
+      read -p "Backend port [${FR_API_PORT:-8001}]: " port </dev/tty
+      API_HOST=http://localhost:${port:-${FR_API_PORT:-8001}} alan run --scope frontend -- yarn workspace fr-server dev
     autostart: false
   metro:
     shell: "alan run --scope frontend -- yarn workspace alan-mobile dev"

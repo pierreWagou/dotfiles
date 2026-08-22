@@ -1,0 +1,35 @@
+# Layout:
+#   ┌──────────┬─────────────┐
+#   │          │             │
+#   │   nvim   │  opencode   │
+#   │ (zoomed) │             │
+#   ├──────────┤             │
+#   │ terminal │             │
+#   └──────────┴─────────────┘
+name: <%= @args[0] || "wagounix" %>
+root: <%= @settings["path"] || "~/Projects/wagou/wagounix" %>
+
+windows:
+  - workspace:
+      panes:
+        - workspace:
+            - tmux split-window -h -l 40% -d
+            - tmux split-window -v -t .1 -l 25% -d
+            - >-
+                tmux send-keys -t .3 'aoe add . -c opencode -t
+                $(basename $(pwd)) 2>/dev/null; aoe session start
+                $(basename $(pwd)) 2>/dev/null; sleep 2; ID=$(aoe list
+                --json | jq -r --arg p "$(pwd)"
+                '"'"'.[]|select(.path==$p)|.id'"'"' | head -1
+                | cut -c1-8); SESSION=$(tmux list-sessions 2>/dev/null
+                | grep "^aoe_.*${ID}" | cut -d: -f1);
+                [ -n "$SESSION" ] &&
+                tmux join-pane -s "$SESSION" -t .3 -l 100% &&
+                tmux kill-pane -t .3' Enter
+            - nvim
+  - wagoulab:
+      panes:
+        - ssh wagoulab
+  - aoe:
+      panes:
+        - aoe

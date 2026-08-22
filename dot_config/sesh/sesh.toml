@@ -9,6 +9,7 @@ path = "~/Projects/alan/alan-apps"
 [[session]]
 name = "dotfiles"
 path = "~/.local/share/chezmoi"
+startup_command = "tmuxinator start workspace {} path={} --append && tmux kill-window -t $(basename {}):1"
 
 [[session]]
 name = "wagounix"

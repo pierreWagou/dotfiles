@@ -6,3 +6,56 @@ show_tools = true
 
 [settings.python]
 uv_venv_auto = "source"
+
+[tasks.mprocs]
+description = "Start mprocs for current branch type (/front, /back, or full)"
+run = """
+branch=$(git branch --show-current 2>/dev/null || echo "")
+if echo "$branch" | grep -q '/front$'; then
+  mise run mprocs-front
+elif echo "$branch" | grep -q '/back$'; then
+  mise run mprocs-back
+else
+  mise run mprocs-full
+fi
+"""
+
+[tasks.mprocs-front]
+description = "Frontend: fr-server + metro"
+run = "mprocs --config ~/.config/alan/mprocs-front.yaml"
+
+[tasks.mprocs-back]
+description = "Backend: fr_api flask runserver"
+run = "mprocs --config ~/.config/alan/mprocs-back.yaml"
+
+[tasks.mprocs-full]
+description = "All services"
+run = "mprocs --config ~/.config/alan/mprocs-full.yaml"
+
+[tasks.kay-refresh]
+description = "Refresh the personal key for fr_api"
+run = "alan run --scope backend -- env APP=fr_api flask kay refresh"
+
+[tasks.fr-server]
+description = "Frontend: fr-server dev server"
+run = "alan run --scope frontend -- yarn workspace fr-server dev"
+
+[tasks.metro]
+description = "Frontend: alan-mobile dev server"
+run = "alan run --scope frontend -- yarn workspace alan-mobile dev"
+
+[tasks.fr-api-shared]
+description = "Backend: flask runserver with shared kay on aurora"
+run = "alan run --scope backend -- env APP=fr_api flask runserver --use-kay=shared_on_aurora"
+
+[tasks.fr-api]
+description = "Backend: flask runserver with kay on aurora"
+run = "alan run --scope backend -- env APP=fr_api flask runserver --use-kay=on_aurora"
+
+[tasks.mailpit]
+description = "Local email testing: SMTP on :1025, web UI on :8025"
+run = "mailpit --smtp 127.0.0.1:1025 --listen 127.0.0.1:8025"
+
+[tasks.redis]
+description = "Redis server on port 6379"
+run = "redis-server devbox.d/redis/redis.conf --port 6379 --logfile \"\""

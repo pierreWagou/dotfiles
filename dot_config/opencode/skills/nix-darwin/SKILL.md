@@ -69,6 +69,6 @@ The `build` alias: `sudo darwin-rebuild switch --flake ~/Projects/wagou/wagounix
 - `mutableTaps = false` — new Homebrew taps must be added as flake inputs
 - GUI apps → Homebrew casks; CLI tools → nix packages (prefer nix when available)
 - No home-manager — user dotfiles are managed by chezmoi separately
-- Nix daemon is managed by Lix installer, not nix-darwin (`nix.enable = false`)
+- Nix daemon is managed by the standard Nix installer, not nix-darwin (`nix.enable = false`)
 - Always `darwin-rebuild build` first to test, then `switch` to activate
 - Load the wagounix project's own AGENTS.md when working inside `~/Projects/wagou/wagounix` for full structural details

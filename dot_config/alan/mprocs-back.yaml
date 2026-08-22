@@ -1,0 +1,10 @@
+procs:
+  fr-api:
+    shell: "APP=fr_api alan run --scope backend -- flask runserver"
+    autostart: false
+  mailpit:
+    shell: "mise run mailpit"
+    autostart: false
+  redis:
+    shell: "mise run redis"
+    autostart: false

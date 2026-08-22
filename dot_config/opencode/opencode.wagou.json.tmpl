@@ -1,0 +1,35 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode-go/mimo-v2.5",
+  "small_model": "opencode-go/mimo-v2.5",
+  "mcp": {
+    "google": {
+      "type": "remote",
+      "url": "TODO"
+    },
+    "home-assistant": {
+      "type": "remote",
+      "url": "https://home.wagou.fr/api/mcp",
+      "oauth": {
+        "clientId": "http://localhost:3119",
+        "callbackPort": 3119,
+        "redirectUri": "http://localhost:3119/callback"
+      }
+    },
+    "authentik": {
+      "type": "local",
+      "command": ["npx", "-y", "@samik081/mcp-authentik"],
+      "environment": {
+        "AUTHENTIK_URL": "https://auth.wagou.fr",
+        "AUTHENTIK_TOKEN": "{{ (rbw "Authentik Token").data.password }}"
+      }
+    },
+    "cloudflare": {
+      "type": "remote",
+      "url": "https://mcp.cloudflare.com/mcp",
+      "oauth": {
+        "callbackPort": 3119
+      }
+    }
+  }
+}
