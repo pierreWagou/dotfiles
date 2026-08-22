@@ -58,7 +58,7 @@ assets/
 # -----------------------------------------------------------------------------
 
 # NixOS server: no GUI, no macOS tools
-{{ if eq .nixProfile "wagoulab" }}
+{{ if eq .chezmoi.os "linux" }}
 .ssh/config
 .config/ghostty/**
 .config/spicetify/**

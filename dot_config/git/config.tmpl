@@ -51,7 +51,7 @@
 # -----------------------------------------------------------------------------
 # Credentials
 # -----------------------------------------------------------------------------
-{{- if ne .nixProfile "wagoulab" }}
+{{- if ne .chezmoi.os "linux" }}
 [credential]
     helper = manager
     credentialStore = keychain

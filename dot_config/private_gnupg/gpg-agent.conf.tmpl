@@ -9,7 +9,7 @@ enable-ssh-support
 grab
 
 # Pinentry program
-{{ if eq .nixProfile "wagoulab" -}}
+{{ if eq .chezmoi.os "linux" -}}
 pinentry-program /run/current-system/sw/bin/pinentry-curses
 {{ else -}}
 pinentry-program /run/current-system/sw/bin/pinentry-mac
