@@ -110,13 +110,13 @@ fi
 # System
 alias update='nix flake update --flake ~/Projects/wagou/wagounix'
 build() {
-  local ref="${1:-main}"
   local profile="{{ if eq .chezmoi.os "linux" }}{{ .chezmoi.hostname }}{{ else }}{{ .nixProfile }}{{ end }}"
-  sudo {{ if eq .chezmoi.os "linux" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --refresh --flake "github:pierreWagou/wagounix?ref=$ref#$profile"
-}
-build-local() {
-  local profile="{{ if eq .chezmoi.os "linux" }}{{ .chezmoi.hostname }}{{ else }}{{ .nixProfile }}{{ end }}"
-  sudo {{ if eq .chezmoi.os "linux" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake ~/Projects/wagou/wagounix#$profile
+  local cmd="{{ if eq .chezmoi.os "linux" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }}"
+  if [ "${1:-}" = "local" ]; then
+    sudo $cmd switch --flake ~/Projects/wagou/wagounix#$profile
+  else
+    sudo $cmd switch --refresh --flake "github:pierreWagou/wagounix?ref=${1:-main}#$profile"
+  fi
 }
 alias vpn='sudo openvpn --config ~/.openvpn/home.ovpn'
 
