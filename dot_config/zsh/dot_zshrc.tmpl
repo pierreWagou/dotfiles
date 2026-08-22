@@ -110,7 +110,7 @@ fi
 # System
 alias update='nix flake update --flake ~/Projects/wagou/wagounix'
 build() {
-  local profile="{{ if eq .chezmoi.os "linux" }}{{ .chezmoi.hostname }}{{ else }}{{ .nixProfile }}{{ end }}"
+  local profile="{{ .nixProfile }}"
   local cmd="{{ if eq .chezmoi.os "linux" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }}"
   if [ "${1:-}" = "local" ]; then
     sudo $cmd switch --flake ~/Projects/wagou/wagounix#$profile
