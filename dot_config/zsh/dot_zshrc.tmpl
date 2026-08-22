@@ -111,9 +111,13 @@ fi
 alias update='nix flake update --flake ~/Projects/wagou/wagounix'
 build() {
   local ref="${1:-main}"
-  sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --refresh --flake "github:pierreWagou/wagounix?ref=$ref#{{ .nixProfile }}"
+  local profile="{{ if eq .chezmoi.os "linux" }}{{ .chezmoi.hostname }}{{ else }}{{ .nixProfile }}{{ end }}"
+  sudo {{ if eq .chezmoi.os "linux" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --refresh --flake "github:pierreWagou/wagounix?ref=$ref#$profile"
 }
-alias build-local='sudo {{ if eq .nixProfile "wagoulab" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake ~/Projects/wagou/wagounix#{{ .nixProfile }}'
+build-local() {
+  local profile="{{ if eq .chezmoi.os "linux" }}{{ .chezmoi.hostname }}{{ else }}{{ .nixProfile }}{{ end }}"
+  sudo {{ if eq .chezmoi.os "linux" }}nixos-rebuild{{ else }}darwin-rebuild{{ end }} switch --flake ~/Projects/wagou/wagounix#$profile
+}
 alias vpn='sudo openvpn --config ~/.openvpn/home.ovpn'
 
 # Eza (ls replacement)

@@ -1,2 +1,4 @@
 [data]
-  nixProfile = {{ promptChoiceOnce . "nixProfile" "Which nix profile?" (list "alan" "wagoumac" "wagoulab") | quote }}
+{{ if eq .chezmoi.os "darwin" }}
+  nixProfile = {{ promptChoiceOnce . "nixProfile" "Which nix profile?" (list "alan" "wagoumac") | quote }}
+{{ end }}
