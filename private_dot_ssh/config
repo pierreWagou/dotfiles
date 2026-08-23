@@ -6,7 +6,7 @@ Host wagoulab
     UseKeychain yes
 
 Host wagou-clone
-    HostName 192.168.68.66
+    HostName 192.168.68.62
     User wagou
     IdentityFile ~/.ssh/id_ed25519_wagoulab
     AddKeysToAgent yes
