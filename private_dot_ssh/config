@@ -1,5 +1,5 @@
-Host wagoulab
-    HostName 192.168.68.65
+Host wagou-prime
+    HostName 192.168.68.66
     User wagou
     IdentityFile ~/.ssh/id_ed25519_wagoulab
     AddKeysToAgent yes

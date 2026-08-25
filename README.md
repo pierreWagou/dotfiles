@@ -15,7 +15,7 @@
 Personal macOS and NixOS configuration managed with [chezmoi](https://chezmoi.io/), themed with **Catppuccin Mocha**, provisioned with **Nix Darwin** and **NixOS**.
 
 - Terminal-first workflow -- Ghostty, tmux, Neovim, zsh
-- Three Nix profiles -- `alan` (work), `wagoumac` (personal Mac), `wagoulab` (NixOS)
+- Three Nix profiles -- `alan-mac` (work), `wagou-mac` (personal Mac), `wagoulab` (NixOS)
 - Secrets injected at apply-time via rbw (Bitwarden/Vaultwarden CLI) and 1Password -- zero credentials in the repo
 - Profile-aware overlays for alan and wagou via direnv + opencode config
 ## Architecture
@@ -95,7 +95,7 @@ dot_config/
 chezmoi init --apply pierreWagou
 ```
 
-You will be prompted to select a Nix profile (`alan`, `wagoumac`, or `wagoulab`).
+You will be prompted to select a Nix profile (`alan-mac`, `wagou-mac`, or `wagoulab`).
 
 ## Shell
 

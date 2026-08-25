@@ -11,7 +11,7 @@ Delegate to `alan-skills:standup` with the following vault-first overrides:
 1. **Read the vault first**: Check `📓 Journal/` for yesterday's notes, `🚀 Projects/` for active work, `📅 Meetings/` for any relevant meetings. Use this as additional context on top of what the skill fetches from Slack/Linear/GitHub.
 2. **Voice**: match `🪞 Personal/Voice Profile.md` at `/Users/pierre.romon/Documents/Alan/🪞 Personal/Voice Profile.md`
 3. **Identity**: Slack user U0B5H5GPS6T, GitHub pierreWagou, Linear "me", email pierre.romon@alan.eu
-4. **Posting**: Draft-post to `#crew_outbound` (channel ID: `C0A745QTFDJ`). Each day gets its own thread — create a new thread with today's date as the topic. Use `slack_send_message_draft` so Pierre can review before sending.
+4. **Posting**: Draft-post to `#crew_outbound` (channel ID: `C0A745QTFDJ`) as a reply to today's Daily Sync Bot thread. Search for the bot's message from today in the channel, then post the standup as a draft reply using `slack_send_message_draft` with `thread_ts` set to the bot's message timestamp.
 
 ## Template (follow exactly)
 
@@ -37,7 +37,7 @@ The standup output MUST match this template exactly — no extra sections, no re
 - `:todo:` — list planned work for today (issues to pick up, things to build, problems to solve). Each item on its own line.
 - `:interrobang:` — blockers, questions, or things needing input. **Ask Pierre via the `question` tool if he has any blockers or questions. If he has none, omit this section entirely.**
 - Use standard markdown links `[text](URL)` throughout.
-- Blank line between every section for Slack line breaks.
+- Blank line between sections only (`:alan-hug:` → `:done:` → `:progress:` → `:todo:` → `:interrobang:`). Do NOT add blank lines between items within the same section.
 - Do NOT add or reorder sections.
 
 ### Inference rules
@@ -78,7 +78,7 @@ Before outputting, verify:
 - [ ] No meetings or syncs in ANY section
 - [ ] Each `:done:` and `:progress:` item has an inline link
 - [ ] `:todo:` items are specific and actionable
-- [ ] Blank line between every section
+- [ ] Blank line between sections only, no blank lines between items within a section
 - [ ] No extra sections added, no sections removed or reordered
 - [ ] Exactly 4 or 5 sections present: `:alan-hug:`, `:done:`, `:progress:`, `:todo:`, and optionally `:interrobang:`
 
@@ -89,6 +89,6 @@ Before outputting, verify:
 3. **Ask Pierre via the `question` tool** if he has any blockers or questions (for the `:interrobang:` section)
 4. If he has blockers/questions, include `:interrobang:`; otherwise omit it
 5. Generate the standup message using the template above
-6. Create a new thread in `#crew_outbound` (channel ID: `C0A745QTFDJ`) with today's date as the topic
-7. Post the standup as a draft in that thread using `slack_send_message_draft`
-8. Pierre reviews and sends
+6. Find today's Daily Sync Bot thread in `#crew_outbound` (channel ID: `C0A745QTFDJ`) by searching for messages from the bot posted today. Capture its message timestamp.
+7. Post the standup as a draft reply to that thread using `slack_send_message_draft` with `channel: C0A745QTFDJ` and `thread_ts: <bot_message_timestamp>`.
+8. Pierre reviews and sends the draft.

@@ -60,8 +60,8 @@ The `build` alias: `sudo darwin-rebuild switch --flake ~/Projects/wagou/wagounix
 
 | Profile | System | Description |
 |---|---|---|
-| `alan` | aarch64-darwin | Work Mac |
-| `wagoumac` | aarch64-darwin | Personal Mac |
+| `alan-mac` | aarch64-darwin | Work Mac |
+| `wagou-mac` | aarch64-darwin | Personal Mac |
 
 ## Important rules
 

@@ -1,6 +1,6 @@
 [data]
 {{ if eq .chezmoi.os "darwin" }}
-  nixProfile = {{ promptChoiceOnce . "nixProfile" "Which nix profile?" (list "alan" "wagoumac") | quote }}
+  nixProfile = {{ promptChoiceOnce . "nixProfile" "Which nix profile?" (list "alan-mac" "wagou-mac") | quote }}
 {{ else }}
   nixProfile = {{ .chezmoi.hostname | quote }}
 {{ end }}
