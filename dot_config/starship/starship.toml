@@ -55,7 +55,7 @@ NixOS = " "
 Linux = " "
 
 [directory]
-format = "[ $read_only$path ](bg:red fg:base)"
+format = "[ $read_only$path ](bg:mauve fg:base)"
 style = "bg:mauve fg:base"
 read_only = "󰍁 "
 read_only_style = "bg:mauve fg:red"
