@@ -21,7 +21,7 @@
       "command": ["npx", "-y", "@samik081/mcp-authentik"],
       "environment": {
         "AUTHENTIK_URL": "https://auth.wagou.fr",
-        "AUTHENTIK_TOKEN": "{{ (rbw "Authentik Token").data.password }}"
+        "AUTHENTIK_TOKEN": "{{ (rbwFields "Authentik").Token.value }}"
       }
     },
     "cloudflare": {

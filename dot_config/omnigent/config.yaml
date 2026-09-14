@@ -1,0 +1,7 @@
+# Omnigent user configuration
+host:
+  host_id: c73ecf51de124fbe9492f96967a4cc55
+  name: Pierre-Romon-MGTV6XJQJX.local
+server: https://ai.wagou.fr
+tui:
+  theme: dark

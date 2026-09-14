@@ -1,0 +1,53 @@
+spec_version: 1
+name: wagou
+description: Wagou home server agent
+
+prompt: |
+  You are a coding agent running on the wagou home server.
+  Inspect files before editing, run targeted tests,
+  and summarize changes with validation results.
+
+instructions: AGENTS.md
+
+executor:
+  type: omnigent
+  config:
+    harness: opencode
+  model: opencode-go/mimo-v2.5
+
+os_env:
+  type: caller_process
+  cwd: .
+  sandbox:
+    type: none
+
+tools:
+  context7:
+    type: mcp
+    url: https://mcp.context7.com/mcp
+
+  gh_grep:
+    type: mcp
+    url: https://mcp.grep.app
+
+  home-assistant:
+    type: mcp
+    url: https://home.wagou.fr/api/mcp
+    headers:
+      Authorization: "Bearer {{ (rbwFields `Home Assistant`).Token.value }}"
+
+  authentik:
+    type: mcp
+    command: npx
+    args:
+      - -y
+      - "@samik081/mcp-authentik"
+    env:
+      AUTHENTIK_URL: "https://auth.wagou.fr"
+      AUTHENTIK_TOKEN: "{{ (rbwFields `Authentik`).Token.value }}"
+
+  cloudflare:
+    type: mcp
+    url: https://mcp.cloudflare.com/mcp
+    headers:
+      Authorization: "Bearer {{ (rbwFields `CloudFlare`).Token.value }}"
