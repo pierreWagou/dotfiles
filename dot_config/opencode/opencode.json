@@ -36,6 +36,13 @@
     "opencode-notify",
     "@plannotator/opencode@latest"
   ],
+  "provider": {
+    "amazon-bedrock": {
+      "options": {
+        "region": "eu-north-1"
+      }
+    }
+  },
   "mcp": {
     "context7": {
       "type": "remote",

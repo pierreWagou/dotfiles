@@ -15,7 +15,7 @@ windows:
         - workspace:
             - tmux split-window -h -l 40% -d
             - tmux split-window -v -t .1 -l 25% -d
-            - tmux send-keys -t .3 'opencode attach http://localhost:4096' Enter
+            - tmux send-keys -t .3 'omni-wagou' Enter
             - nvim
   - wagou-prime:
       panes:

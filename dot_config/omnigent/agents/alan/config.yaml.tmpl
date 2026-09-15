@@ -13,18 +13,19 @@ executor:
   type: omnigent
   config:
     harness: opencode
-  model: amazon-bedrock/eu.anthropic.claude-sonnet-4-6
+  model: amazon-bedrock/eu.anthropic.claude-sonnet-4-5-20250929-v1:0
 
 os_env:
   type: caller_process
   cwd: .
   sandbox:
     type: none
-
 tools:
   linear:
     type: mcp
     url: https://mcp.linear.app/mcp
+    headers:
+      Authorization: "Bearer {{ (rbwFields `Linear`).Token.value }}"
   notion:
     type: mcp
     url: https://mcp.notion.com/mcp
