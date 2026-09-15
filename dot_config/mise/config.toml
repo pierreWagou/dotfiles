@@ -22,14 +22,17 @@ fi
 
 [tasks.mprocs-front]
 description = "Frontend: fr-server + metro"
+dir = "{{cwd}}"
 run = "mprocs --config ~/.config/alan/mprocs-front.yaml"
 
 [tasks.mprocs-back]
 description = "Backend: fr_api flask runserver"
+dir = "{{cwd}}"
 run = "mprocs --config ~/.config/alan/mprocs-back.yaml"
 
 [tasks.mprocs-full]
 description = "All services"
+dir = "{{cwd}}"
 run = "mprocs --config ~/.config/alan/mprocs-full.yaml"
 
 [tasks.kay-refresh]
