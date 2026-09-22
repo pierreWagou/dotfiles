@@ -1,15 +1,33 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "amazon-bedrock/claude_code_claude_sonnet_4_5",
-  "small_model": "amazon-bedrock/claude_code_claude_sonnet_4_5",
+  "model": "amazon-bedrock/alan-anthropic-sonnet-4-8",
+  "small_model": "amazon-bedrock/alan-anthropic-sonnet-4-8",
+  "watcher": {
+    "ignore": [
+      "**/.git/**",
+      "**/node_modules/**",
+      "**/.devbox/**",
+      "**/.venv/**",
+      "**/__pycache__/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.next/**",
+      "**/.turbo/**",
+      "**/.mypy_cache/**",
+      "**/.pytest_cache/**",
+      "**/.terraform/**",
+      "**/coverage/**",
+      "**/.opencode/**"
+    ]
+  },
   "provider": {
     "amazon-bedrock": {
       "options": {
         "region": "eu-central-1"
       },
       "models": {
-        "claude_code_claude_sonnet_4_5": {
-          "id": "arn:aws:bedrock:eu-central-1:624118351943:application-inference-profile/sdi02f8wt6l6"
+        "alan-anthropic-sonnet-4-8": {
+          "id": "arn:aws:bedrock:eu-central-1:624118351943:application-inference-profile/rug2n17ooouc"
         }
       }
     }
@@ -19,7 +37,9 @@
       "~/Documents/Alan/**": "allow"
     }
   },
-  "plugin": ["cc-safety-net"],
+  "plugin": [
+    "cc-safety-net"
+  ],
   "mcp": {
     "linear": {
       "type": "remote",
@@ -52,7 +72,10 @@
     },
     "quill": {
       "type": "local",
-      "command": ["node", "/Users/pierre.romon/Library/Application Support/Quill/mcp-stdio-bridge.js"],
+      "command": [
+        "node",
+        "/Users/pierre.romon/Library/Application Support/Quill/mcp-stdio-bridge.js"
+      ],
       "enabled": true
     },
     "customerio": {
