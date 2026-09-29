@@ -9,6 +9,7 @@ uv_venv_auto = "source"
 
 [tasks.mprocs]
 description = "Start mprocs for current branch type (/front, /back, or full)"
+dir = "{{cwd}}"
 run = """
 branch=$(git branch --show-current 2>/dev/null || echo "")
 if echo "$branch" | grep -q '/front$'; then
@@ -22,14 +23,17 @@ fi
 
 [tasks.mprocs-front]
 description = "Frontend: fr-server + metro"
+dir = "{{cwd}}"
 run = "mprocs --config ~/.config/alan/mprocs-front.yaml"
 
 [tasks.mprocs-back]
 description = "Backend: fr_api flask runserver"
+dir = "{{cwd}}"
 run = "mprocs --config ~/.config/alan/mprocs-back.yaml"
 
 [tasks.mprocs-full]
 description = "All services"
+dir = "{{cwd}}"
 run = "mprocs --config ~/.config/alan/mprocs-full.yaml"
 
 [tasks.kay-refresh]
@@ -58,4 +62,5 @@ run = "mailpit --smtp 127.0.0.1:1025 --listen 127.0.0.1:8025"
 
 [tasks.redis]
 description = "Redis server on port 6379"
+dir = "{{cwd}}"
 run = "redis-server devbox.d/redis/redis.conf --port 6379 --logfile \"\""
