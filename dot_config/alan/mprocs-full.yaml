@@ -21,7 +21,8 @@ procs:
     shell: "mise run mailpit"
     autostart: false
   redis:
-    shell: "mise run redis"
+    shell: |
+      direnv exec . bash -c 'redis-server devbox.d/redis/redis.conf --port "${REDIS_PORT:-6379}" --logfile ""'
     autostart: false
   oauth-router:
     shell: "alan run --scope backend -- python -m apps.oauth_router"
