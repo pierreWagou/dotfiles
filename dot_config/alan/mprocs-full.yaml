@@ -29,3 +29,11 @@ procs:
   flask-shell:
     shell: "alan run --scope backend -- env APP=fr_api flask shell --use-kay=on_aurora"
     autostart: false
+  events-publisher:
+    shell: |
+      cd events_pipeline/events_publisher && direnv exec . bash -c 'DATABASE_URL=postgresql:///alan_backend REDIS_STREAMS_URL="${REDIS_STREAMS_URL:-redis://127.0.0.1:6379/0}" uv run python -m events_publisher start --log-level INFO'
+    autostart: false
+  fr-api-events-consumer:
+    shell: |
+      cd backend/apps/fr_api && direnv exec . bash -c 'ALAN_LOG_GLOBAL_SESSION_USE=1 ALAN_USE_GLOBAL_SESSION=0 REDIS_STREAMS_URL="${REDIS_STREAMS_URL:-redis://127.0.0.1:6379/0}" flask events_pipeline consumer'
+    autostart: false
