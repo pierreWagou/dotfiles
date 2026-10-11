@@ -5,6 +5,13 @@ Host wagou-prime
     AddKeysToAgent yes
     UseKeychain yes
 
+Host wagou-prime-tail
+    HostName 100.97.36.56
+    User wagou
+    IdentityFile ~/.ssh/id_ed25519_wagoulab
+    AddKeysToAgent yes
+    UseKeychain yes
+
 Host wagou-clone
     HostName 192.168.68.62
     User wagou
