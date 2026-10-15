@@ -1,0 +1,22 @@
+# Layout:
+#   ┌──────────┬─────────────┐
+#   │          │             │
+#   │   nvim   │  opencode   │
+#   │ (zoomed) │             │
+#   ├──────────┤             │
+#   │ terminal │             │
+#   └──────────┴─────────────┘
+name: <%= @args[0] || "atelier-limoun" %>
+root: <%= @settings["path"] || "~/Projects/wagou/atelier-limoun" %>
+
+windows:
+  - workspace:
+      panes:
+        - workspace:
+            - tmux split-window -h -l 40% -d
+            - tmux split-window -v -t .1 -l 25% -d
+            - tmux send-keys -t .3 'omni-wagou' Enter
+            - nvim
+  - vps:
+      panes:
+        - ssh ubuntu@149.202.40.156
