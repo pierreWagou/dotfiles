@@ -19,4 +19,4 @@ windows:
             - nvim
   - vps:
       panes:
-        - ssh ubuntu@149.202.40.156
+        - ssh atelier-limoun

@@ -18,3 +18,9 @@ Host wagou-clone
     IdentityFile ~/.ssh/id_ed25519_wagoulab
     AddKeysToAgent yes
     UseKeychain yes
+
+Host atelier-limoun
+    HostName 149.202.40.156
+    User ubuntu
+    AddKeysToAgent yes
+    UseKeychain yes
