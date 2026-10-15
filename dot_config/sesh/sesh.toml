@@ -14,3 +14,13 @@ startup_command = "tmuxinator start workspace {} path={} --append && tmux kill-w
 [[session]]
 name = "wagounix"
 path = "~/Projects/wagou/wagounix"
+
+[[session]]
+name = "atelier-limoun"
+path = "~/Projects/wagou/atelier-limoun"
+startup_command = "tmuxinator start atelier-limoun"
+
+[[session]]
+name = "alan"
+path = "~/Projects/alan"
+startup_command = "tmuxinator start alan"
