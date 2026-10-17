@@ -17,6 +17,9 @@ windows:
             - tmux split-window -v -t .1 -l 25% -d
             - tmux send-keys -t .3 'omni-wagou' Enter
             - nvim
+  - services:
+      panes:
+        - mprocs
   - vps:
       panes:
         - ssh atelier-limoun
