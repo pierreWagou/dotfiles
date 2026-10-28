@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "amazon-bedrock/alan-anthropic-sonnet-5-5",
+  "model": "amazon-bedrock/alan-anthropic-sonnet-5-5#medium",
   "snapshots": false,
   "watcher": {
     "ignore": [

@@ -5,7 +5,7 @@ default_profile = "wagou"
     harnesses = ["opencode", "claude"]
     [profile.alan.harness]
       [profile.alan.harness.opencode]
-        skills_dir = "~/.config/opencode/alan/skills"
+        skills_dir = "~/Projects/alan/.opencode/skills"
       [profile.alan.harness.claude]
         skills_dir = "~/.claude/skills"
 
@@ -48,4 +48,4 @@ default_profile = "wagou"
     harnesses = ["opencode"]
     [profile.wagou.harness]
       [profile.wagou.harness.opencode]
-        skills_dir = "~/.config/opencode/wagou/skills"
+        skills_dir = "~/Projects/wagou/.opencode/skills"

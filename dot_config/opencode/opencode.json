@@ -2,22 +2,22 @@
   "$schema": "https://opencode.ai/config.json",
   "share": "disabled",
   "default_agent": "plan",
-  "model": "opencode-go/mimo-v2.5",
+  "model": "opencode-go/muse-spark-1.3-contributor#medium",
+  "websearch": {
+    "provider": "firecrawl"
+  },
+  "warming": true,
   "permissions": [
     { "action": "external_directory", "resource": "~/.config/**", "effect": "allow" },
     { "action": "external_directory", "resource": "~/.local/share/chezmoi/**", "effect": "allow" },
-    { "action": "external_directory", "resource": "~/.local/share/nvim/**", "effect": "allow" },
-    { "action": "external_directory", "resource": "/run/current-system/**", "effect": "allow" },
-    { "action": "external_directory", "resource": "/nix/store/**", "effect": "allow" },
+    { "action": "external_directory", "resource": "~/Downloads/**", "effect": "allow" },
     { "action": "external_directory", "resource": "/tmp/**", "effect": "allow" },
     { "action": "read", "resource": "*", "effect": "allow" },
-    { "action": "read", "resource": "*.env", "effect": "deny" },
-    { "action": "read", "resource": "*.env.*", "effect": "deny" },
-    { "action": "read", "resource": "*.env.example", "effect": "allow" },
     { "action": "edit", "resource": "*", "effect": "allow" },
     { "action": "edit", "resource": "~/.config/**", "effect": "deny" },
     { "action": "edit", "resource": "~/Projects/wagou/wagounix/**", "effect": "allow" },
-    { "action": "edit", "resource": "~/.local/share/chezmoi/**", "effect": "allow" }
+    { "action": "edit", "resource": "~/.local/share/chezmoi/**", "effect": "allow" },
+    { "action": "websearch", "resource": "*", "effect": "allow" }
   ],
   "compaction": {
     "auto": true
