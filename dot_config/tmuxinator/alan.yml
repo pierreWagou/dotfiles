@@ -1,0 +1,15 @@
+# Layout:
+#   Window 1: server (opencode serve)
+#   Window 2: workspace (opencode attach in each pane)
+name: alan
+root: ~/Projects/alan
+
+windows:
+  - server:
+      panes:
+        - opencode serve --port 4096
+  - workspace:
+      layout: even-horizontal
+      panes:
+        - oc-attach
+        - oc-attach

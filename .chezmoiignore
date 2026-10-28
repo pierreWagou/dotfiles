@@ -64,16 +64,17 @@ assets/
 .config/spicetify/**
 .config/spotify-player/**
 .config/docker/**
-.config/opencode/opencode.wagou.json
 Library/**
-Projects/wagou/.envrc
+Projects/wagou/opencode.json
+Projects/wagou/AGENTS.md
+Projects/wagou/.opencode/**
 {{ end }}
 
 # Alan-only files (not needed on non-alan hosts)
-{{ if ne .nixProfile "alan" }}
-.config/opencode/opencode.alan.json
-.config/opencode/alan/**
+{{ if and (ne .nixProfile "alan") (ne .nixProfile "alan-mac") }}
 .config/lore/**
 .config/claude/**
-Projects/alan/.envrc
+Projects/alan/opencode.json
+Projects/alan/AGENTS.md
+Projects/alan/.opencode/**
 {{ end }}
