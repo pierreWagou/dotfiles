@@ -24,8 +24,6 @@
   },
   "plugins": [
     "@tarquinen/opencode-dcp",
-    "opencode-mermaid-renderer",
-    "opencode-notify",
     "@plannotator/opencode@latest"
   ],
   "mcp": {
