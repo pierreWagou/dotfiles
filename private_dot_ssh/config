@@ -1,23 +1,23 @@
 Host wagou-prime
-    HostName 192.168.68.66
-    User wagou
-    IdentityFile ~/.ssh/id_ed25519_wagoulab
-    AddKeysToAgent yes
-    UseKeychain yes
-
-Host wagou-prime-tail
-    HostName 100.97.36.56
+    HostName prime.wagou.fr
     User wagou
     IdentityFile ~/.ssh/id_ed25519_wagoulab
     AddKeysToAgent yes
     UseKeychain yes
 
 Host wagou-clone
-    HostName 192.168.68.62
     User wagou
     IdentityFile ~/.ssh/id_ed25519_wagoulab
     AddKeysToAgent yes
     UseKeychain yes
+
+Match host wagou-clone exec "nc -z -G1 192.168.68.62 22"
+    HostName 192.168.68.62
+
+Match host wagou-clone
+    HostName 100.81.107.72
+
+Match all
 
 Host atelier-limoun
     HostName 149.202.40.156
