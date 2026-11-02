@@ -61,6 +61,7 @@ assets/
 {{ if eq .chezmoi.os "linux" }}
 .ssh/config
 .config/ghostty/**
+.config/finicky/**
 .config/spicetify/**
 .config/spotify-player/**
 .config/docker/**
