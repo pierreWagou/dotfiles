@@ -22,6 +22,10 @@ vim.env.PATH = vim.fn.expand("~/.virtualenvs/neovim/bin") .. ":" .. vim.env.PATH
 vim.opt.clipboard = ""
 vim.opt.swapfile = false
 
+-- Pick up external file changes (agent edits, git operations) without prompt.
+-- Works with the checktime autocmd in lua/config/autocmds.lua.
+vim.o.autoread = true
+
 if vim.fn.has("wsl") == 1 and not vim.fn.has("mac") then
   vim.g.clipboard = {
     name = "win_clipboard",
