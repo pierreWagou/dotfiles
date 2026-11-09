@@ -36,7 +36,11 @@
     }
   },
   "permissions": [
-    { "action": "external_directory", "resource": "~/Documents/Alan/**", "effect": "allow" }
+    {
+      "action": "external_directory",
+      "resource": "~/Documents/Alan/**",
+      "effect": "allow"
+    }
   ],
   "plugins": [
     "cc-safety-net"

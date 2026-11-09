@@ -19,10 +19,10 @@ ctrl-n = "actions:new"
 
 [actions.resume]
 description = "Resume selected session"
-command = "opencode attach --session '{split:\\t:0}' http://localhost:4096"
+command = "opencode --session '{split:\\t:0}'"
 mode = "fork"
 
 [actions.new]
 description = "Create new session"
-command = "opencode attach http://localhost:4096"
+command = "opencode"
 mode = "fork"
