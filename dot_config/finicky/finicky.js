@@ -12,6 +12,14 @@ export default {
   },
   handlers: [
     {
+      // Google Meet links open in the Alan Zen profile.
+      match: "*meet.google.com*",
+      browser: {
+        name: "Zen",
+        profile: "Alan",
+      },
+    },
+    {
       // String glob (not a function): no matcher-signature risk on 4.4,
       // and declarative rules render in Finicky's Rules UI.
       // Native `profile` form per upstream PR #508 (tested on Zen):
