@@ -30,6 +30,15 @@
       "superlogical": {
         "type": "remote",
         "url": "https://www.superlogical.com/rex/community-mcp"
+      },
+      "firecrawl": {
+        "type": "local",
+        "command": ["npx", "-y", "firecrawl-mcp"],
+        "environment": {
+          "FIRECRAWL_API_URL": "https://crawl.wagou.fr",
+          "FIRECRAWL_NO_SEARCH_FEEDBACK": "1",
+          "FIRECRAWL_NO_ENDPOINT_FEEDBACK": "1"
+        }
       }
     }
   }
